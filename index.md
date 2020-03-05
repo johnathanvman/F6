@@ -3657,7 +3657,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 
 						])+
 						
-						choose([", holding her tight",", and pull her into an overly-tight embrace",", and wrap her arms around the bats middle",". CDOM wraps one arm around the bats chest and another around her neck",", and squishes her wings together"])+
+						choose([", holding her tight",", and pull her into an overly-tight embrace",", wrapping her arms around the bats middle",". CDOM wraps one arm around the bats chest and another around her neck",", then squishes her wings together"])+
 						choose([
 							". CDOM's mouth envelopes the trapped girls head with ease. As her wings try flapping within the confines of DOM's grip, she slide her mouth down to the bats shoulders. CDOM continues to make her way across the bats tasty body until its completely inside.",
 							" before she swallows the bat down.",

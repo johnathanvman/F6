@@ -3641,7 +3641,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 							Entrys.push("CDOM bites down on SUB's neck and starts to drink. As SUB starts to get drained by DOM, she asks the hungry bat if she tastes like "+choose(["apple","tomato"])+" or "+choose(["cherry","strawberry"])+". She chuckles until passing out.")
 						}
 					}
-				}else if(unit(s[2]).Tags[0] == "Batgirl"  && unit(s[2]).flying && unit(s[1]).Tags[0] != "Froggirl")){
+				}else if(unit(s[2]).Tags[0] == "Batgirl"  && unit(s[2]).flying && unit(s[1]).Tags[0] != "Froggirl"){
 					Entrys.push(
 						choose([
 							"CDOM flings a rock up at SUB and it hits her"+

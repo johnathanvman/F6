@@ -3877,8 +3877,8 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						Entry += choose([" Her"+choose([""," lush","fluffy"])+" tail "+choose(["shifts to the side.","swishes back and forth.","raises straight up, revealing her dripping "+choose(["sex.","lips.","nethers."]),"is raised up, curling around towards her back."])," She makes a loud yip for me to come, and her tail shifts to the side."])
 					}else if(Math.random()<.25){
 						Entry += choose([" Her glistening sex drives me forward.",
-						" Her juices drip down to the GROUND as she waits for me.",
-						"She"+choose([""," slowly"," seductively","hypnotically"])+" sways her behind side to side"+choose(["."," eager to be pleased."," ready for what's to come.","desperate for more."])])
+						" Her juices drip down to the ground as she waits for me.",
+						" She"+choose([""," slowly"," seductively","hypnotically"])+" sways her behind side to side"+choose(["."," eager to be pleased."," ready for what's to come.","desperate for more."])])
 					}
 					
 					if(Math.random()<.25){

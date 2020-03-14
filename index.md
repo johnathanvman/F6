@@ -3728,7 +3728,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				s[11] = choose(["talk","behind"])//initial position
 				s[12] = "doggy"//sex position
 				s[13] = "none"//sex position second
-				s[14] = choose(["none","none","none","start","start","end","end","normal"])//foreplay
+				s[14] = choose(["none","start","end","normal"])//foreplay
 				if(s[11] == "talk"){
 					Entry += choose([
 						"","",choose([
@@ -3736,15 +3736,38 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 							"I look at SUB's beautiful form and realize I need to have her.",
 							"CSUB walks by me and as I watch her cute cheeks in motion, my lust for her becomes too much.",
 							"My lust for SUB becomes too much to bear.",
-							"I can't resist SUB any longer.",
-							"I think it's time for some fun with SUB."
+							"I can't resist SUB any longer."
 						])
 					])
-					Entry += choose([
-						"I approach SUB to ",
-						"I walk up to SUB, and",
-						"I ","I ","I "
-					])
+					if(Entry == ""){
+						Entry += choose([
+							"I approach SUB to ",
+							"I walk up to SUB, and ",
+							"I ","I ","I "
+						])
+					}else{
+						Entry += choose([
+							" I approach her to ",
+							" I walk up to her, and ",
+							" I "," I "," I "
+						])
+					}
+					if(Entry == "I "){
+						Entry += choose([
+							"tell SUB I want her.",
+							"tell SUB I need to have her.",
+							"ask SUB if she wants to have some fun.",
+							"ask SUB how she wants it.",
+						])
+					}else{
+						Entry += choose([
+							"tell her I want her.",
+							"tell her I need to have her.",
+							"ask her if she wants to have some fun.",
+							"ask her how she wants it.",
+						])
+					}
+					
 				}
 				if(s[11] == "behind"){
 					Entry += choose([
@@ -3770,9 +3793,6 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 							" I step behind her"
 						])
 					}
-					if(s[14]=="turbo"){
-					
-						}else{
 						Entry += choose([
 							", and rest my hands on her "+choose(["","tense ","stiff "])+" shoulders. "+choose(["","","","When she asks, ","She stands still while "])+"I give her a massage"+
 								choose([
@@ -3856,7 +3876,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						
 						if(s[14] == "normal" || s[14] == "end"){
 							Entry += " My left hand "+choose(["","follows the curve of her body as it ","slowly ","gently ","slides across her skin until it ","explores more of her body before it "," feels her body stiffen as it "])+choose(["dips","slips","sneaks"])+choose([" between her legs"," between her thighs"," down to her nethers"])
-							+choose([choose(["."," to tease her."," to rub small circles."]),	
+							+choose([choose(["."," to tease her."," to rub small circles."," to stir her up."]),	
 								choose([". ",", and "])
 								+choose([
 								"I use my fingers to tease her before slipping one inside."+choose([""," As I feel her tighten, I keep my digit moving in and out."]),
@@ -3866,40 +3886,48 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 							])
 							+choose([" Her thighs become soaked"," She gasps in delight"," One of her legs starts to shake"," Her legs start grinding together"," She spreads her legs open"])+
 							choose([" as I find the right rhythm."," when I pick up the pace."," as I keep pleasuring her."])+
-							choose([" She",choose([" I dont stop and soon she"," Soon she"])+
-							choose([" cries out"," bites down on her finger"," starts bucking her hips"])+
-							choose([" as she cums from my touch."," when a violent orgasm wracks her body."," while she gushes down her thighs."," going over the edge."])])
+							choose(["","",
+								choose([" I dont stop and soon she"," Soon she"])+
+								choose([" cries out"," bites down on her finger"," starts bucking her hips"])+
+								choose([" as she cums from my touch."," when a violent orgasm wracks her body."," while she gushes down her thighs."," going over the edge."])])
 						}
-					}
-				}
-				if(s[11] == "behind" && s[12] == "doggy"){	
 					
-					if(s[14] == "start"){
-						Entry += " Before I can go further, she slips away, and "+choose(["dips","drops","gets","goes"])
-					}else if(s[14] == "normal" || s[14] == "end"){
-						Entry += " Once I have her warmed up, she slips away to "+choose(["dip","drop","get","go"])
-					}else{
-						Entry += 
-						choose([" Before I can go further, she"," Before I can make a move, she"," She","Suddenly, she"])+
-						choose([
-							" takes the initiative by pushing away from me to "+choose(["dip","drop","get","go"]),
-							" pushes away from me to "+choose(["dip","drop","get","go"]),
-							" slips away, and "+choose(["dips","drops","gets","goes"]),
-							" pushes me back, and "+choose(["dips","drops","gets","goes"]),
-							" takes the initiative by pushing away from me to "+choose(["dip","drop","get","go"]),
-							
+				}
+				if(s[12] == "doggy"){
+					if(s[11] == "talk"){
+						Entry += choose([
+							" Without saying a word, she turns and "+choose(["dips","drops","gets","goes"]),
+							" She "+choose(["","","quietly ","softly ","loudly "])+choose(["tells me ","says "])+choose(["she wants it","she's all mine","she's been waiting for me","she can't wait"])+choose([". She turns and "," as she turns and "," as she turns away. I watch as she "," then turns around and "])+choose(["dips","drops","gets","goes"])
 						])
+					}
+					if(s[11] == "behind"){
+						if(s[14] == "start"){
+							Entry += " Before I can go further, she slips away, and "+choose(["dips","drops","gets","goes"])
+						}else if(s[14] == "normal" || s[14] == "end"){
+							Entry += " Once I have her warmed up, she slips away to "+choose(["dip","drop","get","go"])
+						}else{
+							Entry += 
+							choose([" Before I can go further, she"," Before I can make a move, she"," She","Suddenly, she"])+
+							choose([
+								" takes the initiative by pushing away from me to "+choose(["dip","drop","get","go"]),
+								" pushes away from me to "+choose(["dip","drop","get","go"]),
+								" slips away, and "+choose(["dips","drops","gets","goes"]),
+								" pushes me back, and "+choose(["dips","drops","gets","goes"]),
+								" takes the initiative by pushing away from me to "+choose(["dip","drop","get","go"]),
+								
+							])
+						}
 					}
 					Entry += 
 					choose([" down on all fours"," down to the ground on all fours"," to her hands and knees on the ground"," to her hands and knees"," to her knees. She leans forward to rest on her elbows"])+
-					choose([".",".",".",".",".","."," looking up at me expectantly.",". Her eyes silently plead for me!"," as she arches her back."," waiting.",", spreading her legs wider as she glances back.",+choose([" She lays her head on the ground while keeping her "," Her head stays low while she keeps her "," With her head to the ground she keeps her "])+choose(["cheeks","rear","butt","ass"])+choose([" up."," in the air."," raised."," raised towards me!"])])
+					choose([".",".",".",".",".","."," looking up at me expectantly.",". Her eyes silently plead for me!"," as she arches her back."," waiting.",", spreading her legs wider as she glances back.","."+choose([" She lays her head on the ground while keeping her "," Her head stays low while she keeps her "," With her head to the ground she keeps her "])+choose(["cheeks","rear","butt","ass"])+choose([" up."," in the air."," raised."," raised towards me!"])])
 					
 					if(unit(s[2]).Tags[0] == "Foxgirl" && Math.random()<.25){
-						Entry += choose([" Her"+choose([""," lush","fluffy"])+" tail "+choose(["shifts to the side.","swishes back and forth.","raises straight up, revealing her dripping "+choose(["sex.","lips.","nethers."]),"is raised up, curling around towards her back."])," She makes a loud yip for me to come, and her tail shifts to the side."])
+						Entry += choose([" Her"+choose([""," lush"," fluffy"])+" tail "+choose(["shifts to the side.","swishes back and forth.","raises straight up, revealing her dripping "+choose(["sex.","lips.","nethers."]),"is lifted, curling around towards her back."])," She makes a loud yip for me to come, and her tail shifts to the side."])
 					}else if(Math.random()<.25){
 						Entry += choose([" Her glistening sex drives me forward.",
 						" Her juices drip down to the ground as she waits for me.",
-						" She"+choose([""," slowly"," seductively","hypnotically"])+" sways her behind side to side"+choose(["."," eager to be pleased."," ready for what's to come.","desperate for more."])])
+						" She"+choose([""," slowly"," seductively"," hypnotically"])+" sways her behind side to side"+choose(["."," eager to be pleased."," ready for what's to come."," desperate for more."])])
 					}
 					
 					if(Math.random()<.25){
@@ -3911,14 +3939,14 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						
 							
 						choose([
-							choose([", and "," then "," to "," so I can "])+choose(["slip","slide","sink","plunge"])+choose([" "," myself "," my rod "," my member "," my shaft "])+choose(["into her.","into her folds.","inside.","inside her.","deep inside her."])
-							,"start rubbing my member against her"+choose(["",""," entrance"," folds"," wet lips"," slit"])+
+							choose([", and "," then "," to "," so I can "])+choose(["slip","slide","sink","plunge"])+choose([" "," myself "," my rod "," my member "," my cock "])+choose(["into her.","into her folds.","inside.","inside her.","deep inside her."]),
+							choose([", and "," then "," to "," so I can "])+"start rubbing my member against her"+choose(["",""," entrance"," folds"," wet lips"," slit"])+
 								choose([
 									" before sliding inside."," before sticking it inside."
 									,choose([". Between heavy breaths, she",". In a soft voice she",". With a hint of frusteration in her voice, she",". She"," while she",". She sounds desperate when she"," Her lips drip more as she"," Her body trembles as she"])+choose([" tells me to stick it in already."," begs for me to fuck her already."," pleads for me to give it to her already."])+choose([" When I do, she moans loudly!"," She gasps when I do."," I feel her jolt when I do!"," Her body shudders when I do!"])
 								])
 							
-							,choose([", and when I",". As I",])+choose([" position myself against her "," I stick the tip inside her "])+choose([""," folds"," entrance"," lips"," slit"])+choose([" she suddenly pushes back, taking me entirely"," she pushes against me until I slide inside."," she pushes back and I sink into her."])
+							,choose([", and when I",". As I",])+choose([" position myself against her "," stick the tip inside her "])+choose([""," folds"," entrance"," lips"," slit"])+choose([", she suddenly pushes back, taking me entirely.",", she pushes against me until I slide inside.",", she pushes back and I sink into her."])
 						])
 						
 					}
@@ -3926,22 +3954,23 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						" While maintaining eye contact, she starts to slide up and down my shaft.",
 						" She starts to slide up and down my shaft.",
 						" She pumps her hips"+choose([" against me.",", taking my length each time!",", pushing me further and further into her!"]),
-						choose([" I thrust myself into her as she "," I pound her from behind as she ","I ride her as she "])+
+						choose([" I thrust myself into her as she "," I pound her as she ","I ride her as she "])+
 							choose(["moans loudly!","cries out for more!","cries out for more!"]),
-						choose(["We move in unison"])+choose([", both desperate for more."])
+						choose([" We move in unison"])+choose([", both desperate for more."])
 					
 					])
 					Entry += choose([
 						" Soon we are both "+choose(["covered","soaked","dripping","slick","drenched"])+" in sweat.",
 						" Soon she's panting heavily.",
+						" Soon I'm ready to burst, but keep .",
 						" Soon she's whimpering and covered in sweat."+choose([""," Her arms give out and "+choose(["","her upper half lies limp."])+" I start thrusting harder, pressing her into the ground."]),
 						" I rub my thumb against the rim of her anus, and feel her tighten around my rod.",
 						" We make love, fully focusing on the other.",
 					])
 					Entry += choose([
-						choose([" After a few more minutes,"," After a few more moments"," After a while"," Not before long,"])+" she's a quivering mess, and I feel her gush around me as I shoot my"+choose([""," warm"," hot"])+" seed"+choose([""," deep"," down"])+choose([" inside!"," into her!"," into her folds."," into her depths."]),
-						choose([" We keep going at it until I lose control and start filling her tight hole. "])+choose(["Soon she gasps and tightens like a vice as she finishes too."]),
-						choose([" She suddenly gasps and tightens like a vice as she climaxes. "])+choose(["I keep thrusting until I finish too, and start filling her tight hole."]),
+						choose([" After a few more minutes,"," After a few more moments"," After a while"," Not before long,"])+" she's a quivering mess, and I feel her gush around me as I "+choose(["cum","shoot","shoot my seed","shoot my warm seed","shoot hot seed"])+choose([""," deep"," down"])+choose([" inside!"," into her!"," into her folds."," into her depths."]),
+						choose([" We keep going at it until I lose control and start filling her. "])+choose(["Soon she gasps and tightens like a vice as she finally finishes."]),
+						choose([" She suddenly gasps and tightens like a vice as she climaxes. "])+choose(["I keep thrusting until I finish too, and start filling her."]),
 						" When her legs give out, I join her prone form, and again thrust"+choose([" "," myself "])+choose(["","repeatedly "])+choose(["into her","into her until she's helplessly quivering"])+choose([". As an orgasm wracks her body, I push myself in deep to cum inside."])
 					])
 					//*/
@@ -4569,14 +4598,14 @@ function randomTravel(Basic){
 						if(unit(100).Positive){Entrys[Entrys.length-1] += " The "+ unit(100).Name +" tells my shy friend she doesnt need to hide. My "+NegativeUnit.Name+" walks up nervously, and the two share a friendly hug."}
 						if(unit(100).Negative){Entrys[Entrys.length-1] += " The "+ unit(100).Name +" seems cautious as well, I guess it can scary meeting new people in this world..."}
 						if(unit(100).Funny){Entrys[Entrys.length-1] += " The "+ unit(100).Name +" makes a funny face at her. My "+NegativeUnit.Name+" laughs and stops hiding behind me. I guess thats all it takes to make a new friend."}
-						if(unit(100).Slutty){Entrys[Entrys.length-1] += " As the "+ unit(100).Name +" greets us, she keeps taking peeks at my "+PositiveUnit.Tags[0]+"."}
+						if(unit(100).Slutty){Entrys[Entrys.length-1] += " As the "+ unit(100).Name +" greets us, she keeps taking peeks at my "+NegativeUnit.Tags[0]+"."}
 					}
 					if(FunnyUnit != null){ 
 						Entrys.push("We travel to"+N(map[party.y][party.x].name)+" and meet"+N(unit(100).Name)+". My "+FunnyUnit.Name+" makes a funny face at her.")
 						if(unit(100).Positive){Entrys[Entrys.length-1] += " The "+ unit(100).Name +" laughs heartily and says we must have lots of fun on our travels."}
 						if(unit(100).Negative){Entrys[Entrys.length-1] += " The "+ unit(100).Name +" rolls her eyes unimpressed."}
 						if(unit(100).Funny){Entrys[Entrys.length-1] += " The "+ unit(100).Name +" makes an even goofier face back!"}
-						if(unit(100).Slutty){Entrys[Entrys.length-1] += " The "+ unit(100).Name +" pretends to laugh, but her attention is locked on my "+PositiveUnit.Tags[0]+"'s chest instead."}
+						if(unit(100).Slutty){Entrys[Entrys.length-1] += " The "+ unit(100).Name +" pretends to laugh, but her attention is locked on my "+FunnyUnit.Tags[0]+"'s chest instead."}
 					}
 					if(SluttyUnit != null){ 
 						Entrys.push("We travel to"+N(map[party.y][party.x].name)+" and meet"+N(unit(100).Name)+". My "+SluttyUnit.Name+" looks her up and down with a naughty look in her eye." )

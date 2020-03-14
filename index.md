@@ -1157,7 +1157,7 @@ function Main(){
 	while(e < party.units.length){
 		showstats = false;
 		if(party.units.length < 4){
-			showstats = true;
+			//showstats = true;
 		}
 		if(map[party.y][party.x].hostile){
 			
@@ -1236,7 +1236,7 @@ function Main(){
 	while(e < map[party.y][party.x].units.length){
 		showstats = false;
 		if(map[party.y][party.x].units.length < 4){
-			showstats = true;
+			//showstats = true;
 		}
 		if(map[party.y][party.x].hostile){
 			if(currInit == map[party.y][party.x].units[e].Init && !map[party.y][party.x].units[e].asleep){
@@ -3725,10 +3725,27 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 			if(Entrys.length == 0 || Math.random()<1){
 				Entrys = []
 				Entry = "";
-				s[11] = "behind"//initial position
+				s[11] = choose(["talk","behind"])//initial position
 				s[12] = "doggy"//sex position
 				s[13] = "none"//sex position second
 				s[14] = choose(["none","none","none","start","start","end","end","normal"])//foreplay
+				if(s[11] == "talk"){
+					Entry += choose([
+						"","",choose([
+							"I look at SUB's beautiful form and realize I need to have her again.",
+							"I look at SUB's beautiful form and realize I need to have her.",
+							"CSUB walks by me and as I watch her cute cheeks in motion, my lust for her becomes too much.",
+							"My lust for SUB becomes too much to bear.",
+							"I can't resist SUB any longer.",
+							"I think it's time for some fun with SUB."
+						])
+					])
+					Entry += choose([
+						"I approach SUB to ",
+						"I walk up to SUB, and",
+						"I ","I ","I "
+					])
+				}
 				if(s[11] == "behind"){
 					Entry += choose([
 						"","",choose([
@@ -3753,102 +3770,106 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 							" I step behind her"
 						])
 					}
-					Entry += choose([
-						", and rest my hands on her "+choose(["","tense ","stiff "])+" shoulders. "+choose(["","","","When she asks, ","She stands still while "])+"I give her a massage"+
-							choose([
-								", digging my palms against her back with my fingers draped over her.",
-								" until I feel the "+choose(["stiffness","tension"])+" is worked away.",
-								". My fingers dig in deep to work out the knots in her muscles."
-							])
-						,
-						", and wrap my arms around her"+choose([".","."," belly."," midriff."," stomach."," middle."]),
-						" to drape my arms "+choose(["over","around","across"])+" her shoulders.",
-						", and rest my hands on her "+choose(["","soft "])+"hips.",
-						" to pull her close by the "+choose(["hips.","waist."]),
-						", and grip her hips, my fingers making small "+choose(["dimples","divots","indents"])+" in her "+choose(["","soft "])+"skin.",
-						", embracing her with my chest against her back.",
-						", sliding my arms under hers"+
-							choose([
-								".",
-								". My fingers make impressions against her belly as I pull her close.",
-								" to "+choose(["fondle","grope","caress","feel","cup"])+" her "+choose(["bosom","bust","breasts"])+choose([".",". I feel her nipples harden under my touch"]),
-								". My fingers explore her belly"+choose(["."," as goosebumps form under their touch."])
-							])
+					if(s[14]=="turbo"){
 					
-					
-					
-					])
-					if(s[14] == "normal" || s[14] == "start"){//Foreplay
+						}else{
 						Entry += choose([
-						" SheCONTINUE",
-						" SheCONTINUE",
-						" SheCONTINUE",
-						" SheCONTINUE",
-						" Her hand moves back, and she wraps her fingers around "+choose(["me.","my shaft.","me, stroking until I'm hard.","my member. I feel myself harden as she teases the tip.","me, she seems "+choose(["surprised","pleased","excited"])+" that I'm already hard."]),
-						" She leans against me"+choose(["."," with a relaxed sigh."]),
-						" She lays her head against me"+choose(".",", breathing in my scent."),
-						" She lays her hands over mine"+choose([".",", giving both a squeeze."]),
-						" Her fingers curl around my wrists"+choose(["."," as sheCONTINUE"])
+							", and rest my hands on her "+choose(["","tense ","stiff "])+" shoulders. "+choose(["","","","When she asks, ","She stands still while "])+"I give her a massage"+
+								choose([
+									", digging my palms against her back with my fingers draped over her.",
+									" until I feel the "+choose(["stiffness","tension"])+" is worked away.",
+									". My fingers dig in deep to work out the knots in her muscles."
+								])
+							,
+							", and wrap my arms around her"+choose([".","."," belly."," midriff."," stomach."," middle."]),
+							" to drape my arms "+choose(["over","around","across"])+" her shoulders.",
+							", and rest my hands on her "+choose(["","soft "])+"hips.",
+							" to pull her close by the "+choose(["hips.","waist."]),
+							", and grip her hips, my fingers making small "+choose(["dimples","divots","indents"])+" in her "+choose(["","soft "])+"skin.",
+							", embracing her with my chest against her back.",
+							", sliding my arms under hers"+
+								choose([
+									".",
+									". My fingers make impressions against her belly as I pull her close.",
+									" to "+choose(["fondle","grope","caress","feel","cup"])+" her "+choose(["bosom","bust","breasts"])+choose([".",". I feel her nipples harden under my touch"]),
+									". My fingers explore her belly"+choose(["."," as goosebumps form under their touch."])
+								])
+						
+						
+						
 						])
-						if(Entry.includes("CONTINUE") && Math.random()<.25){
-							Entry = Entry.replace("CONTINUE"," ");
-							Entry += "grinds against my body"+choose([
-							choose([".",".",", andCONTINUE"]),
-							", her crotch leaving a juicy trail down my leg."+choose(["","","",""," SheCONTINUE"]),
-							", her crotch leaving a wetness on my leg."+choose(["","","",""," SheCONTINUE"]),
-							". I feel her cute cheeks "+choose(["sandwich","around","squeeze"])+" my rod as she moves."+choose(["","","",""," I stiffen between her until I'm fully erect."])+choose(["","",""," SheCONTINUE"])
-							])
-								
-						}
-						if(Entry.includes("CONTINUE") && Math.random()<.25){
-							Entry = Entry.replace("CONTINUE"," ");
+						if(s[14] == "normal" || s[14] == "start"){//Foreplay
 							Entry += choose([
-								choose(["tilts her head","looks","peeks"])+" back at me"+choose([
-									" with a smile.",
-									" with a naughty look in her eye.",
-									" with a naughty look on her face.",
-									" biting her lip",
-									", her cheeks are bright red.",
-									", andCONTINUE",
-									", and bats her eyelashes with a naughty grin.",
-									choose([", and we lock eyes.",", and stares into my eyes.",", and just looks at me."])+choose([" I can't help but to blush as she keeps looking at me."," Somehow I feel embarrassed by her intent gaze."," I feel my cheeks slowly turn red from her gaze."])
+							" SheCONTINUE",
+							" SheCONTINUE",
+							" SheCONTINUE",
+							" SheCONTINUE",
+							" Her hand moves back, and she wraps her fingers around "+choose(["me.","my shaft.","me, stroking until I'm hard.","my member. I feel myself harden as she teases the tip.","me, she seems "+choose(["surprised","pleased","excited"])+" that I'm already hard."]),
+							" She leans against me"+choose(["."," with a relaxed sigh."]),
+							" She lays her head against me"+choose(".",", breathing in my scent."),
+							" She lays her hands over mine"+choose([".",", giving both a squeeze."]),
+							" Her fingers curl around my wrists"+choose(["."," as sheCONTINUE"])
+							])
+							if(Entry.includes("CONTINUE") && Math.random()<.25){
+								Entry = Entry.replace("CONTINUE"," ");
+								Entry += "grinds against my body"+choose([
+								choose([".",".",", andCONTINUE"]),
+								", her crotch leaving a juicy trail down my leg."+choose(["","","",""," SheCONTINUE"]),
+								", her crotch leaving a wetness on my leg."+choose(["","","",""," SheCONTINUE"]),
+								". I feel her cute cheeks "+choose(["sandwich","around","squeeze"])+" my rod as she moves."+choose(["","","",""," I stiffen between her until I'm fully erect."])+choose(["","",""," SheCONTINUE"])
 								])
-								,
-								choose(["tilts her head","looks"])+ " back "+choose(["and leans in for a kiss","and gives me a kiss","and kisses me","to kiss me",", surprising me with a kiss"])+
-								choose([".","!",
-									". When our lips part, sheCONTINUE",
-									". She sucks on my lower lip before giving it a bite.",
-									", she closes her eyes as our tongues entwine.",
-									", my tongue glides past her "+choose(["lips","teeth"])+choose([".","."," as we lock eyes.",", taking in her flavor."]),
-									", her tongue pushes into my mouth"+choose([".","."," searching for my own."," tangling up with mine."])
+									
+							}
+							if(Entry.includes("CONTINUE") && Math.random()<.25){
+								Entry = Entry.replace("CONTINUE"," ");
+								Entry += choose([
+									choose(["tilts her head","looks","peeks"])+" back at me"+choose([
+										" with a smile.",
+										" with a naughty look in her eye.",
+										" with a naughty look on her face.",
+										" biting her lip",
+										", her cheeks are bright red.",
+										", andCONTINUE",
+										", and bats her eyelashes with a naughty grin.",
+										choose([", and we lock eyes.",", and stares into my eyes.",", and just looks at me."])+choose([" I can't help but to blush as she keeps looking at me."," Somehow I feel embarrassed by her intent gaze."," I feel my cheeks slowly turn red from her gaze."])
+									])
+									,
+									choose(["tilts her head","looks"])+ " back "+choose(["and leans in for a kiss","and gives me a kiss","and kisses me","to kiss me",", surprising me with a kiss"])+
+									choose([".","!",
+										". When our lips part, sheCONTINUE",
+										". She sucks on my lower lip before giving it a bite.",
+										", she closes her eyes as our tongues entwine.",
+										", my tongue glides past her "+choose(["lips","teeth"])+choose([".","."," as we lock eyes.",", taking in her flavor."]),
+										", her tongue pushes into my mouth"+choose([".","."," searching for my own."," tangling up with mine."])
+									])
+								])
+							}
+							if(Entry.includes("CONTINUE")){
+								Entry = Entry.replace("CONTINUE", " ");
+								Entry += choose(["","","quietly ","softly "])+choose(["tells me ","says ","whispers that "])+choose(["she wants it.","she's all mine.","she's been waiting for me.","she can't wait."])
+							}
+							
+							//ADD DESCRIPTION STUFF HERE FOR DIFFERENT RACES AND SUCH
+							
+						}
+						//ADD RIGHT HAND DETAILS HERE
+						
+						if(s[14] == "normal" || s[14] == "end"){
+							Entry += " My left hand "+choose(["","follows the curve of her body as it ","slowly ","gently ","slides across her skin until it ","explores more of her body before it "," feels her body stiffen as it "])+choose(["dips","slips","sneaks"])+choose([" between her legs"," between her thighs"," down to her nethers"])
+							+choose([choose(["."," to tease her."," to rub small circles."]),	
+								choose([". ",", and "])
+								+choose([
+								"I use my fingers to tease her before slipping one inside."+choose([""," As I feel her tighten, I keep my digit moving in and out."]),
+								"I circle a finger around her "+choose(["button","clit","nub"])+" until it's firm, then start rubbing it directly.",
+								"I rub her hood until it pulls back and start teasing her "+choose(["button","clit","nub"])+" directly." 
 								])
 							])
+							+choose([" Her thighs become soaked"," She gasps in delight"," One of her legs starts to shake"," Her legs start grinding together"," She spreads her legs open"])+
+							choose([" as I find the right rhythm."," when I pick up the pace."," as I keep pleasuring her."])+
+							choose([" She",choose([" I dont stop and soon she"," Soon she"])+
+							choose([" cries out"," bites down on her finger"," starts bucking her hips"])+
+							choose([" as she cums from my touch."," when a violent orgasm wracks her body."," while she gushes down her thighs."," going over the edge."])])
 						}
-						if(Entry.includes("CONTINUE")){
-							Entry = Entry.replace("CONTINUE", " ");
-							Entry += choose(["","","quietly ","softly "])+choose(["tells me ","says ","whispers that "])+choose(["she wants it.","she's all mine.","she's been waiting for me.","she can't wait."])
-						}
-						
-						//ADD DESCRIPTION STUFF HERE FOR DIFFERENT RACES AND SUCH
-						
-					}
-					//ADD RIGHT HAND DETAILS HERE
-					
-					if(s[14] == "normal" || s[14] == "end"){
-						Entry += " My left hand "+choose(["","follows the curve of her body as it ","slowly ","gently ","slides across her skin until it ","explores more of her body before it "," feels her body stiffen as it "])+choose(["dips","slips","sneaks"])+choose([" between her legs"," between her thighs"," down to her nethers"])
-						+choose([choose(["."," to tease her."," to rub small circles."]),	
-							choose([". ",", and "])
-							+choose([
-							"I use my fingers to tease her before slipping one inside."+choose([""," As I feel her tighten, I keep my digit moving in and out."]),
-							"I circle a finger around her "+choose(["button","clit","nub"])+" until it's firm, then start rubbing it directly.",
-							"I rub her hood until it pulls back and start teasing her "+choose(["button","clit","nub"])+" directly." 
-							])
-						])
-						+choose([" Her thighs become soaked"," She gasps in delight"," One of her legs starts to shake"," Her legs start grinding together"," She spreads her legs open"])+
-						choose([" as I find the right rhythm."," when I pick up the pace."," as I keep pleasuring her."])+
-						choose([" She",choose([" I dont stop and soon she"," Soon she"])+
-						choose([" cries out"," bites down on her finger"," starts bucking her hips"])+
-						choose([" as she cums from my touch."," when a violent orgasm wracks her body."," while she gushes down her thighs."," going over the edge."])])
 					}
 				}
 				if(s[11] == "behind" && s[12] == "doggy"){	

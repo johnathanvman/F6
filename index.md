@@ -597,7 +597,7 @@ function MakeMapTile(i,o){
 			var riverName = ""
 			//if(trailName == ""){trailName=randomEntry("TrailMain")}
 			if(Math.random()<.95){
-				LogEntry("a "+riverName)
+				//LogEntry("a "+riverName)
 				if(GetMapTag(i+1,o+1) == "Water"){riverName=map[i+1][o+1].name;}
 				if(GetMapTag(i+1,o  ) == "Water"){riverName=map[i+1][o  ].name;}
 				if(GetMapTag(i+1,o-1) == "Water"){riverName=map[i+1][o-1].name;}
@@ -606,21 +606,21 @@ function MakeMapTile(i,o){
 				if(GetMapTag(i-1,o+1) == "Water"){riverName=map[i-1][o+1].name;}
 				if(GetMapTag(i-1,o  ) == "Water"){riverName=map[i-1][o  ].name;}
 				if(GetMapTag(i-1,o-1) == "Water"){riverName=map[i-1][o-1].name;}
-				LogEntry("b "+riverName)
+				//LogEntry("b "+riverName)
 				if(GetMapTag(i-1,o) == "Bridge" && GetMapTag(i-2,o) == "Water" ){riverName=GetMapName(i-2,o);}
 				if(GetMapTag(i+1,o) == "Bridge" && GetMapTag(i+2,o) == "Water" ){riverName=GetMapName(i+2,o);}
 				if(GetMapTag(i,o-1) == "Bridge" && GetMapTag(i,o-2) == "Water" ){riverName=GetMapName(i,o-2);}
 				if(GetMapTag(i,o+1) == "Bridge" && GetMapTag(i,o+2) == "Water" ){riverName=GetMapName(i,o+2);}
-				LogEntry("c "+riverName)
+				//LogEntry("c "+riverName)
 				if(riverName == "Freshwater Lake" || riverName == "Waterfall" || riverName == ""){riverName=randomEntry("River")}
-				LogEntry("d "+riverName)
+				//LogEntry("d "+riverName)
 				map[i][o] = {tag:"Water",name:riverName,units:[],hostile:false,clr:"#77bbdd"};
 				
 			}else{
 				map[i][o] = {tag:"Water",name:randomEntry("River"),units:[],hostile:false,clr:"#77bbdd"};
-				LogEntry("Bravo")
+				//LogEntry("Bravo")
 			}
-			LogEntry(map[i][o].name)
+			//LogEntry(map[i][o].name)
 			SpawnMobs(i,o,"RiverMundane");//will also change name of map tile
 		}
 		if(map[i][o] == 16){//LakeFresh
@@ -3029,6 +3029,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					}
 				}
 			}else{//RELUCTANT
+			
 				Entrys.push("I ask SUB to close her eyes. She does so and puckers her lips for a kiss. Instead I gulp down her head and shoulders. She yelps in surprise as she stops being my lover and becomes my nutrition. Trembling, she asks if I wouldn't rather fuck her instead, but I keep gulping down to her waist. When I start swallowing her hips, she begs me to enjoy her properly at least! My tongue finds her slit and starts getting her off as her rump hangs out of my mouth. I give SUB one last orgasm before fully taking her down!")
 				Entrys.push("I grab SUB by the waist, and swallow her down!")
 				if(unit(s[2]).Tags[0] == "Mousegirl"){
@@ -3326,7 +3327,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				}
 			}else if(unit(s[2]).willing){//WILLING
 				if(unit(s[1]).Tags[0] == "Froggirl"){//
-					Entrys.push("CDOM's tongue flings out at SUB and latches on! She pulls back sharply, and SUB flies through the air towards the awaiting maw. She's gulped down instantly, forming a large buldge inside DOM! I press my ear to her bloated belly, and hear SUB moan as she fingers herself one last time!")
+					Entrys.push("CDOM's tongue flings out at SUB and latches on! She pulls back sharply, and SUB flies through the air towards the awaiting maw. She's gulped down instantly, forming a large bulge inside DOM! I press my ear to her bloated belly, and hear SUB moan as she fingers herself one last time!")
 					Entrys.push("CDOM's tongue flings out at SUB and latches on! SUB grabs the tongue and pulls DOM over to her. CSUB kisses the other girl and says she'd be glad to be a snack. She lets DOM swallow her down, and soon screams out in ecstasy while digesting inside the froggirl!")
 				}
 				Entrys.push("CSUB just let DOM eat her!")
@@ -3395,7 +3396,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				}
 			}else{//UNWILLING
 				if(unit(s[1]).Tags[0] == "Froggirl"){//
-					Entrys.push("CDOM's tongue flings out at SUB and latches on! She pulls back sharply, and SUB flies through the air towards the awaiting maw. She's gulped down to her hips, and I hear her muffled calls for help. I approach and grab her legs. Instead of saving her, I eat her out until she cums and let DOM finish swallowing her down. Inside I hear SUB thank me for the goodbye.")
+					Entrys.push("CDOM's tongue flings out at SUB and latches on! She pulls back sharply, and SUB flies through the air towards the awaiting maw. She's gulped down to her hips, and I hear her muffled calls for help. I approach and grab her legs. Instead of saving her, I eat her out until she cums and let DOM finish swallowing her down. I hear SUB's muffled voice thank me for the goodbye.")
 					Entrys.push("CDOM's tongue flings out at SUB and latches on! CSUB calls out to me as she's pulled towards DOM. I run over and kiss her cheek as she struggles against the sticky tongue. I tell SUB she needs to be a good meal and stop struggling. She gives me a kiss goodbye and lets DOM eat her.")
 				}
 				Entrys.push("CDOM just ate SUB!")
@@ -3428,7 +3429,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				}
 			}else if(unit(s[2]).willing){//WILLING
 				if(unit(s[1]).Tags[0] == "Froggirl"){//
-					Entrys.push("CDOM's tongue flings out at SUB and latches on! She pulls back sharply, and SUB flies through the air towards the awaiting maw. She's gulped down instantly, forming a large buldge inside DOM! While digesting, SUB moans as she fingers herself one last time!")
+					Entrys.push("CDOM's tongue flings out at SUB and latches on! She pulls back sharply, and SUB flies through the air towards the awaiting maw. She's gulped down instantly, forming a large bulge inside DOM! While digesting, SUB moans as she fingers herself one last time!")
 					if(unit(s[1]).Slutty){
 						Entrys.push("CDOM's tongue flings out at SUB! SUB grabs the tongue and pulls DOM over to her. CSUB kisses the other girl before shoving herself down the froggirls throat!")
 					}
@@ -3475,7 +3476,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				}
 			}else if(s[4] == 3){//WILLING
 				if(party.units[s[1]].Tags[0] == "Froggirl"){//
-					Entrys.push("CDOM's tongue flings out at SUB and latches on! She pulls back sharply, and SUB flies through the air towards the awaiting maw. She's gulped down instantly, forming a large buldge inside DOM! I press my ear to her bloated belly, and hear SUB moan as she fingers herself one last time!")
+					Entrys.push("CDOM's tongue flings out at SUB and latches on! She pulls back sharply, and SUB flies through the air towards the awaiting maw. She's gulped down instantly, forming a large bulge inside DOM! I press my ear to her bloated belly, and hear SUB moan as she fingers herself one last time!")
 					Entrys.push("CDOM's tongue flings out at SUB and latches on! SUB grabs the tongue and pulls DOM over to her. CSUB says she'd be glad to be a snack and lets DOM swallow her down!")
 				}
 				Entrys.push("Oh my, SUB just let DOM eat her!")
@@ -3512,6 +3513,13 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					Entrys = ["CDOM bites down on SUB's neck, but she yelps in pain, and shoves the small bat off of her. I tell DOM she needs to choose smaller prey."]
 				}
 			}else if(s[4] == 0){//FAILED
+				if(unit(s[1]).Tags[0] == "Froggirl"){
+					Entrys.push(choose(["CDOM's ","CDOM's ","CDOM's ","CDOM's ","CDOM's ","CDOM ribbits before her ","CDOM croaks before her ","CDOM opens her mouth impossibly wide before her ","CDOM licks her lips before her "])+ choose(["","","slimey ","sticky ","long ","powerful "])+
+					"tongue "+choose(["flings","shoots","slings","launches","darts"])+
+					choose([" out at SUB"," out toward SUB"," straight toward SUB"," straight at SUB"," out seeking SUB. It moves quickly"])+
+					choose([" but fails to catch her."," but SUB swiftly moves out of the way."," but SUB swiftly dodges it."," but isn't quite long enough to reach SUB."])
+					)
+				}
 				if(unit(s[2]).flying && !unit(s[1]).flying){
 					if(unit(s[2]).Funny){
 						Entrys.push("CDOM's poor stomach grumbles as SUB flies above her. She sticks her tongue out mockingly.")
@@ -3535,15 +3543,49 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				}
 			}else if(s[4] == 2){//UNWILLING
 				if(unit(s[1]).Tags[0] == "Froggirl"){
-					Entrys.push("CDOM's tongue flings out at SUB and latches on! She pulls back sharply, and SUB flies through the air towards the awaiting maw. She's gulped down instantly, forming a large buldge inside DOM!")
-					Entrys.push("CDOM's tongue flings out at SUB and latches on! CSUB falls down and is dragged along the ground towards DOM. CSUB cries out before she's devoured in one massive gulp!")
-					if(unit(s[2]).willing){
-						Entrys.push("CDOM's tongue flings out at SUB and latches on! CSUB falls down and is dragged along the ground towards DOM. Surprisingly, SUB cries out in bliss before she's devoured in one massive gulp!")
-					}
-					if(unit(s[2]).Tags[0] == "Batgirl"  && unit(s[2]).flying){
-						Entrys = []
-						Entrys.push("CDOM's tongue flings up at SUB and latches on! She pulls down sharply, and SUB frantically flaps as she's pulled through the air towards the awaiting maw. She's gulped down instantly, forming a large buldge inside DOM!")
-						Entrys.push("CDOM's tongue flings up at SUB and latches on! CSUB tries to fly away, but gets yanked down towards DOM. CSUB cries out before she's devoured in one massive gulp!")
+					//Entrys.push("CDOM's tongue flings out at SUB and latches on! She pulls back sharply, and SUB flies through the air towards the awaiting maw. She's gulped down instantly, forming a large bulge inside DOM!")
+					//Entrys.push("CDOM's tongue flings out at SUB and latches on! CSUB falls down and is dragged along the ground towards DOM. CSUB cries out before she's devoured in one massive gulp!")
+					Entrys.push(choose(["CDOM's ","CDOM's ","CDOM's ","CDOM's ","CDOM's ","CDOM ribbits before her ","CDOM croaks before her ","CDOM opens her mouth impossibly wide before her ","CDOM licks her lips before her "])+ choose(["","","slimey ","sticky ","long ","powerful "])+
+					"tongue "+choose(["flings","shoots","slings","launches","darts"])+
+					choose([" out at SUB"," out toward SUB"," straight toward SUB"," straight at SUB"," out seeking SUB. It moves quickly"])+
+					choose([" and catches her.",
+						choose([" to bind around her!"," to hook around her middle!"," and wraps around her!"," and latches on!"," to latch on!",", wrapping around her middle!"])
+					])
+					
+					)
+						if(unit(s[2]).Tags[0] == "Batgirl"  && unit(s[2]).flying){
+							Entrys[Entrys.length-1]+= choose([" CSUB frantically flaps as she's pulled through the air towards the awaiting maw."," CSUB tries to fly away, but gets yanked down towards DOM"," She pulls back sharply, and SUB flaps in vain as she's drawn to her doom."," Suddenly, the tongue snaps back, pulling SUB down with it."])
+						}else if(map[party.y][party.x].tag == "Water"){
+							Entrys[Entrys.length-1]+= choose([" It coils back, pulling SUB closer through the water."," She pulls back sharply, and SUB struggles as she's drawn through the water."," She pulls back sharply, and SUB splashes through the water towards the awaiting maw."," CSUB falls down and is dragged underwater towards DOM."," Suddenly, the tongue snaps back, taking SUB with it."])
+						}else{
+							Entrys[Entrys.length-1]+= choose([" It coils back, pulling SUB closer."," She pulls back sharply, and SUB struggles as she's drawn to her doom."," She pulls back sharply, and SUB flies through the air towards the awaiting maw."," CSUB falls down and is dragged along the ground towards DOM."," Suddenly, the tongue snaps back, taking SUB with it."])
+						}
+
+					if(unit(s[2]).willing && Math.random()<.5){
+						Entrys[Entrys.length-1]+= choose([" Soon SUB is just a "+choose(["","","shapely ","large ","squirming ","writhing ","shrinking "])+"bulge. While digesting, SUB moans loudly as she fingers herself one last time!"," Surprisingly, SUB cries out in bliss before she's devoured in one massive gulp!"])
+					}else if(unit(s[2]).Positive && s[2] < 100 && !unit(0).fled && Math.random()<.5){
+						Entrys[Entrys.length-1]+= " Soon SUB is just a "+choose(["","","shapely ","large ","squirming ","writhing ","shrinking "])+"bulge. She tells us not to give up as she digests."
+					}else if(unit(s[2]).Negative && s[2] < 100 && !unit(0).fled && Math.random()<.5){
+						Entrys[Entrys.length-1]+= " Soon SUB is just a "+choose(["","","shapely ","large ","squirming ","writhing ","shrinking "])+"bulge. She begs for me to save her as she digests."
+					}else if(unit(s[2]).Funny && s[2] < 100 && !unit(0).fled && Math.random()<.5){
+						Entrys[Entrys.length-1]+= " Soon SUB is just a "+choose(["","","shapely ","large ","squirming ","writhing ","shrinking "])+"bulge. She laughs and says that she's the one about to croak. She doesn't stop giggling until she digests."
+					}else if(unit(s[1]).Positive && Math.random()<.20){
+						Entrys[Entrys.length-1]+= " Soon SUB is just a "+choose(["","","shapely ","large ","squirming ","writhing ","shrinking "])+"bulge. CDOM rubs her belly to help comfort her digesting meal."
+					}else if(unit(s[1]).Negative && Math.random()<.20){
+						Entrys[Entrys.length-1]+= " Soon SUB is just a "+choose(["","","shapely ","large ","squirming ","writhing ","shrinking "])+"bulge. CDOM struggles to stand with the additional weight of her meal."
+					}else if(unit(s[1]).Funny && Math.random()<.20){
+						Entrys[Entrys.length-1]+= " Soon SUB is just a "+choose(["","","shapely ","large ","squirming ","writhing ","shrinking "])+"bulge. CDOM giggles as she pokes her shrinking belly."
+					}else if(unit(s[1]).Slutty && Math.random()<.20){
+						Entrys[Entrys.length-1]+= " Soon SUB is just a "+choose(["","","shapely ","large ","squirming ","writhing ","shrinking "])+"bulge. CDOM fingers herself as she feels SUB digest."
+					}else if(unit(s[1]).Hungry && Math.random()<.20){
+						Entrys[Entrys.length-1]+= " Soon SUB is just a "+choose(["","","shapely ","large ","squirming ","writhing ","shrinking "])+"bulge. CDOM burps loudly, removing all of SUB's remaining air!"
+					}else if(unit(s[1]).willing && Math.random()<.20 && !unit(0).fled){
+						Entrys[Entrys.length-1]+= " Soon SUB is just a "+choose(["","","shapely ","large ","squirming ","writhing ","shrinking "])+"bulge. CDOM rubs her belly, she looks almost envious of the digesting girl!"
+					}else{
+						Entrys[Entrys.length-1]+=
+						choose([" She's gulped down"+choose([" instantly!"," quickly!"," and digests quickly."," and starts to digest."," in a heartbeat!"])," Soon SUB is just a "+choose(["","","shapely ","large ","squirming ","writhing ","shrinking "])+choose(["bulge.","bulge.","bulge inside DOM."]),
+						choose([" CSUB is soon swallowed up to her chest as the long tongue that caught her gets a taste. Once DOM has properly enjoyed the flavor of the cute breasts, she gulps the last of her meal down."," She's gulped down instantly, forming a large bulge inside DOM!"," CSUB cries out before she's devoured in one massive gulp!"," CSUB is gulped down head first, she struggles inside the stretchy belly until digesting!"," CSUB is gulped down quickly, and digests even quicker!"," Soon only her head and shoulders are sticking out as she gets one final look of the outside world."])
+					])
 					}
 				}
 				if(s[2] < 100){
@@ -3962,13 +4004,13 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					Entry += choose([
 						" Soon we are both "+choose(["covered","soaked","dripping","slick","drenched"])+" in sweat.",
 						" Soon she's panting heavily.",
-						" Soon I'm ready to burst, but keep .",
-						" Soon she's whimpering and covered in sweat."+choose([""," Her arms give out and "+choose(["","her upper half lies limp."])+" I start thrusting harder, pressing her into the ground."]),
+						" Soon I'm ready to burst, but keep making long strokes into her.",
+						" Soon she's whimpering and covered in sweat."+choose([""," Her arms give out and "+choose(["","her upper body lies limp."])+" I start thrusting harder, pressing her into the ground."]),
 						" I rub my thumb against the rim of her anus, and feel her tighten around my rod.",
 						" We make love, fully focusing on the other.",
 					])
 					Entry += choose([
-						choose([" After a few more minutes,"," After a few more moments"," After a while"," Not before long,"])+" she's a quivering mess, and I feel her gush around me as I "+choose(["cum","shoot","shoot my seed","shoot my warm seed","shoot hot seed"])+choose([""," deep"," down"])+choose([" inside!"," into her!"," into her folds."," into her depths."]),
+						choose([" After a few more minutes,"," After a few more moments"," After a while"," Not before long,"])+" she's a quivering mess, and I feel her gush around me as I "+choose(["cum","cum","cum","cum","shoot","shoot my seed","shoot my warm seed","shoot hot seed"])+choose([".",".",".",".","deep inside!"," inside her!"," into her!"," into her depths."]),
 						choose([" We keep going at it until I lose control and start filling her. "])+choose(["Soon she gasps and tightens like a vice as she finally finishes."]),
 						choose([" She suddenly gasps and tightens like a vice as she climaxes. "])+choose(["I keep thrusting until I finish too, and start filling her."]),
 						" When her legs give out, I join her prone form, and again thrust"+choose([" "," myself "])+choose(["","repeatedly "])+choose(["into her","into her until she's helplessly quivering"])+choose([". As an orgasm wracks her body, I push myself in deep to cum inside."])
@@ -4815,7 +4857,13 @@ function randomTravel(Basic){
 			}
 		}else if(map[party.y][party.x].tag == "Trail" || map[party.y][party.x].tag == "Road"){
 			if(map[party.y-lastMove[0]][party.x-lastMove[1]].tag != "Trail" && map[party.y-lastMove[0]][party.x-lastMove[1]].tag != "Road"){
-				if(map[party.y][party.x].travel > -1){
+				if(map[party.y][party.x].travel == travel-1){
+					if(party.units.length == 1){//ALONE
+						Entrys.push("I turn around and "+choose(["step back onto","start back upon"])+N(map[party.y][party.x].name)+".")
+					}else{//HAVE FRIENDS
+						Entrys.push("We turn around and "+choose(["step back onto","start back upon"])+N(map[party.y][party.x].name)+".")
+					}
+				}else if(map[party.y][party.x].travel > -1){
 					if(party.units.length == 1){//ALONE
 						Entrys.push("I "+choose(["step back onto","start back upon"])+N(map[party.y][party.x].name)+".")
 					}else{//HAVE FRIENDS
@@ -4827,6 +4875,12 @@ function randomTravel(Basic){
 					}else{//HAVE FRIENDS
 						Entrys.push("We "+choose(["step onto","start along"])+N(map[party.y][party.x].name)+".")
 					}
+				}
+			}else if(map[party.y][party.x].travel == travel-1){
+				if(party.units.length == 1){//ALONE
+					Entrys.push("I turn around and walk back along"+N(map[party.y][party.x].name)+"."+GetMapHint())
+				}else{//HAVE FRIENDS
+					Entrys.push("We turn around and walk back along"+N(map[party.y][party.x].name)+"."+GetMapHint())
 				}
 			}else{
 				if(party.units.length == 1){//ALONE
@@ -4947,7 +5001,9 @@ function randomTravel(Basic){
 				if(map[party.y-lastMove[0]][party.x-lastMove[1]].tag == "Entrance"){
 					Entrys.push("I leave the "+choose(["spooky","scary","shadowy","dark","","","","",""])+" cave and travel to"+N(map[party.y][party.x].name)+".")
 				}else{
-					if(map[party.y][party.x].travel > -1){
+					if(map[party.y][party.x].travel == travel-1){
+						Entrys.push("I turn around and head back to"+N(map[party.y][party.x].name)+".")
+					}else if(map[party.y][party.x].travel > -1){
 						Entrys.push("I travel back to"+N(map[party.y][party.x].name)+".")
 					}else{
 						Entrys.push("I travel to"+N(map[party.y][party.x].name)+"."+GetMapHint())
@@ -4957,7 +5013,9 @@ function randomTravel(Basic){
 				if(map[party.y-lastMove[0]][party.x-lastMove[1]].tag == "Entrance"){
 					Entrys.push("We leave the "+choose(["spooky","scary","shadowy","dark","","","","",""])+" cave and travel to"+N(map[party.y][party.x].name)+".")
 				}else{
-					if(map[party.y][party.x].travel > -1){
+					if(map[party.y][party.x].travel == travel-1){
+						Entrys.push("We turn around and head back to"+N(map[party.y][party.x].name)+".")
+					}else if(map[party.y][party.x].travel > -1){
 						Entrys.push("We travel back to"+N(map[party.y][party.x].name)+".")
 					}else{
 						Entrys.push("We travel to"+N(map[party.y][party.x].name)+"."+GetMapHint())
@@ -5310,7 +5368,7 @@ function SpawnMobs(i,o,land){
 					Cond:[]
 				})
 			}
-		}else if(dice > 77.5){//7.5 chance
+		}else if(dice > 75){//7.5 chance
 			map[i][o].name=randomEntry("FoxForest") 
 			map[i][o].hostile=true; 
 			while(map[i][o].units.length == 0 || (Math.random()<.1 && map[i][o].units.length <= 1)){
@@ -5330,7 +5388,7 @@ function SpawnMobs(i,o,land){
 					Cond:[]
 				})
 			}
-		}else if(dice > 75){//2.5 chance 
+		}else if(dice > 70){//2.5 chance 
 			map[i][o].name=randomEntry("FrogForest") 
 			map[i][o].hostile=true;
 			map[i][o].units.push({
@@ -5348,7 +5406,7 @@ function SpawnMobs(i,o,land){
 				Tags:["Froggirl","Small","AntiFlying","Swimming"],
 				Cond:[]
 			})
-		}else if(dice > 72.5){//2.5 chance 
+		}else if(dice > 65){//2.5 chance 
 			map[i][o].name=randomEntry("BatForest") 
 			map[i][o].hostile=true;
 			map[i][o].units.push({
@@ -5366,7 +5424,7 @@ function SpawnMobs(i,o,land){
 				Tags:["Batgirl","Small","Flying"],
 				Cond:[]
 			})
-		}else if(dice > 72.4){//.01 chance
+		}else if(dice > 64.9){//.01 chance
 			map[i][o].hostile=true;
 			map[i][o].units.push({
 				//Name:randomEntry("WolfDesc"),
@@ -5808,6 +5866,9 @@ function N(noun){
 	}else{
 		return " a "+noun.toLowerCase()
 	}
+}
+function l(Entry){
+return Entry.toLowerCase();
 }
 
 //

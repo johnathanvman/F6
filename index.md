@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en-US">
 
 <head>
@@ -2353,7 +2354,7 @@ function StartTheGame(){
 		//IS THE PATH BORDER SUPPOSED TO BE FOREST OR PLAINS??
 		[ 4, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1], 
 		[ 4, 4, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2,37, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1], 
-		[ 4, 4, 4, 0,28,28, 0,28,28, 2, 2, 2, 2, 2, 2, 2, 2, 2,41,42,41, 2, 2, 2, 2], 
+		[ 4, 4, 4, 0,28,28, 0,28,28, 2, 2, 2, 2, 2, 2, 2, 2, 2,41,41,41, 2, 2, 2, 2], 
 		[ 4, 4, 4,28, 0, 0,28, 0, 0,25, 0, 2, 2, 2, 2, 2, 2, 2,41,42,41, 2, 2, 2, 2], 
 		[ 4, 4,26, 0, 0, 0,25, 0,28, 0,26, 2, 2, 2, 2, 2, 2, 2,41,41,41, 2, 2, 2, 2], 
 		[ 4, 4, 0,28,28,27, 0,26, 0,27, 2, 2, 2, 2, 2, 2, 2, 2,41,40,41, 2, 2, 2, 2], 
@@ -2930,6 +2931,13 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					Entrys.push("CDOM swoops down and attacks me, the pain is unbearable!")
 					Entrys.push("CDOM flies by and kicks me in the head!")
 				}
+				if(unit(s[2]).MPle < unit(s[2]).CPle*1.8){
+					Entrys.push("CDOM still attacks me, but I think she's starting to hold back.");
+					Entrys.push("CDOM still attacks me, but she doesn't seem as committed to fighting as before.");
+					Entrys.push("CDOM hesitates before she attacks me.");
+					Entrys.push("CDOM thinks for a moment before attacking me.");
+					Entrys.push("CDOM looks conflicted as she attacks me.");
+				}
 				if(Entrys.length == 0 || Math.random()<.05){
 					Entrys.push("CDOM attacks me!");
 				}
@@ -2968,7 +2976,16 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				if(unit(s[1]).Tags[0] == "Batgirl"){
 					Entrys.push("CDOM lets go of a rock while flying above me, it crashes into my head!")
 				}
-				Entrys.push("CDOM attacks me. I hold back tears from the pain!");
+				if(unit(s[2]).MPle < unit(s[2]).CPle*1.8){
+					Entrys.push("CDOM still attacks me, but I think she's starting to hold back.");
+					Entrys.push("CDOM still attacks me, but she doesn't seem as committed to fighting as before.");
+					Entrys.push("CDOM hesitates before she attacks me.");
+					Entrys.push("CDOM thinks for a moment before attacking me.");
+					Entrys.push("CDOM looks conflicted as she attacks me.");
+				}
+				if(Entrys.length == 0 || Math.random()<.05){
+					Entrys.push("CDOM attacks me. I hold back tears from the pain!");
+				}
 			}
 		}else
 		//------------------------------------------------------------------------------------------
@@ -3517,6 +3534,9 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 		// DIFF PEACE
 			Entrys.push("CDOM flirts with SUB.")
 			Entrys.push("CDOM flirts with SUB.")
+			if(unit(s[1]).Tags[0] == "Slimegirl" && unit(s[2]).Tags[0] == "Slimegirl"){
+				Entrys.push("CDOM makes strange whale noises at SUB. I wonder what she's saying...")
+			}
 			if(s[4] < .75){//DRY
 				if(unit(s[2]).Tags[0] == "Mousegirl" && unit(s[2]).Size > 1){
 					Entrys.push("CDOM picks up SUB and gives her a big hug. CSUB breaks free and hides behind a stalagmite. She says she doesn't like being picked up.")
@@ -3633,194 +3653,396 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				Entrys.push("She's  too big for me to eat now, I need to find a way to increase my appetite...")
 			}else if(unit(s[2]).willing){//EAGER
 				if(unit(s[2]).Tags[0] == "Bunnygirl" || unit(s[2]).Tags[0] == "Catgirl" || unit(s[2]).Tags[0] == "Foxgirl" || unit(s[2]).Tags[0] == "Wolfgirl" || unit(s[2]).Tags[0] == "Froggirl"){
-					if(travel-unit(s[2]).travel > 20){//50
-					//---LONG - MAKE AN INDOORS/OUTDOORS VERSION(Bed/Table/Couch)
-						//Entrys.push("I tell SUB I need to have her! She asks if I'm going to fuck her, or eat her. I answer by swallowing her feet, and work my way up her body. She watches the whole way down while fingering herself. She kisses my nose before finishing her descent. I feel my belly jiggle as she cums!")	
-						s[11] = choose(["TailUp","HeadUp"])
-						s[12] = choose(["WaistCum","ChestCum","Dialog"])
-						Entry = choose([
-							choose(["I tell SUB I need to have her!","I call SUB over to me for some fun."])+
-							choose([" She asks if I'm going to fuck her, or eat her."," She asks if I'm looking for some action, or some lunch."," She asks if this is the day I eat her."," She asks if she's on the menu today."," She asks if I'm hungry or horny."," She asks what I have in mind."])+
-							choose([" I lick my lips"," My gut grumbles in response"," I rub my belly"," I look down at my gut"])+
-							choose([", and she blushes.",", and she cocks her eyebrow.",", and she smirks.",", and she nods eagerly.",", and she playfully punches my shoulder.",". She bites her lip and nods.",". She grins and tells me to go ahead.",". She smiles and tells me she's been waiting.",", and she pulls me into a kiss. As we break away, she whispers that she's all mine."])
-							,
-							choose([" I pull SUB into a hug."," I walk up and embrace SUB."])+
-							choose([" She hugs back"," She holds me tightly"])+
-							choose([" as I nibble on her neck."," as I lick her neck."," as I give her a trail of kisses along her jaw."," as I give her a trail of kisses across her forhead."])+
-							choose([" I whisper"," I whisper into her ear"," Under my breath, I tell her"])+
-							choose([" that I'm going to eat her"," that she's good enough to eat"," that I'm craving some SUBRACE"," that I'm hungry"," that I've been dying for some SUBRACE"," that I need her inside me"])+
-							choose([".",choose([", and she blushes.",", and she cocks her eyebrow.",", and she smirks.",", and she nods eagerly.",". She playfully punches my shoulder, but looks eager to be eaten.",". She bites her lip and nods.",". She grins and tells me to go ahead.",". She smiles and tells me she's been waiting.",". She pulls me into a kiss. As we break away, she whispers back that she's all mine."])])
-							,
-							choose(["I start nibbling on SUB's neck. A shiver runs up her spine when I start to drool.","I start nibbling on SUB's neck. Her back stiffens when she realizes what I want.","I walk up to SUB while licking my lips. Her eyes grow wide when she notices.","I walk up to SUB while rubbing my belly. It grumbles, and she gives me a nod.","I start licking SUB's neck. Her knees grow weak when my stomach grumbles."])
-							//choose([", but before I can say anything"])
-						])
-						if(s[11] == "TailUp"){
-							//Positioning
-							if(s[5]=="Indoors" && Math.random()<.9){
-								Entry += choose([" She climbs onto the table and shakes her rear at me. I quickly sit as she lays flat on the tablecloth.",
-								" She gets onto the table and lays on her stomach. I quickly sit as she wiggles her toes.",
-								" She seductively lays on the bed and smiles over her shoulder. Instead of joining her, I kneel on the floor.",
-								" She jumps onto the bed with her feet hanging over the edge. Her toes wiggle as I kneel before them."])
-							}else{
-								if(Math.random()<.5 || unit(s[2]).bust == -1 || s[12] == "ChestCum"){
-								Entry += choose([" She turns before dropping to her stomach"," She turns as she drops to the GROUND"," She turns before dropping to her stomach"," She lays on the GROUND before rolling onto her stomach. She tells me to hurry"])+
-									choose([". I quickly kneel behind her.",", and looks back at me as I kneel behind her.",", and looks back at me. She spanks her "+DescWord(unit(s[2]),"butt",100)+"rear as I kneel behind her.",", and lifts her calves up. She smiles back at me as I kneel.",", and wiggles her toes. She smiles back at me as I kneel."])
-								}else{	
-									Entry += choose([" I kneel down and suck on her "+DescWord(unit(s[2]),"breasts",80)+"breast"," I kneel down and lick her "+DescWord(unit(s[2]),"breasts",80)+"breasts"," I kneel down and stuff her "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth"," I kneel down and she shoves a "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth. I'm lost in her flavor"])+
-									choose([" while she squirms. Goosebumps cover her body before she"," as she pets my head. She eventually",". She rubs her face in my hair and breaths me in. I look up at her as she"])+
-									choose([" pulls away to lie on the GROUND. She rests on her stomach as she looks back."," pushes me away, and turns to lie on the GROUND."])
-								}
-							}
-							//Start Eating
-							if(unit(s[2]).Tags[0] == "Bunnygirl"){
-								Entry += choose([" I take her ankles, and slide them into my mouth."," I give her cute paws a kiss before shoving them into my mouth."])+choose([" Her fluffball of a tail quickly nears as I work my way up her body."," Her fluffball of a tail quivers as I work my way up her body."," Her fluffy ears stand straight as I continue up her body."])
-							}else if(unit(s[2]).Tags[0] == "Catgirl"){
-								Entry += choose([" I take her ankles, and slide them into my mouth."," I carefully avoid her claws as I start eating."," I give her cute paws a kiss before shoving them into my mouth."])+choose([" Her tail swishes side to side as I work my way up her body."," Her tail curls as I work my way up her body."," Her tail rises as I work my way up her body."," Her tail tickles my nose as I work my way up her body."," Her fluffy ears lie flat as I continue up her body."," Her fluffy ears point back as I continue up her body."])
-							}else if(unit(s[2]).Tags[0] == "Foxgirl" || unit(s[2]).Tags[0] == "Wolfgirl"){
-								Entry += choose([" I take her ankles, and slide them into my mouth."," I give her cute paws a kiss before shoving them into my mouth."])+choose([" Her fluffy tail takes up most of my view as I work my way up her body."," Her tail wags as I work my way up her body."," Her tail curls as I work my way up her body."])
-							}else if(unit(s[2]).Tags[0] == "Froggirl"){
-								Entry += choose([" Her slick ankles easily slip into my mouth"," I give her webbed feet a slimy kiss before shoving them into my mouth"])+choose([", and her mucus coats my throst as I work my way up her body.",", and her glistening body slides in with ease.",", and her body squishes into my throat with ease."])
-							}
-							//Almost Eaten > Fully Eaten
-							if(s[12] == "ChestCum"){//cunnilingus
-								//chest scene then swallow
-								if(Math.random()<.2 || unit(s[2]).bust == -1){//She fingers herself
-										Entry += choose(["My teeth scrape against her knuckles as she starts rubbing her clit."," Before I get to her thighs, she slips a hand to her crotch."," As I near her middle, she starts fingering herself."," As I work my way further up her body, she starts to masturbate."])+
-										choose([" She throws her head back as an orgasm wracks her body, and gravity helps pull her in faster."," Her shoulders are pressing into my mouth by the time she cums."," I stop swallowing at her neck and wait. I feel her legs kick inside me as she finishes."," I lick her nipples once they're in my mouth, and she bucks her hips as she cums."])
-								}else{//nipple/tongue orgasm
-									Entry += choose([" She tucks her"+DescWord(unit(s[2]),"breasts",50)+" breassts into my mouth."," I fondle her "+DescWord(unit(s[2]),"breasts",50)+"breasts before mushing them into my mouth."," Her "+DescWord(unit(s[2]),"breasts",50)+"breasts slip into my mouth, and I'm overwhelmed by their flavor."])+
-									choose([" I start to lick them, and feel her squirm at my touch"," She shudders when I start licking them, and her arms scramble to steady herself."," My tongue starts to slide all over them as she squirms."])+
-									choose([" Her breathing quickens while I keep lapping my tongue against them. "," She moans while I keep tasting her bosom."," I rake my teeth against her nipples, and she cries out in pleasure."," She holds her breath as I keep exploring her bust."])+
-									choose([" Her body contorts as she cums."," She throws her head back as an orgasm wracks her body, and gravity helps pull her in faster."," I hold her in place until she cums. She seems almost surprised from getting off while halfway devoured."])
-								}
-							}else if(s[12] == "WaistCum"){
-								//oral scene then swallow then digestion maybe
-								Entry += choose([" Her "+DescWord(unit(s[2]),"butt",80)+"thighs are squeezed together as they slide into my mouth, but manage to clamp even tighter when my tongue reaches her slit."," She's caught off guard when my tongue plunges into her depths."," She looks back at me confused when I pause at her hips. Her face goes red when my tongue reaches her mound."])+
-								choose([" Her fingers dig into my shoulders while I pleasure her."," She humps my tongue as I keep licking her."," I wrap my hands around her "+DescWord(unit(s[2]),"belly",25)+"waist to hold her in place while I keep licking her."," She tries to speak, but I lick her sweet spot, and all that comes out is a moan."])+
-								choose([" She throws her head back when she climaxes, and gravity helps me swallow her faster."," I feel her legs kick inside me as she finishes. She gasps when I start swallowing her again.","  She throws her head back when I pick up the pace. She soon gushes down my throat, and I use her juices to swallow her faster."]) 
-							}
-						}else{//Eaten Heads Up
-							//Positioning
-							if(s[5]=="Indoors" && Math.random()<.9){
-								if(Math.random()<.5 || unit(s[2]).bust == -1 || s[12] == "ChestCum"){
-									Entry += choose([" She quickly sits on the table."," She pulls me to the table before hopping onto a placemat."," She hops onto a placemat and beckons me."])+
-									choose([" The old chair creaks, but holds my weight."," Her eyes follow me as I sit on a stool."," Her eyes follow me as I kneel before her."," The chair squeaks as I push it away and kneel before her."])
-								}else{	
-									Entry += choose([" I'm dragged over to the bed where she sits on the edge."," The bed creaks when she sits."])+
-									choose([" I kneel down and suck on her "+DescWord(unit(s[2]),"breasts",80)+"breast"," I kneel down and lick her "+DescWord(unit(s[2]),"breasts",80)+"breasts"," I kneel down and stuff her "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth"," I kneel down and she shoves a "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth. I'm lost in her flavor"])+
-									choose([" while she squirms. Goosebumps cover her body before she"," as she pets my head. She eventually",". She rubs her nose in my hair and inhales deeply. I look up at her as she"])+
-									choose([" pulls away to lie flat."," pushes me away and pulls the rest of her legs onto the bed."," pulls me off of her. She slides back and rests on a pillow."])
-								}
-							}else{
-								if(Math.random()<.5 || unit(s[2]).bust == -1 || s[12] == "ChestCum"){
-									Entry += choose([" She rests her back on the GROUND"," She drops to the GROUND"," She shakes her hips before getting down on the GROUND. She lays on her back"," She lays on the GROUND"])+
-									choose([", and I quickly kneel before her.",", and looks up at me. She wiggles her toes as I kneel before her.",", and looks up at me. She rubs her "+DescWord(unit(s[2]),"butt",100)+"thighs together as I kneel before her.",", and lifts her feet up. She grins as I kneel.",", and wiggles her toes. She smiles as I kneel before her."])
-								}else{	
-									Entry += choose([" I kneel down and suck on her "+DescWord(unit(s[2]),"breasts",80)+"breast"," I kneel down and lick her "+DescWord(unit(s[2]),"breasts",80)+"breasts"," I kneel down and stuff her "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth"," I kneel down and she shoves a "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth. I'm lost in her flavor"])+
-									choose([" while she squirms. Goosebumps cover her body before she"," as she pets my head. She eventually",". She rubs her face in my hair and inhales deeply. I look up as she"])+
-									choose([" pulls away to lie on the GROUND. She rests on her back as she wiggles her toes at me."," pushes me away to lay on the GROUND."," pulls us both to the ground. She wiggles out from under me and says to dig in."])
-								}
-							}
-							//Start Eating
-							if(unit(s[2]).Tags[0] == "Bunnygirl"){
-								Entry += choose([" I take her ankles and slide them into my mouth."," I give her cute paws a kiss before shoving them into my mouth."])+choose([" She asks if she tastes like carrots as I work my way up her body."," Her fluffball of a tail quivers as I grab her by the hips and pull her in deeper."," Her fluffy ears stand straight as I continue up her body."," She gets embarrassed from my gaze, and covers her face with her ears as I keep swallowing."," She tells me its embarrassing for me to watch while I eat her. When I don't stop, she pulls her ears over her face as I keep swallowing."])
-							}else if(unit(s[2]).Tags[0] == "Catgirl"){
-								Entry += choose([" I take her ankles and slide them into my mouth."," I carefully avoid her claws as I start eating."," I give her cute paws a kiss before shoving them into my mouth."])+choose([" Her tail swishes under her as I keep swallowing."," Her tail curls as I work my way up her body."," Her tail wraps around her leg as I keep swallowing."," Her tail tickles my chin as I work my way up her body."," Her ears lie flat as I continue up her body."])
-							}else if(unit(s[2]).Tags[0] == "Foxgirl" || unit(s[2]).Tags[0] == "Wolfgirl"){
-								Entry += choose([" I take her ankles and slide them into my mouth."," I give her cute paws a kiss before shoving them into my mouth."])+choose([" Her fluffy tail wags under her as I work my way up her body."," Her tongue hangs out as she watches herself sink deeper."," Her tail curls as I work my way up her body."])
-							}else if(unit(s[2]).Tags[0] == "Froggirl"){
-								Entry += choose([" Her slick ankles easily slip into my mouth"," I give her webbed feet a slimy kiss before shoving them into my mouth"])+choose([", and her mucus coats my throst as I work my way up her body.",", and her glistening body slides in with ease.",", and her body squishes into my throat with ease."])
-							}
-							//Almost Eaten > Fully Eaten
-							if(s[12] == "ChestCum" && unit(s[2]).bust > -1){//cunnilingus
-								//chest scene then swallow//She fingers herself
-								Entry += choose([" My teeth scrape against her knuckles as she starts fingering herself."," Before I reach her thighs, she slips a hand to her crotch."," As I near her middle, she starts fingering herself."," As I work my way further up her body, she starts to masturbate."])+
-								choose([" She throws her head back as an orgasm wracks her body."," Her shoulders are pressing into my mouth by the time she cums."," I stop swallowing at her neck and wait until she cums. I feel her legs kick inside me as she finishes."," Her nipples rub against my teeth, and she bucks her hips as she cums."])
-							}else if(s[12] == "WaistCum" || (s[12] == "ChestCum" && unit(s[2]).bust == -1)){
-								Entry += choose([" Her "+DescWord(unit(s[2]),"butt",80)+"thighs are squeezed together as they slide into my mouth, but manage to clamp even tighter when my tongue reaches her slit."," She's caught off guard when my tongue plunges into her depths."," She looks at me confused when I pause at her hips. Her face goes red when my tongue reaches her mound."])+
-									choose([" She grips my shoulder to brace herself while I pleasure her."," Her fingers tug at my hair while I lap up her juices."," She watches while I pleasure her."," She tries to speak, but I lick her sweet spot, and all that comes out is a moan."])+
-									choose([" She throws her head back as an orgasm wracks her body, and I greedily start to gulp her down again."," I feel her legs kick inside me as she finishes. She gasps when I start swallowing her again."," Her eyes roll back when I pick up the pace. She soon gushes down my throat, and I use her juices to swallow her faster."])
+				
+				//---LONG - MAKE AN INDOORS/OUTDOORS VERSION(Bed/Table/Couch)
+					//Entrys.push("I tell SUB I need to have her! She asks if I'm going to fuck her, or eat her. I answer by swallowing her feet, and work my way up her body. She watches the whole way down while fingering herself. She kisses my nose before finishing her descent. I feel my belly jiggle as she cums!")	
+					s[11] = choose(["TailUp","HeadUp"])
+					s[12] = choose(["WaistCum","ChestCum","Dialog"])
+					Entry = choose([
+						choose(["I tell SUB I need to have her","I call SUB over to me for some fun"])+
+						choose([". She asks if I'm going to fuck her, or eat her.",". She asks if I'm looking for some action, or some lunch.",", and she asks if this is the day I eat her.",", and she asks if she's on the menu today.","! She asks if I'm hungry or horny.",", and she asks what I have in mind."])+
+						choose([" I lick my lips"," My gut grumbles in response"," I rub my belly"," I look down at my gut"])+
+						choose([", and she blushes.",", and she cocks her eyebrow.",", and she smirks.",", and she nods eagerly.",", and she playfully punches my shoulder.",". She bites her lip and nods.",". She grins and tells me to go ahead.",". She smiles and tells me she's been waiting.",", and she pulls me into a kiss. As we break away, she whispers that she's all mine."])
+						,
+						choose([" I pull SUB into a hug."," I walk up and embrace SUB."])+
+						choose([" She hugs back"," She holds me tightly"])+
+						choose([" as I nibble on her neck."," as I lick her neck."," as I give her a trail of kisses along her jaw."," as I give her a trail of kisses across her forhead."])+
+						choose([" I whisper"," I whisper into her ear"," Under my breath, I tell her"])+
+						choose([" that I'm going to eat her"," that she's good enough to eat"," that I'm craving some SUBRACE"," that I'm hungry"," that I've been dying for some SUBRACE"," that I need her inside me"])+
+						choose([".",choose([", and she blushes.",", and she cocks her eyebrow.",", and she smirks.",", and she nods eagerly.",". She playfully punches my shoulder, but looks eager to be eaten.",". She bites her lip and nods.",". She grins and tells me to go ahead.",". She smiles and tells me she's been waiting.",". She pulls me into a kiss. As we break away, she whispers back that she's all mine."])])
+						,
+						choose(["I start nibbling on SUB's neck. A shiver runs up her spine when I start to drool.","I start nibbling on SUB's neck. Her back stiffens when she realizes what I want.","I walk up to SUB while licking my lips. Her eyes grow wide when she notices.","I walk up to SUB while rubbing my belly. It grumbles, and she gives me a nod.","I start licking SUB's neck. Her knees grow weak when my stomach grumbles."])
+						//choose([", but before I can say anything"])
+					])
+					if(s[11] == "TailUp"){
+						//Positioning
+						if(s[5]=="Indoors" && Math.random()<.9){
+							Entry += choose([" She climbs onto the table and shakes her rear at me. I quickly sit as she lays flat on the tablecloth.",
+							" She gets onto the table and lays on her stomach. I quickly sit as she wiggles her toes.",
+							" She seductively lays on the bed and smiles over her shoulder. Instead of joining her, I kneel on the floor.",
+							" She jumps onto the bed with her feet hanging over the edge. Her toes wiggle as I kneel before them."])
+						}else{
+							if(Math.random()<.5 || unit(s[2]).bust == -1 || s[12] == "ChestCum"){
+							Entry += choose([" She turns before dropping to her stomach"," She turns as she drops to the GROUND"," She turns before dropping to her stomach"," She lays on the GROUND before rolling onto her stomach. She tells me to hurry"])+
+								choose([". I quickly kneel behind her.",", and looks back at me as I kneel behind her.",", and looks back at me. She spanks her "+DescWord(unit(s[2]),"butt",100)+"rear as I kneel behind her.",", and lifts her calves up. She smiles back at me as I kneel.",", and wiggles her toes. She smiles back at me as I kneel."])
+							}else{	
+								Entry += choose([" I kneel down and suck on her "+DescWord(unit(s[2]),"breasts",80)+"breast"," I kneel down and lick her "+DescWord(unit(s[2]),"breasts",80)+"breasts"," I kneel down and stuff her "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth"," I kneel down and she shoves a "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth. I'm lost in her flavor"])+
+								choose([" while she squirms. Goosebumps cover her body before she"," as she pets my head. She eventually",". She rubs her face in my hair and breaths me in. I look up at her as she"])+
+								choose([" pulls away to lie on the GROUND. She rests on her stomach as she looks back."," pushes me away, and turns to lie on the GROUND."])
 							}
 						}
-						//Finish & DIGESTION
-						if(s[12] =="Dialog"){// potential first orgasm inside.
-						//Dialog scene starts right after swallowing legs. Ends with digestion.
-							if(unit(s[2]).PositiveUnit && Math.random()){
+						//Start Eating
+						if(unit(s[2]).Tags[0] == "Bunnygirl"){
+							Entry += choose([" I take her ankles, and slide them into my mouth."," I give her cute paws a kiss before shoving them into my mouth."])+choose([" Her fluffball of a tail quickly nears as I work my way up her body."," Her fluffball of a tail quivers as I work my way up her body."," Her fluffy ears stand straight as I continue up her body."])
+						}else if(unit(s[2]).Tags[0] == "Catgirl"){
+							Entry += choose([" I take her ankles, and slide them into my mouth."," I carefully avoid her claws as I start eating."," I give her cute paws a kiss before shoving them into my mouth."])+choose([" Her tail swishes side to side as I work my way up her body."," Her tail curls as I work my way up her body."," Her tail rises as I work my way up her body."," Her tail tickles my nose as I work my way up her body."," Her fluffy ears lie flat as I continue up her body."," Her fluffy ears point back as I continue up her body."])
+						}else if(unit(s[2]).Tags[0] == "Foxgirl" || unit(s[2]).Tags[0] == "Wolfgirl"){
+							Entry += choose([" I take her ankles, and slide them into my mouth."," I give her cute paws a kiss before shoving them into my mouth."])+choose([" Her fluffy tail takes up most of my view as I work my way up her body."," Her tail wags as I work my way up her body."," Her tail curls as I work my way up her body."])
+						}else if(unit(s[2]).Tags[0] == "Froggirl"){
+							Entry += choose([" Her slick ankles easily slip into my mouth"," I give her webbed feet a slimy kiss before shoving them into my mouth"])+choose([", and her mucus coats my throst as I work my way up her body.",", and her glistening body slides in with ease.",", and her body squishes into my throat with ease."])
+						}
+						//Almost Eaten > Fully Eaten
+						if(s[12] == "ChestCum"){//cunnilingus
+							//chest scene then swallow
+							if(Math.random()<.2 || unit(s[2]).bust == -1){//She fingers herself
+									Entry += choose(["My teeth scrape against her knuckles as she starts rubbing her clit."," Before I get to her thighs, she slips a hand to her crotch."," As I near her middle, she starts fingering herself."," As I work my way further up her body, she starts to masturbate."])+
+									choose([" She throws her head back as an orgasm wracks her body, and gravity helps pull her in faster."," Her shoulders are pressing into my mouth by the time she cums."," I stop swallowing at her neck and wait. I feel her legs kick inside me as she finishes."," I lick her nipples once they're in my mouth, and she bucks her hips as she cums."])
+							}else{//nipple/tongue orgasm
+								Entry += choose([" She tucks her"+DescWord(unit(s[2]),"breasts",50)+" breassts into my mouth."," I fondle her "+DescWord(unit(s[2]),"breasts",50)+"breasts before mushing them into my mouth."," Her "+DescWord(unit(s[2]),"breasts",50)+"breasts slip into my mouth, and I'm overwhelmed by their flavor."])+
+								choose([" I start to lick them, and feel her squirm at my touch"," She shudders when I start licking them, and her arms scramble to steady herself."," My tongue starts to slide all over them as she squirms."])+
+								choose([" Her breathing quickens while I keep lapping my tongue against them. "," She moans while I keep tasting her bosom."," I rake my teeth against her nipples, and she cries out in pleasure."," She holds her breath as I keep exploring her bust."])+
+								choose([" Her body contorts as she cums."," She throws her head back as an orgasm wracks her body, and gravity helps pull her in faster."," I hold her in place until she cums. She seems almost surprised from getting off while halfway devoured."])
+							}
+						}else if(s[12] == "WaistCum"){
+							//oral scene then swallow then digestion maybe
+							Entry += choose([" Her "+DescWord(unit(s[2]),"butt",80)+"thighs are squeezed together as they slide into my mouth, but manage to clamp even tighter when my tongue reaches her slit."," She's caught off guard when my tongue plunges into her folds."," She looks back at me confused when I pause at her hips. Her face goes red when my tongue reaches her mound."])+
+							choose([" Her fingers dig into my shoulders while I pleasure her."," She humps my tongue as I keep licking her."," I wrap my hands around her "+DescWord(unit(s[2]),"belly",25)+"waist to hold her in place while I keep licking her."," She tries to speak, but I lick her sweet spot, and all that comes out is a moan."])+
+							choose([" She throws her head back when she climaxes, and gravity helps me swallow her faster."," I feel her legs kick inside me as she finishes. She gasps when I start swallowing her again.","  She throws her head back when I pick up the pace. She soon gushes down my throat, and I use her juices to take her faster."]) 
+						}
+					}else{//Eaten Heads Up
+						//Positioning
+						if(s[5]=="Indoors" && Math.random()<.9){
+							if(Math.random()<.5 || unit(s[2]).bust == -1 || s[12] == "ChestCum"){
+								Entry += choose([" She quickly sits on the table."," She pulls me to the table before hopping onto a placemat."," She hops onto a placemat and beckons me."])+
+								choose([" The old chair creaks, but holds my weight."," Her eyes follow me as I sit on a stool."," Her eyes follow me as I kneel before her."," The chair squeaks as I push it away and kneel before her."])
+							}else{	
+								Entry += choose([" I'm dragged over to the bed where she sits on the edge."," The bed creaks when she sits."])+
+								choose([" I kneel down and suck on her "+DescWord(unit(s[2]),"breasts",80)+"breast"," I kneel down and lick her "+DescWord(unit(s[2]),"breasts",80)+"breasts"," I kneel down and stuff her "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth"," I kneel down and she shoves a "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth. I'm lost in her flavor"])+
+								choose([" while she squirms. Goosebumps cover her body before she"," as she pets my head. She eventually",". She rubs her nose in my hair and inhales deeply. I look up at her as she"])+
+								choose([" pulls away to lie flat."," pushes me away and pulls the rest of her legs onto the bed."," pulls me off of her. She slides back and rests on a pillow."])
+							}
+						}else{
+							if(Math.random()<.5 || unit(s[2]).bust == -1 || s[12] == "ChestCum"){
+								Entry += choose([" She rests her back on the GROUND"," She drops to the GROUND"," She shakes her hips before getting down on the GROUND. She lays on her back"," She lays on the GROUND"])+
+								choose([", and I quickly kneel before her.",", and looks up at me. She wiggles her toes as I kneel before her.",", and looks up at me. She rubs her "+DescWord(unit(s[2]),"butt",100)+"thighs together as I kneel before her.",", and lifts her feet up. She grins as I kneel.",", and wiggles her toes. She smiles as I kneel before her."])
+							}else{	
+								Entry += choose([" I kneel down and suck on her "+DescWord(unit(s[2]),"breasts",80)+"breast"," I kneel down and lick her "+DescWord(unit(s[2]),"breasts",80)+"breasts"," I kneel down and stuff her "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth"," I kneel down and she shoves a "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth. I'm lost in her flavor"])+
+								choose([" while she squirms. Goosebumps cover her body before she"," as she pets my head. She eventually",". She rubs her face in my hair and inhales deeply. I look up as she"])+
+								choose([" pulls away to lie on the GROUND. She rests on her back as she wiggles her toes at me."," pushes me away to lay on the GROUND."," pulls us both to the ground. She wiggles out from under me and says to dig in."])
+							}
+						}
+						//Start Eating
+						if(unit(s[2]).Tags[0] == "Bunnygirl"){
+							Entry += choose([" I take her ankles and slide them into my mouth."," I give her cute paws a kiss before shoving them into my mouth."])+choose([" She asks if she tastes like carrots as I work my way up her body."," Her fluffball of a tail quivers as I grab her by the hips and pull her in deeper."," Her fluffy ears stand straight as I continue up her body."," She gets embarrassed from my gaze, and covers her face with her ears as I keep swallowing."," She tells me its embarrassing for me to watch while I eat her. When I don't stop, she pulls her ears over her face as I keep swallowing."])
+						}else if(unit(s[2]).Tags[0] == "Catgirl"){
+							Entry += choose([" I take her ankles and slide them into my mouth."," I carefully avoid her claws as I start eating."," I give her cute paws a kiss before shoving them into my mouth."])+choose([" Her tail swishes under her as I keep swallowing."," Her tail curls as I work my way up her body."," Her tail wraps around her leg as I keep swallowing."," Her tail tickles my chin as I work my way up her body."," Her ears lie flat as I continue up her body."])
+						}else if(unit(s[2]).Tags[0] == "Foxgirl" || unit(s[2]).Tags[0] == "Wolfgirl"){
+							Entry += choose([" I take her ankles and slide them into my mouth."," I give her cute paws a kiss before shoving them into my mouth."])+choose([" Her fluffy tail wags under her as I work my way up her body."," Her tongue hangs out as she watches herself sink deeper."," Her tail curls as I work my way up her body."])
+						}else if(unit(s[2]).Tags[0] == "Froggirl"){
+							Entry += choose([" Her slick ankles easily slip into my mouth"," I give her webbed feet a slimy kiss before shoving them into my mouth"])+choose([", and her mucus coats my throst as I work my way up her body.",", and her glistening body slides in with ease.",", and her body squishes into my throat with ease."])
+						}
+						//Almost Eaten > Fully Eaten
+						if(s[12] == "ChestCum" && unit(s[2]).bust > -1){//cunnilingus
+							//chest scene then swallow//She fingers herself
+							Entry += choose([" My teeth scrape against her knuckles as she starts fingering herself."," Before I reach her thighs, she slips a hand to her crotch."," As I near her middle, she starts fingering herself."," As I work my way further up her body, she starts to masturbate."])+
+							choose([" She throws her head back as an orgasm wracks her body."," Her shoulders are pressing into my mouth by the time she cums."," I stop swallowing at her neck and wait until she cums. I feel her legs kick inside me as she finishes."," Her nipples rub against my teeth, and she bucks her hips as she cums."])
+						}else if(s[12] == "WaistCum" || (s[12] == "ChestCum" && unit(s[2]).bust == -1)){
+							Entry += choose([" Her "+DescWord(unit(s[2]),"butt",80)+"thighs are squeezed together as they slide into my mouth, but manage to clamp even tighter when my tongue reaches her slit."," She's caught off guard when my tongue plunges into her folds."," She looks at me confused when I pause at her hips. Her face goes red when my tongue reaches her mound."])+
+								choose([" She grips my shoulder to brace herself while I pleasure her."," Her fingers tug at my hair while I lap up her juices."," She watches while I pleasure her."," She tries to speak, but I lick her sweet spot, and all that comes out is a moan."])+
+								choose([" She throws her head back as an orgasm wracks her body, and I greedily start to gulp her down again."," I feel her legs kick inside me as she finishes. She gasps when I start swallowing her again."," Her eyes roll back when I pick up the pace. She soon gushes down my throat, and I use her juices to swallow her faster."])
+						}
+					}
+					//Finish & DIGESTION
+					if(s[12] =="Dialog"){// potential first orgasm inside.
+					//Dialog scene starts right after swallowing legs. Ends with digestion.
+						if(travel-unit(s[2]).travel > 50){
+							if(unit(s[2]).PositiveUnit && Math.random()<.95){
 								Entry += choose([" We hold hands as I swallow her. She talks about all the great times we had."," She thanks me for all the adventures while I work my way up her body."," She tells me some adventuring tips while I gobble her down."])
 								Entry += choose([" She tucks her arms into my mouth and wiggles her way into my stomach."," She starts to cry when I reach her shoulders. I start pulling her out but she stops me. She explains she wants to be eaten by me, but she's sad because she'll miss me. She wipes her tears away before pushing herself the rest of the way in."," She peacefully sighs as I gulp down the rest of her."," She kisses my lip before sliding into my belly."," She thanks me for all the memories as I close my mouth over her head."])
 								Entry += choose(["",choose([" She doesn't make a sound once she's inside, and digests peacefully."," She tries to quietly masturbate, but moans loudly when she finishes. She tells me she loves me before digesting."," She tells me all the reasons she loves me as she digests."])])
-							}else if(unit(s[2]).NegativeUnit && Math.random()){
-								Entry += choose([" I keep swallowing while she looks away."," She doesn't watch while keep gulping her down."," She covers her eyes while I swallow her."])
+							}else if(unit(s[2]).NegativeUnit && Math.random()<.95){
+								Entry += choose([" I keep swallowing while she looks away."," She doesn't watch while I keep gulping her down."," She covers her eyes while I swallow her."])
 								Entry += choose([" She gasps when she realizes how far up her body I am. She begs me not to forget her as she slips down my throat."," She starts to tremble when she realizes how far up her body I am. She gasps as the rest of her slips down my throat."," She gasps when she realizes how far up her body I am, and begs me to remember her as she slips down my throat."])
 								Entry += choose(["",choose([" She tries to masturbate before digesting, but doesn't cum in time."," She tries to tell me something while inside, but she's too quiet. She digests before I can understand her."," Once inside, she tells me she's glad that I was the one to eat her. We talk about all the fun we had before she digests."," She starts to panick when her body starts breaking down. I give my belly a hug, and tell her its going to be ok. She calms down and finishes digesting in peace."])])
-							}else if(unit(s[2]).FunnyUnit && Math.random()){
+							}else if(unit(s[2]).FunnyUnit && Math.random()<.95){
 								Entry += choose([" She giggles as I swallow her down. "," When I reach her chest, she spreads her arms wide to stop me at her armpits. I tickle her to continue."," She spends the whole time I eat her telling a long rambling joke. I groan when it has no punchline."])
 								Entry += choose([" She gives my tongue a playful bite before finishing her journey."," She tells me to keep having fun without her as she slides down my throat."])
 								Entry += choose(["",choose([" I hear her splash around inside my belly before digesting."," She toots while digesting, and tries to blame it on me!"," She stretches out as far as she can, causing my belly to make odd shapes. Once she's had her fun, she curls up and digests peacefully."])])
-							}else if(unit(s[2]).SluttyUnit && Math.random()){
-								Entry += choose([" While I swallow her down, she pumps her hips against my throat."," She tells me it feels like a massage as I eat her."," She tells me to keep fucking SUBRACELONGs as pull her further down my throat."," She thanks me for all the sex as I work up her body."])
+							}else if(unit(s[2]).SluttyUnit && Math.random()<.95){
+								Entry += choose([" While I swallow her down, she pumps her hips against my throat."," She tells me it feels like a massage as I eat her."," She tells me to keep fucking SUBRACELONGs as I pull her further down my throat."," She thanks me for all the dick as I work up her body."])
 								Entry += choose([" Her body starts to quiver as I swallow her down."," She tells me she's never been more excited as I reach her shoulders. I give them a squeeze before shoving them, and the rest of her into my belly."])
 								Entry += choose(["",choose([" She spends her remaining moments masturbating. I lose count of the times she climaxes before digesting."," She cums immediately once she's in my belly, and a few more times before digesting."," She cums immediately once she's in my belly, and cries out in bliss as she digests."])])
-							}else if(unit(s[2]).HungryUnit && Math.random()){
-								Entry += choose([" She tells me to put all her meat to good use as I work my way up her body."," She tells me to eat more SUBRACELONGs as pull her further down my throat."," As I work my way up her body, she admits that she always expected to be the one to eat me instead."," She tells me to keep eating SUBRACELONGs as pull her further down my throat."])
+							}else if(unit(s[2]).HungryUnit && Math.random()<.95){
+								Entry += choose([" She tells me to put all her meat to good use as I work my way up her body."," She tells me to eat more SUBRACELONGs as I pull her further down my throat."," As I work my way up her body, she admits that she always expected to be the one to eat me instead."," She tells me to keep eating SUBRACELONGs as I pull her further down my throat."])
 								Entry += choose([" She gives my lip a rough bite before sliding into my belly."," She licks my tongue before sliding into my belly."," She gives my tongue a playful bite before sliding into my belly."])
 								Entry += choose(["",choose([" She tries to masturbate before digesting, but doesn't cum in time."," She tries to tell me something while inside, but she's too muffled. She digests before I can understand her."," Once inside, she tells me she's glad that I was the one to eat her. We talk about all the fun we had before she digests."," She starts to panick when her body starts breaking down. I give my belly a hug, and tell her its going to be ok. She calms down and finishes digesting in peace."])])
 							}else{
 								Entry += choose([" I savor her taste as I slowly swallow her up."," Her legs curl as more of her goes down my throat."," She casually talks about all the good times we had while I swallow her down."," She talks fondly of our travels while I gobble her down."," She's silent and just watches me pull her slowly down my throat."," She puts her hands on my shoulder to stop my progress, and asks for a moment. When I stop, she starts telling me all about her family, and her life growing up. Her story concludes with the first time we made love. After she's done, she thanks me for listening and lets me continue eating her."])
 								Entry += choose([" She tucks her arms into my mouth, and I tilt her upwards to slide into my belly."," I put a hand on her head, and gently push her the rest of the way in."," She peacefully sighs as I gulp down the rest of her."," She kisses my lip before sliding into my belly."," She thanks me for all the memories as I close my mouth over her head."])
 								Entry += choose(["","",choose([" I rub my belly as I feel her digest."," I feel her digest almost instantly, and then she's gone forever."," I roll over and doze off as she digests."])])
-							} 
-						}else{// has already had an orgasm.
-							// REACTION AND FINISHING THE EATING PART
-							if(unit(s[2]).PositiveUnit && Math.random()<.9){
-								Entry += choose([" She thanks me for all the adventures before sliding into my belly."," She tells me to keep adventuring as I close my mouth around her."])
-							}else if(unit(s[2]).NegativeUnit && Math.random()<.9){
-								Entry += choose([" I keep gulping her down as she orgasms, and she gasps when she realizes how far up her body I am. She begs me not to forget her as she slips down my throat."," I keep gulping her down as she orgasms, and she starts to tremble when she realizes how far up her body I am. She gasps as the rest of her slips down my throat."," I keep gulping her down as she orgasms. She gasps when she realizes how far deep she is, and begs me to remember her as she slips down my throat."])
-							}else if(unit(s[2]).FunnyUnit && Math.random()<.9){
-								Entry += choose([" She gives my tongue a playful bite before finishing her journey."," She tells me to keep having fun without her as she slides down my throat."])
-							}else if(unit(s[2]).SluttyUnit && Math.random()<.9){
-								Entry += choose([" She gives my lip a playful bite before finishing her journey."," She tells me to keep fucking SUBRACELONGs as she slides down my throat."," She thanks me for all the sex as she slides down my throat."])+
+							}
+						}else{
+							Entry += choose([" I savor her taste as I slowly swallow her up."," Her legs curl as more of her goes down my throat."," She's silent and just watches me pull her slowly down my throat."])
+							Entry += choose([" She tucks her arms into my mouth, and I tilt her upwards to slide into my belly."," I put a hand on her head, and gently push her the rest of the way in."," She peacefully sighs as I gulp down the rest of her."," She kisses my lip before sliding into my belly."])
+							Entry += choose(["","",choose([" I rub my belly as I feel her digest."," I feel her digest almost instantly."," I roll over and doze off as she digests."])])
+						}
+					}else{// has already had an orgasm.
+						// REACTION AND FINISHING THE EATING PART
+						if(travel-unit(s[2]).travel > 20 && !unit(s[2]).Vanilla){//50
+							if(unit(s[2]).PositiveUnit){
+								Entry += choose([" She thanks me for all the memories as I close my mouth around her."," She thanks me for all the adventures before sliding into my belly."," She tells me to keep adventuring as I close my mouth around her."])
+							}else if(unit(s[2]).NegativeUnit){
+								Entry += choose([" She softly cries while thanking me for taking her along on my travels. I wipe her tears before I swallow her down."," I keep gulping her down as she orgasms, and she gasps when she realizes how far up her body I am. She begs me not to forget her as she slips down my throat."," I keep gulping her down as she orgasms, and she starts to tremble when she realizes how far up her body I am. She gasps as the rest of her slips down my throat."," I keep gulping her down as she orgasms. She gasps when she realizes how far deep she is, and begs me to remember her as she slips down my throat."])
+							}else if(unit(s[2]).FunnyUnit){
+								Entry += choose([" She thanks me for all the laughs as I close my mouth around her."," She gives my tongue a playful bite before finishing her journey."," She tells me to keep having fun without her as she slides down my throat."])
+							}else if(unit(s[2]).SluttyUnit){
+								Entry += choose([" She thanks me for all the sexy memories as I close my mouth around her."," She gives my lip a playful bite before finishing her journey."," She tells me to keep fucking SUBRACELONGs as she slides down my throat."," She thanks me for all the dick as she slides down my throat."])+
 								choose([" Every time she cums, she cries out for me to digest her. Eventually her wish is granted, and she's gone forever."," She cums a few more time while inside, and then digests into mush."," She cums a few more time while digesting, and then she's gone for good.",])
-							}else if(unit(s[2]).HungryUnit && Math.random()<.9){
-								Entry += choose([" She gives my lip a rough bite before sliding into my belly."," She licks my tongue before sliding into my belly."," She gives my tongue a playful bite before sliding into my belly."])
-							}else if(unit(s[2]).Tags[0] == "Bunnygirl" && Math.random()<.1){
+							}else if(unit(s[2]).HungryUnit){
+								Entry += choose([" She thanks me for all the memories as I close my mouth around her."," She gives my lip a rough bite before sliding into my belly."," She licks my tongue before sliding into my belly."," She gives my tongue a playful bite before sliding into my belly."])
+							}
+						}else{
+							if(unit(s[2]).Tags[0] == "Bunnygirl" && Math.random()<.1){
 								Entry += choose([" Her ears tickle my throat as they pass. Once inside, she calls my belly a cozy burrow."])
 							}else if(unit(s[2]).Tags[0] == "Catgirl" && Math.random()<.1){
 								Entry += choose([" I give her sensitive ears a quick massage before gobbling her down."])
 							}else if((unit(s[2]).Tags[0] == "Foxgirl" || unit(s[2]).Tags[0] == "Wolfgirl") && Math.random()<.1){
 								Entry += choose([" She howls loudly before she slides into my belly."," She yips loudly as I swallow her down."])
 							}else if(unit(s[2]).Tags[0] == "Froggirl" && Math.random()<.75){
-								Entry += choose([" Her neck twists impossibly far to look me in the eyes one last time as I swallow her down."," I finish swallowing her, and she curls up to get comfortable."," She slides into my belly, and I hear her ribbit loudly."])+
+								Entry += choose([" Her neck twists impossibly far to look me in the eyes one last time as I swallow her down."," I finish swallowing, and she curls up to get comfortable."," She slides into my belly, and I hear her ribbit loudly."])+
 								choose([" Suddenly I feel a wiggling in my throat, and her tongue bursts into my mouth to squirm around."," My stomach suddenly feels queer as something tickles up my throat. Her tongue thrusts itself into my mouth and starts giving me a last goodbye."," My throat suddenly bulges out again, and her tongue reenters my mouth. It wraps around my own and her flavor overwhelms me."])+
 								choose([" I make out with it until it retracts back down my throat."," The sensation feels strange, but oddly satisfying. Once I've had enough, I slurp down the slimy appendage. She starts to giggle, and doesn't stop until she digests."," Things get weirder as it parts my lips to starts wrapping around my head. I suck hard on it, and slurp it back down to it's owner."," As if things weren't weird enough, it wiggles past my teeth to start licking my face. After a few moments, I slurp it back down like a noodle."])
 							}else{
-								Entry += choose([" I put a hand on her head, and gently push her the rest of the way in."," She sighs in satisfaction as I gulp down the rest of her."," She kisses my nose before sliding down my throat."," She kisses my lip before sliding into my belly."," She thanks me for all the memories as I close my mouth around her."])
-							} 
-							
+								Entry += choose([" I put a hand on her head, and gently push her the rest of the way in."," She sighs in satisfaction as I gulp down the rest of her."," She kisses my nose before sliding down my throat."," She kisses my lip before sliding into my belly."])
+							}
 						}
-						Entrys.push(Entry)
 					}
+					Entrys.push(Entry)
 					//---
 				}
 				if(travel-unit(s[2]).travel <= 20 || Entrys.length == 0){
 					if(unit(s[2]).Tags[0] == "Bunnygirl"){
 						Entrys.push("I tell SUB I need to have her! She asks if I'm going to fuck her, or eat her. I answer by swallowing her feet, and work my way up her body. She watches the whole way down while fingering herself. She kisses my nose before finishing her descent. I feel my belly jiggle as she cums!")	
 					}
-					Entrys.push("I grab SUB by the waist, and swallow her down!")
-					Entrys.push("I ask SUB to close her eyes. She does so and puckers her lips for a kiss. Instead I gulp down her head and shoulders. She giggles as my tongue plays with her breasts, and says it's about time I ate her! She fingers herself as I finish swallowing her down!")
-					if(unit(s[2]).Tags[0] == "Mousegirl"){
-						if(Cocked == unit(s[2])){
-							Entrys = ["I get on my knees and tell SUB I need to have her. She approaches and starts licking the tip of my cock. She looks up at me and says its hungry. She sticks her hand into the tip and looks surprised how easy it fit. She blows me a kiss goodbye before sticking her other hand in and pushing herself deeper. She keeps pushing further until her behind reaches the tip. I start stroking myself and the rest of SUB is slowly pulled in. I feel her masturbate inside my sack and orgasm one last time before melting into spunk! My balls are swollen, I should find someone to help relieve the pressure..."]
-						}else{
-							Entrys = ["While I lie down, SUB walks over and straddles my face with her tail tickling my nose. I start eating her out and watch her shudder as my tongue teases her clit. When she cums, I gulp down her rear. She looks surprised but turned on even more! CSUB plays with her breasts as I gobble the rest of her down. She cums again just before her head and legs are swallowed and she slides into my belly!"]
+					if(WillingUnit != null){
+						if(WillingUnit != unit(s[2])){
+							Entrys.push("I grab SUB by the waist and swallow her down. My WIL blushes when I notice her staring at me.")
+							Entrys.push("I grab SUB by the waist and swallow her down. My WIL watches the whole time while biting her lip.")
+							Entrys.push("I grab SUB by the waist and swallow her down. My WIL runs up and starts rubbing my belly as it wiggles under her touch.")
+							if(WillingUnit.Tags[0] != unit(s[2]).Tags[0]){
+								Entrys.push(choose(["As I start to eat SUB, my WIL comes to say her goodbyes.","As I start to eat SUB, my WIL runs up and gives her a hug goodbye.","As I start to eat SUB, my WIL walks up and gives her a kiss goodbye."])+
+									choose([" She watches while I swallow her friend"," She stays while I swallow her friend"])+
+									choose([", and the two casually chat before my stomach starts digesting.",", and presses her ear against me, to listen to my SUBRACE digest.",". Once I'm done eating, she starts to grope the SUBRACE through my belly. She doesn't stop until the devoured girl cums, then listens as I digest her."]))
+							}
 						}
+					}
+					Entrys.push("I grab SUB by the waist and swallow her down!")
+					Entrys.push("I ask SUB to close her eyes. She does so and puckers her lips for a kiss. Instead I gulp down her head and shoulders. She giggles as my tongue plays with her breasts, and says it's about time I ate her! She fingers herself as I finish swallowing her down!")
+
+				}
+				if(unit(s[2]).Tags[0] == "Mousegirl"){
+					if(Cocked == unit(s[2])){
+						Entrys = ["I get on my knees and tell SUB I need to have her. She approaches and starts licking the tip of my cock. She looks up at me and says its hungry. She sticks her hand into the tip and looks surprised how easy it fit. She blows me a kiss goodbye before sticking her other hand in and pushing herself deeper. She keeps pushing further until her behind reaches the tip. I start stroking myself and the rest of SUB is slowly pulled in. I feel her masturbate inside my sack and orgasm one last time before melting into spunk! My balls are swollen, I should find someone to help relieve the pressure..."]
+					}else{
+						Entrys = ["While I lie down, SUB walks over and straddles my face with her tail tickling my nose. I start eating her out and watch her shudder as my tongue teases her clit. When she cums, I gulp down her rear. She looks surprised but turned on even more! CSUB plays with her breasts as I gobble the rest of her down. She cums again just before her head and legs are swallowed and she slides into my belly!"]
 					}
 				}
 				//*/
 			}else{//RELUCTANT
-			
-				Entrys.push("I ask SUB to close her eyes. She does so and puckers her lips for a kiss. Instead I gulp down her head and shoulders. She yelps in surprise as she stops being my friend and becomes my food. Trembling, she asks if I wouldn't rather fuck her instead, but I keep gulping down to her waist. When I start swallowing her hips, she begs me to enjoy her properly at least! My tongue finds her slit and starts getting her off as her rump hangs out of my mouth. I give SUB one last orgasm before fully taking her down!")
-				Entrys.push("I grab SUB by the waist, and swallow her down!")
+				
+				if(unit(s[2]).Tags[0] == "Bunnygirl" || unit(s[2]).Tags[0] == "Catgirl" || unit(s[2]).Tags[0] == "Foxgirl" || unit(s[2]).Tags[0] == "Wolfgirl" || unit(s[2]).Tags[0] == "Froggirl"){
+					//---LONG - MAKE AN INDOORS/OUTDOORS VERSION(Bed/Table/Couch)
+					s[11] = false;
+					if(WillingUnit != null){
+						if(WillingUnit.Tags[0] != unit(s[2]).Tags[0]){
+							s[11] = true;
+						}	
+					}		
+					s[12] = choose(["WaistCum","ChestCum","Dialog"])
+					Entry = choose([
+						choose(["I tell SUB I need to have her","I call SUB over to me for some fun"])+
+						choose([", and she asks what I have in mind.","! She asks which hole I want, but I shake my head.",". She timidly asks if this is the day I eat her.",". She timidly asks if she's on the menu today.",". She looks worried as she asks if I'm hungry or horny.",", and she asks what I have in mind."])+
+						choose([" I hungrily lick my lips"," My gut grumbles in response"," I simply rub my belly"," I look down at my gut"])+
+						choose([", and she pouts.",", and she blushes.",", and she sighs.",". She pouts, and gives me a nod.",". She sighs and tells me to go ahead.",". She looks nervous, but gives me a nod."])
+						,
+						choose([" I pull SUB into a hug."," I walk up and embrace SUB."])+
+						choose([" She hugs back"," She holds me tightly"])+
+						choose([" as I nibble on her neck."," as I lick her neck."," as I give her a trail of kisses along her jaw."," as I give her a trail of kisses across her forhead."])+
+						choose([" I whisper"," I whisper into her ear"," Under my breath I tell her"])+
+						choose([" that I'm going to eat her"," that she's good enough to eat"," that I'm craving some SUBRACE"," that I'm hungry"," that I've been dying for some SUBRACE"," that I need her inside me"])+
+						choose([", and she blushes.",", and she tenses up.",", and she sighs.",". She gasps at my words.",", and she nods nervously.",". She playfully punches my shoulder, and asks if I'm joking. She bites her lip when I shake my head.",". She bites her lip and nods.",". She sighs and tells me to go ahead.",". She nervously tells me she's ready.",". She pulls me into a kiss. As we break away, she gives me a nervous smile."])
+						,
+						choose(["I start nibbling on SUB's neck. A shiver runs up her spine when I start to drool.","I start nibbling on SUB's neck. Her back stiffens when she realizes what I want.","I walk up to SUB while licking my lips. Her eyes grow wide when she notices.","I walk up to SUB while rubbing my belly. It grumbles, and she gives me a nervous nod.","I start licking SUB's neck. Her knees tremble when my stomach grumbles."])
+						//choose([", but before I can say anything"])
+					])
+					
+					//Positioning
+					
+					if(s[12] == "WaistCum"){//Swallow to waist.
+						Entry += choose([" I kneel down"," I kneel on the GROUND"," I get on my knees"," I kneel"])
+						if(unit(s[2]).Tags[0] == "Bunnygirl"){
+							Entry += choose([", and she bows her head. Her fluffy ears tickle as I start eating.",", and give her hands a kiss before shoving them into my mouth. ",", and she offers up her hands. I greedily shove them down my throat as she bends down to be eaten."])+
+							choose([" Her fluffball of a tail quickly nears as I work my way down her body."," Her fluffball of a tail quivers as I work my way down her body."," I savor her taste as I continue along her body."," I play with her fluffy tail while she slides down deeper."])
+						}else if(unit(s[2]).Tags[0] == "Catgirl"){
+							Entry += choose([", and she bows her head. I'm careful with her fluffy ears as I start eating.",", and she bows her head. Her ears angle back as I start eating.",", and lift her paws to my mouth. I'm careful to avoid her claws as I start eating.",", and give her cute paws a kiss before shoving them into my mouth."])+
+							choose([" Her tail swishes side to side as I work my way down her body."," Her tail curls as I work my way down her body."," Her tail rises as I work my way down her body."," I play with her soft tail while she slides down deeper."," She purrs while sliding down my throat."])
+						}else if(unit(s[2]).Tags[0] == "Foxgirl" || unit(s[2]).Tags[0] == "Wolfgirl"){
+							Entry += choose([", and take her hands. She watches intently as they slide down my throat.",", and give her cute paws a kiss before shoving them into my mouth."])+
+							choose([" Her fluffy tail takes up most of my view as I work my way down her body."," Her tail wags as I work my way down her body."," Her tail droops between her legs as I eat."," I play with her fluffy tail while she slides down deeper."])
+						}else if(unit(s[2]).Tags[0] == "Froggirl"){
+							Entry += choose([", and lick her slimy hands before mushing them into my mouth. I swallow more",", and give her webbed hands a slimy kiss before shoving them into my mouth. I swallow more"])+
+							choose([", and her mucus coats my throst as I work my way down her body.",", and her glistening body slides in with ease.",", and her body easily squishes into my throat.",", and her eyes sink into their sockets as I keep gulping her down."])
+						}
+						Entry += choose([" Her "+DescWord(unit(s[2]),"butt",80)+"thighs are squeezed together as they slide into my mouth, but manage to clamp even tighter when my tongue reaches her slit."," She's caught off guard when my tongue plunges into her folds."," She tries pulling out when I pause at her hips. I get my tongue onto her mound, and she yelps!"])+
+						choose([" Her legs wildly kick while I pleasure her."," She humps it as I keep licking her."," I pull her "+DescWord(unit(s[2]),"butt",25)+"knees apart to get my tongue as deep as I can into her."," I wrap my hands around her "+DescWord(unit(s[2]),"butt",25)+"legs to hold her in place while I keep licking."," Her breathing flutters when I find her sweet spot, and she makes muffled whimpers."])+
+						choose([" Her juices are delicious when she cums, and I lift her legs into the air after. She yelps when gravity pulls her inside."," Her torso writhes inside me as she finishes. Another swallow, and she splashes into my acids."," She contorts inside me when I pick up the pace. She soon gushes in my mouth, and her juices help send her down my throat."]) 
+					}else if(s[12] == "ChestCum" && s[11] == false){//Breastplay, then full swallow.	
+						if(unit(s[2]).bust > -1){
+							Entry += choose([" I kneel down and suck on her "+DescWord(unit(s[2]),"breasts",80)+"breast"," I kneel down and lick her "+DescWord(unit(s[2]),"breasts",80)+"breasts"," I kneel down and stuff her "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth"," I kneel down and she guides her "+DescWord(unit(s[2]),"breasts",80)+"breast into my mouth. I'm lost in her flavor"])+
+							choose([" while she squirms."," as she pets my head.",". She rubs her face in my hair and breaths me in."])+
+							choose([" Her breathing quickens when I start to finger her."," I find the nub between her legs and rub small circles around it. She leans against me as I gently stroke her hood."," Her thighs squeeze tightly together when I slip my hand between them."," Her legs snap shut when my hand brushes against her slit, and after a little rubbing, she's a wet mess. Her hips start to sway when my fingers slip inside her."])+
+							choose([" Goosebumps cover her body before she"," Her breasts taste amazing, and I can't get enough of them. She eventually"," Her busom is covered in hickeys when she"," I look up at her as she"," I gently bite her nipple as she"," I softly bite down, and she"])+
+							choose([" gushes down her thighs."," cums from my touch.","starts moaning. She holds me close when she cums."," starts to hump my hand. Its soon drenched in her juices as she cums."])
+						}else{
+							Entry += choose([" I kneel and press my ear to her chest. She doesn't move while I listen to her heart beating."+choose([" It starts beating faster when my lip brushes against her nipple."," When I ask if she's ready to be eaten, it starts to thump harder. My lip brushes against her breast, and her nipple hardens to a point."])+"  I start sucking it"," I kneel down and kiss her "+DescWord(unit(s[2]),"breasts",80)+"chest"," I kneel down and lick her "+DescWord(unit(s[2]),"breasts",80)+"chest"," I kneel down and make a trail of kisses from her "+DescWord(unit(s[2]),"belly_noun",100)+" up to her chest."," I kneel down and she guides me to her "+DescWord(unit(s[2]),"breasts",80)+"chest. I start covering her in hickeys"])+
+							choose(["."," while she squirms."," as she pets my head.",". She rubs her face in my hair and breaths me in."])+
+							choose([" Her breathing quickens when I start to finger her."," I find the nub between her legs and rub small circles around it. She leans against me as I gently stroke her hood."," Her thighs squeeze tightly together when I slip my hand between them."," Her legs snap shut when my hand brushes against her slit, and after a little rubbing, she's a wet mess. Her hips start to sway when my fingers slip inside her."])+
+							choose([" Goosebumps cover her body before she"," She starts to quiver as she focuses on my touch, and eventually"," She tells me not to stop and presses her quivering body against me. I look up at her as she"," I gently nibble her nipple while keeping my hand moving between her legs. She"," I gently bite her nipple as she"," I start thrusting two fingers into her, and she"])+
+							choose([" gushes down her thighs."," cums from my touch."," starts moaning. She holds me close when she cums."," starts to hump my hand. Its soon drenched in her juices as she cums."])
+						}
+						Entry += choose([" I tell her she tastes amazing"," I tell her I'll always remember her flavor"," I tell her she's the best SUBRACE I've ever tasted"," I tell her how great she tastes"," I smack my lips"," I meet her gaze"])
+						if(unit(s[2]).Tags[0] == "Bunnygirl"){
+							Entry += choose([", and she smiles. She leans over when I open my mouth, and her fluffy ears tickle as I start eating.",", and give her hands a kiss before shoving them into my mouth. ",", and she offers up her hands. I greedily shove them down my throat as she bends down to be eaten."])+
+							choose([" Her fluffball of a tail quickly nears as I work my way down her body. I play with her fuzzy toes before swallowing them down."," Her fluffball of a tail quivers as I work my way down her body, and her toes curl as I swallow them."," I savor her taste as I swallow her whole."," I play with her fluffy tail before swallowing her down."])
+						}else if(unit(s[2]).Tags[0] == "Catgirl"){
+							Entry += choose([", and she smiles. She leans over when I open my mouth. I'm careful with her fluffy ears as I start eating.",", and she bows her head. Her ears angle back as I start eating.",", and lift her paws to my mouth. I'm careful to avoid her claws as I start eating.",", and give her cute paws a kiss before shoving them into my mouth."])+
+							choose([" Her tail swishes side to side as I swallow her down."," Her tail curls as I work my way down her body. She hisses when she splashes into my acids."," Her tail tickles my noes as I work my way down her body. It wraps around her legs as I swallow them down."," I play with her soft tail before swallowing her all the way."," I swallow her, and she purrs in my belly."])
+						}else if(unit(s[2]).Tags[0] == "Foxgirl" || unit(s[2]).Tags[0] == "Wolfgirl"){
+							Entry += choose([", and take her paws. She watches intently as they slide down my throat.",", and give her cute paws a kiss before shoving them into my mouth."])+
+							choose([" Her fluffy tail takes up most of my view as I work my way down her body. She yips once she's inside."," Her tail wags as I work my way down her body. She giggles when I tickle her fuzzy toes. They curl as I swallow them."," Her tail droops between her legs as I swallow her down."," I play with her fluffy tail while I swallow her down."])
+						}else if(unit(s[2]).Tags[0] == "Froggirl"){
+							Entry += choose([", and lick her slimy hands before mushing them into my mouth. I swallow more",", and give her webbed hands a slimy kiss before shoving them into my mouth. I swallow more"])+
+							choose([", and her mucus coats my throst as I work my way down her body.",", and her glistening body slides in with ease.",", and her body easily squishes into my throat.",", and her eyes sink into their sockets as I keep gulping her down."])+
+							choose([" She croaks loudly once inside."," I feel her webbed feet push outward once she's inside."," She splashes around once she's inside."])
+						}
+						
+					}else if(s[12] == "ChestCum" && s[11] == true && unit(s[2]).bust > -1){
+						Entry += choose([" I kneel down"," I kneel on the GROUND"," I get on my knees"," I kneel"])+
+							choose([" as my WIL approaches."," as my WIL joins us."," as my WIL comes over."])
+							choose([" She watches while "," She smiles while"," She starts getting excited while"," She inches closer while"])+
+							choose([" SUBRACELONG's arms slide down my throat."," I put SUBRACELONG's hands into my mouth and start swallowing them."," I start swallowing SUBRACELONG's hands."])+
+							choose([" I gulp down her shoulders"," I stop just after her shoulders."," I stop once I'm around her shoulders."])+
+							choose([" My WILT bends over and tucks my SUBRACELONG's"+DescWord(unit(s[2]),"breasts",50)+" breassts into my mouth."," I fondle her "+DescWord(unit(s[2]),"breasts",50)+"breasts before mushing them into my mouth."," When her "+DescWord(unit(s[2]),"breasts",50)+"bosom rest on my tongue, I overwhelmed by her flavor."," Her "+DescWord(unit(s[2]),"breasts",50)+"breasts slip past my teeth, and I'm overwhelmed by their flavor."])+
+							choose([" I start to lick them, and feel her squirm at my touch"," She shudders when I start licking them."," My tongue starts to explore them as she squirms."])+
+							choose([" My WILT gets down between her legs, and the we both work on getting her off."," My WILT also kneels, and starts to pleasure her as well."])+
+							choose([" My SUBRACELONG's body contorts as she cums, and my WILT guides her legs down my throat."," We don't stop until she cums. My WILT watches intently as I slurp down my SUBRACE's legs."," Once my half eaten meal climaxes, my WILT lifts her legs above me so I can swallow her down."])
+					}else if(s[12] == "ChestCum" && s[11] == true && unit(s[2]).bust == -1){
+							Entry += choose([" I kneel down"," I kneel on the GROUND"," I get on my knees"," I kneel"])+
+							choose([" as my WIL approaches."," as my WIL joins us."," as my WIL comes over."])
+							choose([" She watches while "," She smiles while"," She starts getting excited while"," She inches closer while"])+
+							choose([" SUBRACELONG's head slides down my throat."," I put SUBRACELONG's hands into my mouth and start swallowing them."," I start swallowing SUBRACELONG's hands."])+
+							choose([" I gulp down her hips"," I stop at her hips."," I stop once her hips are hanging out of my mouth."])+
+							choose([" My WILT gives me a wink before kneeling behind her."," My WILT blows me a kiss, and kneels behind her."," My WILT sticks her tongue out between two fingers before dropping to her knees behind her."])
+						
+							
+						Entry += choose([" My SUBRACELONG is caught off guard when our tongues find her slit."," My SUBRACELONG starts asking if someone else is here when I pause at her hips. Her voice cracks when our tongues reach her mound."])+
+						choose([" Her legs wildly kick while we pleasure her."," She humps her hips as we keep licking her."," I wrap my hands around her "+DescWord(unit(s[2]),"butt",25)+"legs to hold her in place while we keep licking."," She yelps when my WILT finds her sweet spot, and she makes muffled whimpers when my tongue teases it as well."])+
+						choose([" She writhes when she climaxes. My WILT lifts her legs into the air after, and gravity helps me swallow faster."," Her upper body writhes inside me as she finishes. She splashes into my acids when I gulp more of her down."," She contorts inside me when we pick up the pace. She soon gushes all over my WILT, and I start swallowing her down again. "]) 
+					}else{
+						Entry += choose([" I kneel down"," I kneel on the GROUND"," I get on my knees"," I kneel"])
+						if(unit(s[2]).Tags[0] == "Bunnygirl"){
+							Entry += choose([", and she bows her head. Her fluffy ears tickle as I start eating.",", and give her hands a kiss before shoving them into my mouth.",", and she offers up her hands. I greedily shove them down my throat as she bends down to be eaten."])+
+							choose([" Once her "+DescWord(unit(s[2]),"belly",100)+"belly slides past my lips, I lift her legs into the air. Her fluffball of a tail brushes my nose as she slides down."," Her fluffball of a tail quivers before it slides into my belly. Its soon followed by the rest of her."," I savor her taste as I slowly swallow her."," I play with her fluffy tail before leaning back and gulping her down."])
+						}else if(unit(s[2]).Tags[0] == "Catgirl"){
+							Entry += choose([", and she bows her head. I'm careful with her fluffy ears as I start eating.",", and she bows her head. Her ears angle back as I start eating.",", and lift her paws to my mouth. I'm careful to avoid her claws as I start eating.",", and give her cute paws a kiss before shoving them into my mouth."])+
+							choose([" Her tail swishes side to side before it slides down my throat. A few gulps more and she's completely devoured."," Her tail curls around her legs as I swallow them down."," Her tail tickles my nose as I work my way down her body."," I play with her soft tail while she slides down deeper. Soon it and her toes join the rest of her in my belly."," She purrs the whole way down my throat."])
+						}else if(unit(s[2]).Tags[0] == "Foxgirl" || unit(s[2]).Tags[0] == "Wolfgirl"){
+							Entry += choose([", and take her hands. She watches intently as they slide down my throat.",", and give her cute paws a kiss before shoving them into my mouth."])+
+							choose([" Her fluffy tail takes up most of my view until I swallow it down. Her legs straighten, and quickly slide into my belly."," Her tail wags as I work my way down her body. I lift her legs into the air before swallowing them down."," Her tail droops between her legs as I swallow her down."," I play with her fluffy tail until it reaches my mouth. She keeps her legs straight when I lift them into the air, and she easily slides into my belly."])
+						}else if(unit(s[2]).Tags[0] == "Froggirl"){
+							Entry += choose([", and lick her slimy hands before mushing them into my mouth. I swallow more",", and give her webbed hands a slimy kiss before shoving them into my mouth. I swallow more"])+
+							choose([", and her mucus coats my throst as I work my way down her body. I suck on her toes as they slide into my throat.",", and her glistening body glides in with ease.",", and her body easily squishes into my throat. I give her rear a playful spank before tilting her upside down. Her mucus covered body easily slides into my belly.",", and her eyes sink into their sockets as I keep gulping her down. I tickle her webbed toes before swallowing them down."])
+						}
+					}
+					//Digestion
+					if(s[12] == "ChestCum" && s[11] == true){
+						Entry += choose([" I lick my lips after I finish eating."," SUBRACELONG's toes wiggles as they slide down my throat."," My stomach quickly digests my SUBRACELONG once she's inside."])
+						Entry += choose([" My WILT rubs my belly."," My WILT puts an ear to my belly and listens."," My WILT pulls me into a kiss, and I hold her against my belly."])
+						Entry += choose(["","",choose([" She asks when I'll be eating her."," She asks if I have room for one more..."," She whispers into my ear that she wants to be next."])])
+					}else if(s[12] == "WaistCum" || s[12] == "ChestCum"){
+						if(travel-unit(s[2]).travel > 50){
+							if(unit(s[2]).PositiveUnit && Math.random()<.95){
+								Entry += choose([" She talks about all the great times we had as she digests."," She thanks me for all the adventures while digesting."," She tells me more adventuring tips while I digest her."," She starts to cry once inside. I start trying to vomit but she stops me. She explains she wants to be digested by me, but she's sad because she'll miss me. I give her an awkward hug from outside my belly until she's gone."," She peacefully sighs as she quickly digests."," She thanks me for all the memories as I digest her."," She doesn't make another sound, and digests peacefully."," She tries to quietly masturbate, but moans loudly when she finishes. She tells me she loves me before digesting."," She tells me she loves me before digesting."," She tells me all the reasons she loved me as she digests."])
+							}else if(unit(s[2]).NegativeUnit && Math.random()<.95){
+								//Entry += choose([" I keep swallowing while she trembles."," She trembles while I keep gulping her down."," Goosebumps coat her body while I swallow her."])
+								Entry += choose([" She begs me not to forget her as she digests."," She begs me to remember her as she digests."," She tries to masturbate before digesting, but doesn't cum in time."," Once she starts digesting, she tells me she's glad that I was the one to eat her. We talk about all the fun we had before she eventually stops replying."," She starts to panick when her body starts breaking down. I give my belly a hug, and tell her its going to be ok. She calms down and finishes digesting in peace."])
+							}else if(unit(s[2]).FunnyUnit && Math.random()<.95){
+								Entry += choose([" She giggles as I digest her."," She spends her remaining time telling a long rambling joke. I groan when it has no punchline. She doesn't stop laughing until she digests."," I hear her splash around inside my belly before digesting."," She toots while digesting, and tries to blame it on me!"," She stretches out all of her limbs as far as she can. She giggles as my belly makes odd shapes. I push back, and we make a silly game of it until she digests."])
+							}else if(unit(s[2]).SluttyUnit && Math.random()<.95){
+								Entry += choose([" She spends her remaining moments trying to cum again. She barely manages before digesting."," She spends her remaining moments masturbating. I lose count of the times she climaxes before digesting."," She cums immediately once digestion starts, and a few more times before she's gone."," She tells me it felt like a massage once she's inside."," She tells me to keep fucking SUBRACELONGs as I digest her."," She thanks me for all the dick as she digests."," She cums immediately when my stomach starts to digest her, and cries out in bliss as she's broken down."])
+							}else if(unit(s[2]).HungryUnit && Math.random()<.95){
+								Entry += choose([" She tells me to put all her meat to good use as she digests."," She tells me to eat more SUBRACELONGs as she digests."," Before she digests, she admits that she always expected to be the one to eat me instead."," She tells me to keep eating SUBRACELONGs as my acids break her down."," She tries to masturbate before digesting, but doesn't cum in time."," She tries to tell me something while inside, but she's too muffled. She digests before I can understand her."," Once inside, she tells me she's glad that I was the one to eat her. We talk about all the tasty meals we had before she digests."," She starts to panick when her body starts breaking down. I give my belly a hug, and tell her its going to be ok. She calms down and finishes digesting in peace."])
+							}else{
+								Entry += choose([" I promise not to forget her as she digests."," I promise to remember her as she digests."," I rub my belly as I feel her digest."," Another gulp, and she's completely inside. I feel her digest almost instantly, and then she's gone forever."," I lay down and doze off as she digests."])
+							}
+						}else{
+							//Entry += choose([" I savor her taste as I slowly swallow her legs."," She curls up once she's completely inside me."," She doesn't say a word, and just lets me pull her slowly down my throat."])
+							Entry += choose(["",choose([" I tell her how delicious she was after eating her."," I rub my belly as I feel her digest."," Another gulp, and she's completely inside. I feel her digest almost instantly."," I lay down and doze off as she digests."])])
+						}
+					}else{
+						if(travel-unit(s[2]).travel > 50){
+							if(unit(s[2]).PositiveUnit && Math.random()<.90){
+								Entry += choose([" She thanks me for all the memories as she curls up in my belly."," After she gets comfortable, we talk about all the great times we had adventuring."," She thanks me for all the adventures while making handprints against my belly."])
+								//Entry += choose([" She tucks her arms into my mouth and wiggles her way into my stomach."," She starts to cry when I reach her shoulders. I start pulling her out but she stops me. She explains she wants to be eaten by me, but she's sad because she'll miss me. She wipes her tears away before pushing herself the rest of the way in."," She peacefully sighs as I gulp down the rest of her."," She kisses my lip before sliding into my belly.",])
+								Entry += choose(["",choose([" She doesn't make a sound once she's inside, and digests peacefully."," She tries to quietly masturbate, but moans loudly when she finishes. She tells me she loves me before digesting."," She tells me all the reasons she loves me as she digests."])])
+							}else if(unit(s[2]).NegativeUnit && Math.random()<.90){
+								//Entry += choose([" I keep swallowing while she looks away."," She doesn't watch while keep gulping her down."," She covers her eyes while I swallow her."])
+								//Entry += choose([" She gasps when she realizes how far up her body I am. She begs me not to forget her as she slips down my throat."," She starts to tremble when she realizes how far up her body I am. She gasps as the rest of her slips down my throat."," She gasps when she realizes how far up her body I am, and begs me to remember her as she slips down my throat."])
+								Entry += choose(["",choose([" She tries to masturbate before digesting, but doesn't cum in time."," She tries to tell me something while inside, but she's too quiet. She digests before I can understand her."," Once inside, she tells me she's glad that I was the one to eat her. We talk about all the fun we had before she digests."," She starts to panick when her body starts breaking down. I give my belly a hug, and tell her its going to be ok. She calms down and finishes digesting peacefully."])])
+							}else if(unit(s[2]).FunnyUnit && Math.random()<.90){
+								Entry += choose([" She giggles once she's in my belly. "," She spends most of her time in my belly telling a long rambling joke. I groan when it has no punchline."])
+								//Entry += choose([" She gives my tongue a playful bite before finishing her journey."," She tells me to keep having fun without her as she slides down my throat."])
+								Entry += choose(["",choose([" I hear her splash around inside my belly before digesting."," She toots while digesting, and tries to blame it on me!"," She stretches out as far as she can, causing my belly to make odd shapes. Once she's had her fun, she curls up and digests peacefully."])])
+							}else if(unit(s[2]).SluttyUnit && Math.random()<.90){
+								//Entry += choose([" After she's swallowed, she thrusts her rear against my belly. "," She tells me it feels like a massage as I eat her."," She tells me to keep fucking SUBRACELONGs as pull her further down my throat."," She thanks me for all the dick as I work up her body."])
+								//Entry += choose([" Her body starts to quiver as I swallow her down."," She tells me she's never been more excited as I reach her shoulders. I give them a squeeze before shoving them, and the rest of her into my belly."])
+								Entry += choose([" She spends her remaining moments masturbating. I lose count of the times she climaxes before digesting."," She cums immediately once she's in my belly, and a few more times before digesting."," She cums immediately once she's in my belly, and cries out in bliss as she digests."])
+							}else if(unit(s[2]).HungryUnit && Math.random()<.90){
+								Entry += choose([" She tells me to put all her meat to good use as my belly gurgles."," She tells me to eat more SUBRACELONGs as sloshes inside me."," After being eaten, she admits that she always expected to be the one to eat me instead."," She tells me to keep eating SUBRACELONGs as my belly starts filling with acids."])
+								//Entry += choose([" She gives my lip a rough bite before sliding into my belly."," She licks my tongue before sliding into my belly."," She gives my tongue a playful bite before sliding into my belly."])
+								Entry += choose(["",choose([" She tries to masturbate before digesting, but doesn't cum in time."," She tries to tell me something while inside, but she's too muffled. She digests before I can understand her."," Once inside, she tells me she's glad that I was the one to eat her. We talk about all the fun we had before she digests."," She starts to panick when her body starts breaking down. I give my belly a hug, and tell her its going to be ok. She calms down and finishes digesting in peace."])])
+							}else{
+								//Entry += choose([" She tucks her arms into my mouth, and I tilt her upwards to slide into my belly."," I put a hand on her head, and gently push her the rest of the way in."," She peacefully sighs as I gulp down the rest of her."," She kisses my lip before sliding into my belly."," She thanks me for all the memories as I close my mouth over her head."])
+								//DONT TOUCH THIS WORKS LOL
+								Entry += choose([" I promise not to forget her as she digests."," I promise to remember her as she digests."," I tell her how delicious she was after eating her."," She casually talks about all the good times we had while my stomach fills with acids."," From within my belly, she talks fondly of our travels."])
+							}
+						}else{
+							Entry += choose(["",choose(["",choose([" I tell her how delicious she was after eating her."," She curls up to get comfortable."])])+choose([" I rub my belly as I feel her digest."," I feel her digest almost instantly."," I lay down and doze off as she digests."])])
+						}
+					}
+					//Finish & DIGESTION 
+					Entrys.push(Entry) 
+					//---
+				} 
+				if(Entrys.length == 0){
+					if(WillingUnit != null){
+						Entrys.push("I grab SUB by the waist and swallow her down. My WIL blushes when I notice her staring at me.")
+						Entrys.push("I grab SUB by the waist and swallow her down. My WIL watches the whole time while biting her lip.")
+						Entrys.push("I grab SUB by the waist and swallow her down. My WIL runs up and starts rubbing my belly as it wiggles under her touch.")
+					}
+					Entrys.push("I ask SUB to close her eyes. She does so and puckers her lips for a kiss. Instead I gulp down her head and shoulders. She yelps in surprise as she stops being my friend and becomes my food. Trembling, she asks if I wouldn't rather fuck her instead, but I keep gulping down to her waist. When I start swallowing her hips, she begs me to enjoy her properly at least! My tongue finds her slit and starts getting her off as her rump hangs out of my mouth. I give SUB one last orgasm before fully taking her down!")
+					Entrys.push("I grab SUB by the waist, and swallow her down!")
+				}
 				if(unit(s[2]).Tags[0] == "Mousegirl"){
 					if(Cocked == unit(s[2])){
 						Entrys = ["I get on my knees and tell SUB I need to have her. She approaches and starts licking the tip of my cock. She looks surprised when it almost pulls her in. I ask her to continue and she does nervously, this time shes slurped past her shoulders. She starts to struggle until I begin rubbing her slit. With my other hand I start stroking myself and SUB is slowly pulled in further. My progress is stopped by her wide rear end. I keep fingering her while her legs flail around. As SUB orgasms, I push her butt into my large member, and she slides the rest of the way in. I feel her curl up into a ball before melting into spunk! My balls are swollen, I should find someone to help relieve the pressure..."]
@@ -3829,7 +4051,6 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					}
 				}
 			}
-
 		}else if(s[1]==0 && s[2] < 100 && map[party.y][party.x].hostile){
 		// HERO GOOD HOSTILE
 			if(s[4] == -2){//TOO SMALL
@@ -3902,15 +4123,15 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					}else if(map[party.y][party.x].units[s[2]-100].Tags[0] == "Bunnygirl" && Math.random()<.25){
 						Entrys.push("I call SUB a cute bunny snack. Her eyes grow wide, and she tries to make a run for it! I lunge at her and barely grip her ankles. As she struggles, I shove her feet into my mouth and start swallowing. She stops squirming, and just looks back at me upset. I swallow her quickly, but try to be gentle. She tucks her arms into my maw and soon she's in my belly.")
 					} 
-				if(unit(s[2]).CPle == 0 && map[party.y][party.x].units.length == 1 && unit(s[2]).Tags[0] == "Bunnygirl" && map[party.y][party.x].tag != "Water" && unit(0).Feas >= 11){
+				if(unit(s[2]).CPle == 0 && map[party.y][party.x].units.length == 1 && unit(s[2]).Tags[0] == "Bunnygirl" && map[party.y][party.x].tag != "Water" && unit(0).Feas >= unit(s[2]).MPle){
 					//---Longer one
 					Entry = choose(["jaw","breasts","neck"])
-					Entrys.push(choose(["I approach SUB and ask if she knows of any predators in the area to avoid. As she turns to show me, I get right behind her","I approach SUB and ask if she's ever thought about getting eaten. She shivers, and timidly turns away. While she's not looking at me, I get closer","I walk up behind SUB","I tip-toe behind SUB","I sneak up behind SUB","I slowly approach SUB from behind"," I point behind SUB, and she turns to look. While she's distracted I sneak up closer","I walk up to SUB and get her talking about herself. She tells me about"+choose([" the time a wolfgirl ate her sister "," the time her mom got eaten "," the time she snuck through a cave "," the time a wolfgirl almost caught her "," her day "," her daily life "," her life "," her extensive family "," her family "," her crazy childhood "," her childhood "," how most of her family got eaten recently "])+"as I get closer and lay a hand on her shoulder. While she's distracted by her own story, I casually slip behind her"]))
+					Entrys.push(choose(["I approach SUB and ask if she knows of any predators in the area to avoid. As she turns to show me, I get right behind her","I approach SUB and ask if she's ever thought about getting eaten. She shivers, and turns her back to me. I slowly get closer","I walk up behind SUB","I tip-toe behind SUB","I sneak up behind SUB","I slowly approach SUB from behind"," I point behind SUB, and she turns to look. While she's distracted I sneak up closer","I walk up to SUB and get her talking about herself. She tells me about"+choose([" the time a wolfgirl ate her sister "," the time her mom got eaten "," the time she snuck through a cave "," the time a wolfgirl almost caught her "," her day "," her daily life "," her life "," her extensive family "," her family "," her crazy childhood "," her childhood "," how most of her family got eaten recently "])+"as I get closer and lay a hand on her shoulder. While she's distracted by her own story, I casually slip behind her"]))
 					if(Entry == "jaw"){
 						Entrys[Entrys.length-1] += choose([". She tries moving away, but I quicky wrap an arm around her. I stuff two fingers into her mouth, and hold her tight as she whimpers."," and wrap my arm around her shoulders. I shove two fingers into her mouth when she tries to scream."," and hook two fingers into her jaw. Drool flies everywhere as she struggles."," and hook two fingers past her teeth. I use them and my thumb to hold her jaw in place."])
 					}
 					if(Entry == "neck"){
-						Entrys[Entrys.length-1] += choose([". She tries moving away, but I quicky wrap an arm around her neck. She grabs my wrist with both of her hands, but she isn't strong enough to pull me off."," and wrap my arm around her neck. I pull her close and rub against her as she whimpers."," and hook my arm around her neck. She tries stomping on my feet, but I don't release her."," and hook my arm around her neck. She thrashes against my grip, but I easily hold her against me."])
+						Entrys[Entrys.length-1] += choose([", and she starts to run. Her escape looks assured, until she trips over OBJECTSHORT. I lift her back up, and wrap an arm around her neck.",", and she starts to run. I almost lose her until she trips and falls over. I catch her when she stands, and wrap an arm around her neck.",", and she starts to run. I catch her, and wrap an arm around her neck.",", and she starts to run. I catch her, and wrap an arm around her neck.",". She tries moving away, but I quicky wrap an arm around her neck. She grabs my wrist with both of her hands, but she isn't strong enough to pull me off."," and wrap my arm around her neck. She struggles against my grip, but I don't let go."," and wrap my arm around her neck. I pull her close and rub against her as she whimpers."," and hook my arm around her neck. She tries stomping on my feet, but I don't release her."," and hook my arm around her neck. She thrashes against my grip, but I easily hold her against me."])
 					}
 					if(Entry == "breasts"){
 						if(unit(s[2]).bust > -1){
@@ -3949,7 +4170,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						}
 					}
 					if(Math.random()<.75 || Entry == "jaw"){
-						Entrys[Entrys.length-1] += choose([", and I let her drop to the ground.",", and I guide her to the ground.",", and I gently lower her to the ground.",". I give her a nudge and watch her fall to the ground."])
+						Entrys[Entrys.length-1] += choose([", and I let her drop to the GROUND.",", and I guide her to the GROUND.",", and I gently lower her to the GROUND.",". I give her a nudge and watch her fall to the GROUND."])
 						
 						if(Math.random()<.5){
 							Entrys[Entrys.length-1] += choose([" She looks back at me"," She yelps when I tug her closer. She looks back"," She sighs"," She says its fine"," She turns, and gives me an understanding nod"," She looks back and bites her lip. She gives me a nod"," She just lays there"," She looks around frantically"," She looks back and pouts"])
@@ -4064,10 +4285,10 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				
 					Entrys.push("My stomach growls loudly. I ask SUB if theres any food left. She smiles before saying she has an idea. I watch her hop onto the table and offer me her legs, I start by sucking on her calves before swallowing down to her hips. My tongue finds her slit and I give her one last orgasm before gulping the rest of her down!")
 					Entrys.push("I watch SUB hop onto the table and shake her cute tail at me. I approach and ask what she has in mind. Seductively, she asks if I'd rather fuck her or eat her. I kneel down and start licking her muff until she's soaked in drool and juices. She's too delicious not to eat! I start swallowing one cheek, and soon get both into my maw. CSUB looks back and sees her behind completely engulfed. Her smile widens, and she says she hopes I enjoy my tasty bunny snack. She yelps when I gulp her down to her breasts. My tongue teases her nipples until she cums, and I gobble the rest of her down!")
-				}else if(unit(s[2]).CPle == 0 && map[party.y][party.x].units.length == 1 && unit(s[2]).Tags[0] == "Bunnygirl" && map[party.y][party.x].tag != "Water" && unit(0).Feas >= 11){
+				}else if(unit(s[2]).CPle == 0 && map[party.y][party.x].units.length == 1 && unit(s[2]).Tags[0] == "Bunnygirl" && map[party.y][party.x].tag != "Water" && unit(0).Feas >= unit(s[2]).MPle){
 					//---Longer one
 					Entry = choose(["jaw","breasts","neck"])
-					Entrys.push(choose(["I approach SUB and ask if she knows of any predators in the area to avoid. As she turns to show me, I get right behind her","I approach SUB and ask if she's ever thought about getting eaten. She giggles, and casually faces away. She starts explaining that she might be interested but nobodys ever tried. I listen as I sneak closer","I sneak up behind SUB","I walk up behind SUB","I tip-toe behind SUB","I slowly approach SUB from behind"," I point behind SUB, and she turns to look. While she's distracted I sneak up closer","I walk up to SUB and get her talking about herself. She tells me about"+choose([" the time a wolfgirl ate her sister "," the time her mom got eaten "," the time she snuck through a cave "," the time a wolfgirl almost caught her "," her day "," her daily life "," her life "," her extensive family "," her family "," her crazy childhood "," her childhood "," how most of her family got eaten recently "," how her sister let herself be eaten "," how her oldest sister got eaten by her mother "])+"as I get closer and lay a hand on her shoulder. While she's distracted by her own story, I casually slip behind her"]))
+					Entrys.push(choose(["I approach SUB and ask if she knows of any predators in the area to avoid. As she turns to show me, I get right behind her","I approach SUB and ask if she's ever thought about getting eaten. "+choose(["She blushes, and turns aside.","She giggles, and innocently turns away."])+choose([" She starts explaining that she might be interested but nobody's ever tried. I listen as I sneak closer"," She says she's not sure because nobody's ever tried. I listen as I stroll closer"," She never looks back as I approach"]),"I sneak up behind SUB","I walk up behind SUB","I tip-toe behind SUB","I slowly approach SUB from behind"," I point behind SUB, and she turns to look. While she's distracted I sneak up closer","I walk up to SUB and get her talking about herself. She tells me about"+choose([" the time a wolfgirl ate her sister "," the time her mom got eaten "," the time she snuck through a cave "," the time a wolfgirl almost caught her "," her day "," her daily life "," her life "," her extensive family "," her family "," her crazy childhood "," her childhood "," how most of her family got eaten recently "," how her sister let herself be eaten "," how her oldest sister got eaten by her mother "])+"as I get closer and lay a hand on her shoulder. While she's distracted by her own story, I casually slip behind her"]))
 					if(Entry == "jaw"){
 						Entrys[Entrys.length-1] += choose([". Before she can move away, I quicky wrap an arm around her. I stuff two fingers into her mouth, and hold her tight as she whimpers."," and wrap my arm around her shoulders. I shove two fingers into her mouth before she can scream."," and hook two fingers into her jaw. Drool flies everywhere as she tries to talk."," and hook two fingers past her teeth. I use them and my thumb to hold her jaw in place. I can't tell whether she's making muffled screams or moaning."])
 					}
@@ -4111,7 +4332,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						}
 					}
 					if(Math.random()<.75 || Entry == "jaw"){
-						Entrys[Entrys.length-1] += choose([", and I let her drop to the ground.",", and I guide her to the ground.",", and I gently lower her to the ground.",". I give her a nudge and watch her fall to the ground."])
+						Entrys[Entrys.length-1] += choose([", and I let her drop to the GROUND.",", and I guide her to the GROUND.",", and I gently lower her to the GROUND.",". I give her a nudge and watch her fall to the GROUND."])
 						
 							Entrys[Entrys.length-1] += choose([" She looks back at me when I drag her closer. She watches"," She looks back at me"," She gasps when I tug her closer. She watches"," She lifts her legs and giggles"," She tells me to enjoy"," She looks back and smiles. She gives me a grin"," She moans"," She looks amazed"])
 						
@@ -4442,7 +4663,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						}else if(unit(s[2]).Negative){
 							Entrys[Entrys.length-1] += " CSUB only lays frozen, Blanketed in the wings of the other girl. As she's fingered relentlessly she tries to hold herself back from cumming, clearly knowing what's to follow! Despite her efforts, soon she's moaning and covered in sweat. She stops resisting and screams out as the mind-blowing climax overwhelms her body! Even knowing what's next, she still smiles in her afterglow."
 						}else if(unit(s[2]).Funny || unit(s[2]).Slutty){
-							Entrys[Entrys.length-1] += " CSUB twists around and sits straddling the other girl. She grabs both of her winged arms and spreads them open, pinning the batgirl to the ground. CDOM looks surprised at being dominated by the other girl so unexpectedly. CSUB tells the bat it's rude to play with her food. While keeping the bats hands away from her folds, she starts to grind them against the girls stomach. CDOM blushes as a wet streak forms along her belly where the SUBRACE rubs. Sweat starts dripping onto the Batgirl as SUB grows closer to climax. She's exhausted when she cums, and collapses onto the batgirl. They share a weak kiss before the SUBRACE tilts her head away."
+							Entrys[Entrys.length-1] += " CSUB twists around and sits straddling the other girl. She grabs both of her winged arms and spreads them open, pinning the batgirl to the GROUND. CDOM looks surprised at being dominated by the other girl so unexpectedly. CSUB tells the bat it's rude to play with her food. While keeping the bats hands away from her folds, she starts to grind them against the girls stomach. CDOM blushes as a wet streak forms along her belly where the SUBRACE rubs. Sweat starts dripping onto the Batgirl as SUB grows closer to climax. She's exhausted when she cums, and collapses onto the batgirl. They share a weak kiss before the SUBRACE tilts her head away."
 						}else{
 							Entrys[Entrys.length-1] += " Blanketed in the wings of the batgirl, SUB squirms and wiggles as her clitoris is stimulated relentlessly."
 						}
@@ -4478,7 +4699,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					}
 					if(unit(s[1]).Positive){
 						if(Math.random()<.5){
-							Entrys[Entrys.length-1] += " CDOM respectfully lowers the depleted girl to the ground, and gives her a goodbye kiss on the forehead."
+							Entrys[Entrys.length-1] += " CDOM respectfully lowers the depleted girl to the GROUND, and gives her a goodbye kiss on the forehead."
 						}else{
 							Entrys[Entrys.length-1] += " CDOM whispers a thank you before she lowers the SUBRACELONG's body to the ground with care."
 						}
@@ -5015,7 +5236,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						Entry = ""
 						Entry += choose(["Quick","Quick","Quick","CDOM",choose([
 							"CSUB looks surprised as DOM",
-							"CSUB gets too close to DOM, and can't react when DOM",
+							"CSUB gets too close to DOM, and can't react when she",
 						])])
 						if(unit(s[2]).Tags[0] == "Batgirl" && unit(s[2]).flying){
 							Entry = choose(["CDOM stretches out her arms to loop around SUB. She tries to fly away, but DOM doesn't let go.","CDOM stretches out to grab SUB's wing."])+
@@ -5073,10 +5294,10 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 									}else{
 										Entry += choose([" I watch My SUBRACELONG struggle to escape"," I watch My SUBRACELONG writhe in pain"," My SUBRACELONG locks eyes with me"])
 									}
-									Entry += choose([" while she"," before she"," as she"," until she"])+choose(["","","",""," slowly"," quickly"])+choose([" digests."," passes out."," dissolves."," melts away."])
+									Entry += choose([" while"," before"," as"," until"])+choose(["","","",""," slowly"," quickly"])+choose([" digesting."," passing out."," dissolving."," melting away."])
 									//choose([" while she"," before she"," as she"," until she"])+choose(["BLANK"," slowly"," quickly"])+choose([" digests."," passes out."," breaks apart."," melts away."])+
 								}else{
-									Entry += choose([""," CDOM approaches me and proudly displays her belly."," CDOM waves at me, and points to her belly."])+choose([" I watch"," I stare"," I crouch and watch"])+choose([" SUB start to dissolve."," as SUB melts away."," through her transparent slime. CSUB looks back at me as she digests."])
+									Entry += choose([""," CDOM approaches me and proudly displays her belly."," CDOM waves at me, and points to her belly."])+choose([" I watch"," I stare"," I crouch and watch"])+choose([" the SUBRACELONG start to dissolve."," as the SUBRACELONG melts away."," through her transparent slime. CSUB looks back at me as she digests."])
 								}
 							}else{
 								if(3==4){
@@ -5546,8 +5767,56 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				Entrys.push("I grab SUB by the hips and start thrusting! She's timid at first, but soon she's crying for more!")
 				Entrys.push("I turn SUB around and start rubbing my member between her legs. She tells me to stop teasing her and stick it in. We mate until she cries out in bliss!")
 				
+				
+				if(unit([s[2]]).Tags[0] == "Bunnygirl"){
+					Entrys.push(
+						choose(["While SUB rests on the GROUND, I join her. I","I pull SUB to the ground, and","I join SUB on the GROUND, and","I pull SUB down to the GROUND with me. Her breathing quickens as I","I join SUB while she's lying on the GROUND. Her breathing quickens as I"])+
+						choose([" start running my hand through my hair. I scratch her ears"," start nibbling on her neck. When she moans, I look at her"," rest my hand on her thigh. I give it a squeeze"," caress her cheek. I wrap an arm around her"," wrap an arm around her. I kiss her cheek"])+
+						choose([
+							choose([" and ask if I should stop."," and ask if she wants me to stop."," and tell her we can stop if she wants."])+
+							choose([" She tells me to shush and stick it in already."," She blushes, and shakes her head."," She eagerly shakes her head."," She shakes her head before giving me a kiss."," She responds with a kiss."," She thinks for a moment before slowly shaking her head."," She blushes and pulls me into a kiss."])
+						,
+							choose([" and ask if we can have some fun."," and ask if she's ready for some fun."," and ask if we can have some fun."])+
+							choose([" She tells me to shush and stick it in already."," She blushes, and pulls me into a kiss."," She eagerly nods."," She nods before giving me a kiss."," She responds with a kiss."," She pauses for a moment before pulling me into a kiss."," She blushes as she asks what I want to do."," She blushes and pulls me into a kiss."," She blushes and asks what I have in mind."])
+						,
+						choose([" and brush my lips against hers. Her hand slips down between my legs to grope my length. ",", and she pulls me closer. She whispers into my ear to stick it in already.",", and she roughly grabs my hair to pull me into a kiss.",", and she gives me a kiss."," and try to talk. She shushes me, and starts stroking my length. She blushes, but doesn't stop until its fully erect."])
+						])+
+						choose([
+							choose([" I frot against her until she's wet,"])+
+							choose([" then plunge inside.",
+								choose([" but she winces when I thrust into her."," but she grimaces when I push into her."])+
+								choose([""," I pull back and see blood along my shaft."," I look between us and see smears of blood."])+
+								choose([" When I start to rise, she grabs my hips. She pleads for me not to stop yet."," She grabs my hips when I start to rise, and asks me for another go."])+
+								choose([" I move slower this time as she grips my shoulders."," I try moving slower the second time, but she roughly pulls my hips to hers."])+
+								choose([" She lets out a sigh when my full length is finally inside her."," She looks down when my full length is finally inside her."," She's breathing heavy by the time my full length is inside her."])
+							])+
+							choose([" She guides my hand to her "+DescWord(unit(s[2]),"breasts",90)+"breast, and "," She caresses my face, and "," She gives me a grin, and "," She smiles as she "," She stifles a giggle, and "])+
+							choose(["tells me to fuck her properly.","tells me to give it to her.","tells me she's ready.","whispers that I just took her first time.","admits its her first time."])
+							,
+						" Our tongues meet as she guides my member into her. "," She arches her back as I slowly slide into her. "," She spreads her legs and I gently slide into her. "," She spreads herself with both hands and I slide inside her. "," I caress one of her "+DescWord(unit(s[2]),"breasts",90)+"breasts as she guides me into her."])+
+						choose([" She moans as I start thrusting"," She hugs me close when I start thrusting"," She gasps as I start thrusting"," She starts to move her hips, taking my full length each time"])
+					)//CONTINUES BELOW 
+						if(unit(s[2]).willing && Math.random()<.2){
+							Entrys[Entrys.length-1] += choose([
+								". Her legs wrap around me as we finish together. She whispers into my ear that she'd be fine as either my mate or my meal.",
+								", and soon we both cum. She pulls my head down to her chest until my lips reach her nipple. As I gently suck on it, she tells me I can taste her whenever I want.",
+								", and soon she's a quivering mess. As she cums, she blurts out that she wants me to eat her.",
+								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," While I keep thrusting into her, my stomach growls. The sound somehow sends her over the edge!"," A moment later, her eyes roll back as she reaches her zenith. Her leg starts to quiver as she finishes."," A moment later, she stops pumping her hips and braces against me. Her leg starts to quiver as she finishes."]),
+								choose([". While holding her close, I whisper into her ear that I love her. She moans as my words send her over the edge! ",". While she humps her hips, my stomach growls. The sound somehow sends her over the edge!",". Her eyes suddenly roll back as I feel her gush against me. ",". She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away and moves her lips down to start sucking me, determined to finish the job."+choose([" She shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])+" As she pulls me out of her mouth, she tells me I should taste her next time."])
+							])
+						}else{
+							Entrys[Entrys.length-1] += choose([
+								". Her legs wrap around me as we finish together.",
+								", and soon we both cum.",
+								", and soon she's a quivering mess. I feel her tighten around me as I cum!",
+								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," A moment later, her eyes roll back as she reaches her zenith. Her leg starts to quiver as she finishes."," A moment later, she stops pumping her hips and braces against me. Her leg starts to quiver as she finishes."]),
+								choose([". While holding her close, I whisper into her ear that I love her. She moans as my words send her over the edge! "," Her eyes suddenly roll back as I feel her gush against me. ",". She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away and moves her lips down to start sucking me, determined to finish the job."+choose([" She shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])])
+							])
+						}
+				}
+				
 				if(unit(s[1]).willing){
-					Entrys.push("I approach SUB, and she bows her head submissively. She tells me I can eat her as I lift her chin. Her eyes grow wide as I give her a kiss instead. She turns around and starts frotting against me. I thrust into her and she tightens around me. We mate until she cries out in bliss!")
+					Entrys.push("I approach SUB, and she bows her head submissively. She tells me I can eat her as I lift her chin. Her eyes grow wide as I pull her into a kiss instead. She turns around and starts frotting against me. I thrust into her and she tightens around me. We mate until she cries out in bliss!")
 				}
 				if(s[5]=="Indoors" && map[party.y][party.x].units[s[2]-100].Tags[0] == "Bunnygirl" && unit(s[2]).CPle > 0){
 					Entrys = []
@@ -5573,6 +5842,46 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						}else{
 						Entrys.push("I gently push SUB's back against the wall. She lifts her leg, revealing her wet lips. I fuck her against the wall until she cries out in pleasure!","Without a word, I bend SUB over the table and start pounding her from behind! She cries for more before we both finish together against the wooden furniture.")
 						}
+						//---long
+						Entrys.push(
+							choose(["I pull SUB onto the plush bed","I pull SUB onto the couch","I take SUB to the bed. Straddling her, I lift her chin","I lift SUB onto the table. I join her","I rest on the couch, and SUB joins. I look up at her","I fall back onto the bed, and SUB straddles me. I look at her","I playfully push SUB onto the bed. She sits up, and pulls me on top of her. I gaze down at her","I grab SUB by the hips and lift her onto the table. It creaks as I get on too. I straddle her","I grab SUB by the hips and throw her onto the bed. I straddle her"])+
+							choose([
+								choose([" and ask if I should stop."," and ask if she wants to stop."," and ask if she's scared."," and tell her we can stop if she wants."])+
+								choose([" She tells me to shush and stick it in already."," She blushes, and shakes her head."," She eagerly shakes her head."," She shakes her head before giving me a kiss."," She responds with a kiss."," She thinks for a moment before slowly shaking her head."," She blushes and pulls me into a kiss."])
+							,
+								choose([" and ask if we can have some fun."," and ask if she's ready for some fun."," and ask if we can have some fun."])+
+								choose([" She tells me to shush and stick it in already."," She blushes, and pulls me into a kiss."," She eagerly nods."," She nods before giving me a kiss."," She responds with a kiss."," She pauses for a moment before pulling me into a kiss."," She blushes as she asks what I want to do."," She blushes and pulls me into a kiss."," She blushes and asks what I have in mind."])
+							//neck nibble
+							])+
+							choose([
+								choose([" I frot against her until she sticks the tip in. I start off gentle,"," I frot against her until she's wet,"," I frot against her until she spreads her lips,"])+
+								choose([choose([" then thrust inside."," then plunge inside."," then give it to her."]),
+									choose([" but she winces when I thrust into her."," but she grimaces once I'm in."])+
+									choose([""," I pull back and see blood along my shaft."," I look between us and see smears of blood."])+
+									choose([" When I start to rise, she grabs my hips. She pleads for me not to stop yet."," She grabs my hips when I start to rise, and asks me for another go."])+
+									choose([" I have her set the pace this time. Her back arches as she pulls my hips towards her."," I move slower this time as she grips my shoulders."," I try moving slower the second time, but she roughly pulls my hips to hers."])+
+									choose([" She lets out a sigh when my full length is finally inside her."," She looks down when my full length is finally inside her."," She's breathing heavy by the time my full length is inside her."])
+								])+
+								choose([" With a grin, she "," She guides my hand to her "+DescWord(unit(s[2]),"breasts",90)+"breast, and "," She caresses my face, and "," She gives me a grin, and "," She looks around before getting closer and "," She smiles as she "," She stifles a giggle, and "])+
+								choose(["tells me to fuck her properly.","tells me to be rough.","tells me she's ready for more.","says that I just took her first time.","confesses its her first time.","blurts out that she's a virgin."])
+								,
+							" Our tongues meet as she guides my member into her. "," She arches her back as I slowly slide into her. "," She spreads her legs and I gently slide into her. "," She spreads herself with both hands and I slide inside her. "," I caress one of her "+DescWord(unit(s[2]),"breasts",90)+"breasts as she guides me into her."])+
+							choose([" She moans as I start thrusting"," She hugs me close when I start thrusting"," She gasps as I start thrusting"," She starts to move her hips, taking my full length each time"])+
+							//choose([",])//BOOKMARK
+							
+							choose([
+								". The furnature creaks loudly, threatening to give. Luckily it holds until we finish.",
+								". The furnature wobbles under us the whole time. After finishing, we roll and accidentally fall to the floor.",
+								". The furnature squeaks almost as loudly as she does. They both go silent after we finish.",
+								". Her legs wrap around me as we finish.",
+								". Her legs lock around me as we finish.",
+								", and soon we both cum.",
+								", and soon she's a quivering mess. I feel her tighten around me as I cum!",
+								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," A moment later, she stops pumping her hips and braces against me. Her leg starts to quiver as she finishes."]),
+								choose([". My lips brush against her ear while I whisper that I love her. She moans as my words send her over the edge! ",". She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away and moves her lips down to start sucking me, determined to finish the job."+choose([" She shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])])
+							])
+						)
+						//---
 					}
 				}			
 			}else{//FAIL
@@ -5591,31 +5900,31 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				if(s[5]=="Indoors" && (map[party.y][party.x].units[s[2]-100].Tags[0] == "Wolfgirl" || map[party.y][party.x].units[s[2]-100].Tags[0] == "Froggirl" || map[party.y][party.x].units[s[2]-100].Tags[0] == "Catgirl" || map[party.y][party.x].units[s[2]-100].Tags[0] == "Foxgirl")){
 						if(map[party.y][party.x].units[s[2]-100].CPle == 0){
 							Entrys.push(choose([
-								"I push SUB's back against the wall. She hesitates before lifting her leg, revealing her wet lips. I fuck her against the wall until she cries out in pleasure!",
+								"I push SUB's back against OBJECTTALL. She hesitates before lifting her leg, revealing her wet lips. I fuck her against it until she cries out in pleasure!",
 								"I bend SUB over the table and start pounding her from behind! She cries for more before we finish against the wooden furniture."])
 							)
 						}else{
 							Entrys.push(
-								choose(["I tackle SUB onto the plush bed","I tackle SUB onto the couch","I shove SUB onto the bed. Straddling her, I lift her chin","I push SUB onto the table. I join her","I grapple SUB and pull both of us onto the couch. I look up at her","I grapple SUB and pull both of us onto the bed. I look at her","I push SUB onto the bed. I straddle her","I grab SUB by the hips and drop her onto the couch. I straddle her","I grab SUB by the hips and lay her onto the table. I straddle her","I grab SUB by the hips and throw her onto the bed. I straddle her"])+
+								choose(["I tackle SUB onto the plush bed","I tackle SUB onto the couch","I shove SUB onto the bed. Straddling her, I lift her chin","I push SUB onto the table. I join her","I grapple SUB and pull both of us onto a thick rug. I look up at her","I grapple SUB and pull both of us onto the couch. I look up at her","I grapple SUB and pull both of us onto the bed. I look at her","I push SUB onto the bed. I straddle her","I grab SUB by the hips and drop her onto the couch. I straddle her","I grab SUB by the hips and lay her onto the table. I straddle her","I grab SUB by the hips and throw her onto the bed. I straddle her"])+
 								choose([
 									choose([" and ask if she really wants to hurt me."," and ask if she really wants to fight."," and ask if we really have to keep fighting."," and ask if we really need to settle this with violence."])+
-									choose([" She tells me to stop talking and stick it in already."," She bites her lip before shaking her head."," She timidly shakes her head."," She shakes her head before giving me a kiss."," She responds with a kiss."," She thinks for a moment before slowly shaking her head."," She blushes and pulls me into a kiss."])
+									choose([" She tells me to shush and stick it in already."," She bites her lip before shaking her head."," She timidly shakes her head."," She shakes her head before giving me a kiss."," She responds with a kiss."," She thinks for a moment before slowly shaking her head."," She blushes and pulls me into a kiss."])
 								,
 									choose([" and ask if we can have some fun instead of hurting each other."," and ask if she's ready to stop fighting."," and ask if we can try something less violent."])+
-									choose([" She tells me to stop talking and stick it in already."," She bites her lip before nodding."," She timidly nods."," She nods before giving me a kiss."," She responds with a kiss."," She thinks for a moment before slowly nodding her head."," She blushes and asks what I'd rather do."," She blushes and pulls me into a kiss."," She blushes and asks what I have in mind."])
+									choose([" She tells me to shush and stick it in already."," She bites her lip before nodding."," She timidly nods."," She nods before giving me a kiss."," She responds with a kiss."," She thinks for a moment before slowly nodding her head."," She blushes and asks what I'd rather do."," She blushes and pulls me into a kiss."," She blushes and asks what I have in mind."])
 								//neck nibble
 								])+
 								choose([
-									choose([" I frot against her until she's wet,"])+
-									choose([" then plunge inside.",
-										choose([" but she winces when I slide into her."," but she grimaces when I push into her."])+
+									choose([" I frot against her until guides me deeper into her folds. I start off gentle,"," I frot against her until she's wet,"," I frot against her until she spreads her lips,"])+
+									choose([choose([" then thrust inside."," then plunge inside."," then give it to her."]),
+										choose([" but she winces when I thrust into her."," but she grimaces once I'm in."])+
 										choose([""," I pull back and see blood along my shaft."," I look between us and see smears of blood."])+
 										choose([" When I start to rise, she grabs my hips. She pleads for me not to stop yet."," She grabs my hips when I start to rise, and asks me for another go."])+
-										choose([" I move slower this time as she grips my shoulders."," I try moving slower the second time, but she roughly pulls my hips to hers."])+
+										choose([" I have her set the pace this time. Her back arches as she pulls my hips towards her."," I move slower this time as she grips my shoulders."," I try moving slower the second time, but she roughly pulls my hips to hers."])+
 										choose([" She lets out a sigh when my full length is finally inside her."," She looks down when my full length is finally inside her."," She's breathing heavy by the time my full length is inside her."])
 									])+
 									choose([" With a grin, she "," She guides my hand to her "+DescWord(unit(s[2]),"breasts",90)+"breast, and "," She caresses my face, and "," She gives me a grin, and "," She looks around before getting closer and "," She smiles as she "," She stifles a giggle, and "])+
-									choose(["tells me to fuck her properly.","tells me to give it to her.","tells me she's ready for more.","says that I just took her first time.","confesses its her first time.","blurts out that she's a virgin."])
+									choose(["tells me to fuck her properly.","tells me to be rough.","tells me she's ready for more.","says that I just took her first time.","confesses its her first time.","blurts out that she's a virgin."])
 									,
 								" Our tongues meet as she guides my member into her. "," She arches her back as I slowly slide into her. "," She spreads her legs and I gently slide into her. "," She spreads herself with both hands and I slide inside her. "," I caress one of her "+DescWord(unit(s[2]),"breasts",90)+"breasts as she guides me into her."])+
 								choose([" She moans as I start thrusting"," She hugs me close when I start thrusting"," She gasps as I start thrusting"," She starts to move her hips, taking my full length each time"])+
@@ -5630,7 +5939,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 									", and soon we both cum.",
 									", and soon she's a quivering mess. I feel her tighten around me as I cum!",
 									choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," A moment later, she stops pumping her hips and braces against me. Her leg starts to quiver as she finishes."]),
-									choose([". While holding her close, I whisper into her ear that I love her. She moans as my words send her over the edge! ",". She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away and moves her lips down to start sucking me, determined to finish the job."+choose([" She shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])])
+									choose([". My lips brush against her ear while I whisper that I love her. She moans as my words send her over the edge! ",". She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away and moves her lips down to start sucking me, determined to finish the job."+choose([" She shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])])
 								])
 							)
 						}
@@ -5653,19 +5962,19 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				if((map[party.y][party.x].units[s[2]-100].Tags[0] == "Wolfgirl" || map[party.y][party.x].units[s[2]-100].Tags[0] == "Froggirl" || map[party.y][party.x].units[s[2]-100].Tags[0] == "Catgirl" || map[party.y][party.x].units[s[2]-100].Tags[0] == "Foxgirl") && map[party.y][party.x].units[s[2]-100].CPle > 0 && s[5] != "Indoors"){
 					//Has Legs
 					Entrys.push(
-						choose(["I tackle SUB","I tackle SUB to the ground","I tackle SUB to the ground. I look at her","I grapple SUB and pull both of us to the ground. I look at her","I pull SUB down to the ground with me","I push SUB to the ground. Straddling her, I lift her chin","I push SUB to the ground. I straddle her"])+
+						choose(["I tackle SUB","I tackle SUB to the GROUND","I tackle SUB to the GROUND. I look at her","I grapple SUB and pull both of us to the GROUND. I look at her","I pull SUB down to the GROUND with me","I push SUB to the GROUND. Straddling her, I lift her chin","I push SUB to the GROUND. I straddle her"])+
 						choose([
 							choose([" and ask if she really wants to hurt me."," and ask if she really wants to fight."," and ask if we really have to keep fighting."," and ask if we really need to settle this with violence."])+
-							choose([" She tells me to stop talking and stick it in already."," She timidly shakes her head."," She shakes her head before giving me a kiss."," She responds with a kiss."," She thinks for a moment before slowly shaking her head."," She blushes and pulls me into a kiss."])
+							choose([" She tells me to shush and stick it in already."," She timidly shakes her head."," She shakes her head before giving me a kiss."," She responds with a kiss."," She thinks for a moment before slowly shaking her head."," She blushes and pulls me into a kiss."])
 						,
 							choose([" and ask if we can have some fun instead of hurting each other."," and ask if she's ready to stop fighting."," and ask if we can try something less violent."])+
-							choose([" She tells me to stop talking and stick it in already."," She timidly nods her head."," She nods before giving me a kiss."," She responds with a kiss."," She thinks for a moment before slowly nodding her head."," She blushes and cocks her eyebrow."," She blushes and pulls me into a kiss."," She blushes and asks what I have in mind."])
+							choose([" She tells me to shush and stick it in already."," She timidly nods her head."," She nods before giving me a kiss."," She responds with a kiss."," She thinks for a moment before slowly nodding her head."," She blushes and cocks her eyebrow."," She blushes and pulls me into a kiss."," She blushes and asks what I have in mind."])
 						//neck nibble
 						])+
 						choose([
 							choose([" I frot against her until she's wet,"])+
 							choose([" then plunge inside.",
-								choose([" but she winces when I slide into her."," but she grimaces when I push into her."])+
+								choose([" but she winces when I thrust into her."," but she grimaces when I push into her."])+
 								choose([""," I pull back and see blood along my shaft."," I look between us and see smears of blood."])+
 								choose([" When I start to rise, she grabs my hips. She pleads for me not to stop yet."," She grabs my hips when I start to rise, and asks me for another go."])+
 								choose([" I move slower this time as she grips my shoulders."," I try moving slower the second time, but she roughly pulls my hips to hers."])+
@@ -5676,19 +5985,18 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 							,
 						" Our tongues meet as she guides my member into her. "," She arches her back as I slowly slide into her. "," She spreads her legs and I gently slide into her. "," She spreads herself with both hands and I slide inside her. "," I caress one of her "+DescWord(unit(s[2]),"breasts",90)+"breasts as she guides me into her."])+
 						choose([" She moans as I start thrusting"," She hugs me close when I start thrusting"," She gasps as I start thrusting"," She starts to move her hips, taking my full length each time"])
-					)//CONTINUES BELOW
-						
+					)//CONTINUES BELOW 
 						if(unit(s[2]).willing && Math.random()<.2){
 							Entrys[Entrys.length-1] += choose([
-								". She wraps her legs around me as we finish together. She whispers into my ear that she'd be fine as either my mate or my meal.",
+								". Her legs wrap around me as we finish together. She whispers into my ear that she'd be fine as either my mate or my meal.",
 								", and soon we both cum. She pulls my head down to her chest until my lips reach her nipple. As I gently suck on it, she tells me I can taste her whenever I want.",
 								", and soon she's a quivering mess. As she cums, she blurts out that she wants me to eat her.",
 								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," While I keep thrusting into her, my stomach growls. The sound somehow sends her over the edge!"," A moment later, her eyes roll back as she reaches her zenith. Her leg starts to quiver as she finishes."," A moment later, she stops pumping her hips and braces against me. Her leg starts to quiver as she finishes."]),
-								choose([". While holding her close, I whisper into her ear that I love her. She moans as my words send her over the edge! ",". While she humps her hips, my stomach growls. The sound somehow sends her over the edge!"," Her eyes suddenly roll back as I feel her gush against me. ",". She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away and moves her lips down to start sucking me, determined to finish the job."+choose([" She shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])+" As she pulls me out of her mouth, she tells me I should taste her next time."])
+								choose([". While holding her close, I whisper into her ear that I love her. She moans as my words send her over the edge! ",". While she humps her hips, my stomach growls. The sound somehow sends her over the edge!",". Her eyes suddenly roll back as I feel her gush against me. ",". She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away and moves her lips down to start sucking me, determined to finish the job."+choose([" She shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])+" As she pulls me out of her mouth, she tells me I should taste her next time."])
 							])
 						}else{
 							Entrys[Entrys.length-1] += choose([
-								". She wraps her legs around me as we finish together.",
+								". Her legs wrap around me as we finish together.",
 								", and soon we both cum.",
 								", and soon she's a quivering mess. I feel her tighten around me as I cum!",
 								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," A moment later, her eyes roll back as she reaches her zenith. Her leg starts to quiver as she finishes."," A moment later, she stops pumping her hips and braces against me. Her leg starts to quiver as she finishes."]),
@@ -5881,33 +6189,38 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 	}
 
 	if(s[5]=="Dungeon"){
-		Entry = Entry.replace(/GROUND/g, "brick");
-		Entry = Entry.replace(/OBJECTSHORT/g, choose(["cask","table","barrel","crate"]));
-		Entry = Entry.replace(/OBJECTTALL/g, choose(["brick wall","wall","column"]));
+		Entry = Entry.replace(/GROUND/g, "brick","floor");
+		Entry = Entry.replace(/OBJECTSHORT/g, choose(["a cask","the table","a barrel","a crate"]));
+		Entry = Entry.replace(/OBJECTTALL/g, choose(["a brick wall","the wall","a column"]));
 	}
 	if(s[5]=="Indoors"){
-		Entry = Entry.replace(/GROUND/g, "floor");
-		Entry = Entry.replace(/OBJECTSHORT/g, choose(["couch","table","counter","windowsil"]));
-		Entry = Entry.replace(/OBJECTTALL/g, choose(["wall","wardrobe","shelf"]));
+		Entry = Entry.replace(/GROUND/g, "floor","carpet","floorboards");
+		Entry = Entry.replace(/OBJECTSHORT/g, choose(["the couch","the table","the counter","the windowsil","the open windowsil"]));
+		Entry = Entry.replace(/OBJECTTALL/g, choose(["the wall","the wardrobe","the shelf","a closed door"," a wooden support beam"]));
 	}
 	if(s[5]=="Forest"){
-		Entry = Entry.replace(/GROUND/g, choose(["grass","ground","tall grass"]));
-		Entry = Entry.replace(/OBJECTSHORT/g, choose(["stump","fallen tree","large log","mossy boulder"]));
+		Entry = Entry.replace(/GROUND/g, choose(["grass","ground","tall grass","mossy earth","bare dirt","fallen leaves"]));
+		Entry = Entry.replace(/OBJECTSHORT/g, choose(["a stump","a fallen tree","a large log","a mossy boulder"]));
 		Entry = Entry.replace(/OBJECTTALL/g, choose(["tree"]));
+	}
+	if(s[5]=="Plains"){
+		Entry = Entry.replace(/GROUND/g, choose(["grass","ground","tall grass","wild grass","short grass","bare dirt"]));
+		Entry = Entry.replace(/OBJECTSHORT/g, choose(["a stump","a fallen tree","a large log","a mossy boulder"]));
+		Entry = Entry.replace(/OBJECTTALL/g, choose(["the only tree"]));
 	}
 	if(s[5]=="Cave" || s[5]=="Entrance"){
 		Entry = Entry.replace(/GROUND/g, "stone","ground");
-		Entry = Entry.replace(/OBJECTSHORT/g, choose(["stone ledge","ledge","broken stalagmite","large log","boulder"]));
-		Entry = Entry.replace(/OBJECTTALL/g, choose(["stalagmite","stone wall","wall"]));
+		Entry = Entry.replace(/OBJECTSHORT/g, choose(["a stone ledge","the ledge","a broken stalagmite","a fallen stalactite","a boulder"]));
+		Entry = Entry.replace(/OBJECTTALL/g, choose(["a large stalagmite","a stone wall","the wall"]));
 	}
 	if(s[5]=="Water"){
-		Entry = Entry.replace(/GROUND/g, "shore");
-		Entry = Entry.replace(/OBJECTSHORT/g, choose(["shore","bank","ledge"]));
-		Entry = Entry.replace(/OBJECTTALL/g, choose(["bank","ridge"]));
+		Entry = Entry.replace(/GROUND/g, "shore","sandy bank");
+		Entry = Entry.replace(/OBJECTSHORT/g, choose(["the shore","the shore","the bank","the ledge","the sandy bank","a sunken log"]));// ADD THE/A/AN?
+		Entry = Entry.replace(/OBJECTTALL/g, choose(["the bank","the ridge"]));
 	}
 	Entry = Entry.replace(/GROUND/g, "ground");
-	Entry = Entry.replace(/OBJECTSHORT/g, choose(["stump"]));
-	Entry = Entry.replace(/OBJECTTALL/g, choose(["tree"]));
+	Entry = Entry.replace(/OBJECTSHORT/g, choose(["a stump"]));
+	Entry = Entry.replace(/OBJECTTALL/g, choose(["a tree"]));
 	 
 	 //------
 	if(PositiveUnit != null){
@@ -6804,8 +7117,11 @@ function randomTravel(Basic){
 							}
 						}
 					}
-					if(PositiveUnit != null && Math.random()<.8){
+					if(PositiveUnit != null && Entrys.length == 0){
 						Entrys.push("We "+choose(["walk along","follow", "travel"," continue along"])+" AMAP. My POS"+choose([" takes the lead"," walks ahead"," walks in front"," stays in front"," stays ahead"])+choose([".",".",".",".",".",".",", keeping an eye out for danger.",", alert for any threats."," to make sure its safe."])+GetMapHint("POS"))
+						if(party.units.length > 2){
+							Entrys.push("My POS"+choose(["keeps an eye out"," guides us"," takes the lead"," is always ahead of us"," stays ahead of us"," stays alert"," stays in front of us"," stays in front"," stays ahead"])+" as we "+choose(["walk along","follow", "travel"," continue along"])+" AMAP.")
+						}
 						if(party.units.length > 2){
 							Entrys.push("We "+choose(["walk along","follow", "travel"," continue along"])+" AMAP. My POS"+choose([" leads us"," walks in front us"," walks ahead of us"," stays in front of us"," stays ahead of us"])+choose([".",".",".",".",".",".",", keeping an eye out for danger.",", alert for any threats."," to make sure its safe."])+GetMapHint("POS"))
 						}

@@ -3416,7 +3416,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					Entrys.push("I flirt with SUB. She blushes and calls me romantic.")
 				}
 				if(unit(s[2]).Negative){
-					Entrys.push("I flirt with SUB. She starts staring between my legs.")
+					Entrys.push("I flirt with SUB. She looks away, but tries sneaking a peek between my legs.")
 				}
 				if(unit(s[2]).Funny){
 					Entrys.push("I flirt with SUB. She giggles and asks if I'll settle for a handjob.")
@@ -3433,6 +3433,9 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				if(unit(s[2]).Tags[0] == "Mousegirl"){
 					Entrys.push("I notice SUB is peeking at my cock, I ask if she thinks it will fit. She says she'd be willing to try!")
 					Entrys.push("I use a single finger to rub SUB's bean, she moans as her tiny body hugs my arm!")
+				}
+				if(unit(s[2]).willing){
+					Entrys.push("I flirt with SUB. She sticks a finger into my mouth, and asks if she tastes good.")
 				}
 				Entrys.push("I blow SUB a kiss, and she blows one back.")
 				if(s[5]=="Indoors" && map[party.y][party.x].units[s[2]-100].Tags[0] == "Bunnygirl"){
@@ -3884,13 +3887,13 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 								Entry += choose([" She thanks me for all the memories as I close my mouth around her."," She gives my lip a rough bite before sliding into my belly."," She licks my tongue before sliding into my belly."," She gives my tongue a playful bite before sliding into my belly."])
 							}
 						}else{
-							 if(unit(s[2]).Tags[0] == "Deergirl" && Math.random()<.1){
+							 if(unit(s[2]).Tags[0] == "Deergirl" && Math.random()<.2){
 								Entry += choose([" Her ears tickle my throat as they pass. Once inside, I feel her hooves push against my stomach until she's comfortable."])
-							}else if(unit(s[2]).Tags[0] == "Bunnygirl" && Math.random()<.1){
+							}else if(unit(s[2]).Tags[0] == "Bunnygirl" && Math.random()<.2){
 								Entry += choose([" Her ears tickle my throat as they pass. Once inside, she calls my belly a cozy burrow."])
-							}else if(unit(s[2]).Tags[0] == "Catgirl" && Math.random()<.1){
+							}else if(unit(s[2]).Tags[0] == "Catgirl" && Math.random()<.2){
 								Entry += choose([" I give her sensitive ears a quick massage before gobbling her down."])
-							}else if((unit(s[2]).Tags[0] == "Foxgirl" || unit(s[2]).Tags[0] == "Wolfgirl") && Math.random()<.1){
+							}else if((unit(s[2]).Tags[0] == "Foxgirl" || unit(s[2]).Tags[0] == "Wolfgirl") && Math.random()<.2){
 								Entry += choose([" She howls loudly before she slides into my belly."," She yips loudly as I swallow her down."])
 							}else if(unit(s[2]).Tags[0] == "Froggirl" && Math.random()<.75){
 								Entry += choose([" Her neck twists impossibly far to look me in the eyes one last time as I swallow her down."," I finish swallowing, and she curls up to get comfortable."," She slides into my belly, and I hear her ribbit loudly."])+
@@ -4346,7 +4349,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						])
 					])+
 					choose(["",
-						"I "+choose(["fondle","grope","squeeze"])+" her"+choose([" body"," bosom"," breasts"," behind"," rear"])+choose([" as she presses against my stomach. Her hand is between her legs as she tries getting off.","through my belly as she masturbates inside me."])+choose([" She cums just before digesting!"," Despite my help, she isn't able to cum before digesting."," She screams out in orgasm right before digesting!"," She shudders when she climaxes, and my body quickly digests her."]),
+						" I "+choose(["fondle","grope","squeeze"])+" her"+choose([" body as she"," bosom as she"," breasts as they"," behind as it"," rear as it"])+choose([" presses against my stomach. She moans at my touch, and starts fingering herself.","through my belly as she masturbates inside me."])+choose([" She cums just before digesting!"," Despite my help, she isn't able to cum before digesting."," She screams out in orgasm right before digesting!"," She shudders when she climaxes, and my body quickly digests her."]),
 						choose([" I feel her masturbate "," I feel her masturbate "," I feel her masturbate "," I feel her masturbate "," Her masturbating almost takes me off balance as she tries getting off for one last time"," I feel her masturbate inside me for a while"," I hear her moan inside me"," She wiggles around and moans for a while"," I feel her hump against my stomach walls"," She moves rhythmically inside as she tries getting off"," She begs for me to melt her down as she masturbates"," She pushes hard against the sides of my stomach while she moans"," Her body presses against my belly, I see the outline of her hand between her legs"," Her hands make impressions against my belly as she begs for me to churn her into mush"])+
 						choose([" until she cums right as I finish digesting her."," until she cums just before digesting."," she isn't able to climax before digesting unfortunately."," until she digests."," before she cums. She thanks me for choosing her before passes out."," before her body shudders in orgasm. She fully digests soon after."," before finally reaching her zenith and digesting away."," before she gives up and digests without an orgasm."," until she cums. She cries out as my stomach acids melt her down."," before reaching her climax. We say our goodbyes as I start churning her into mush."," until my acids get to work and she starts panicking. I burp out the last of her air to stop her suffering."])
 						//,choose([" Her frame causes my stomach to bloat exponentially."," An outline of her body pushes juts out of my belly."])
@@ -4826,7 +4829,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						Entrys.push("CDOM"+choose(["","",""," apologizes before she"," takes a deep breath before she "," nervously"," timidly"," slowly"])+" bites down to feed on SUB, but pulls back when the other girl yelps from the pain. I stand behind SUB and embrace her. She holds my hand with both of hers as DOM tries to feed again. CSUB squeezes my hand tightly as shes fed on until her grip goes limp. "+choose(["","","I gently lay SUB on the ground and close her eyes.","I rub DOM's head between her fluffy ears and she gives me a meek smile.","I rub DOM's head between her fluffy ears and tell her she did good."]))
 					}
 					//generic
-					Entrys.push(choose(["CDOM apologizes before sinking her teeth into SUB's neck, she","CDOM says nothing before sinking her teeth into SUB's neck, she","CDOM hugs SUB before biting down on the girl's neck, she","CDOM gives SUB a quick kiss before biting down on the surprised girl's neck, she"])+choose([""," quickly"," slowly"," greedily", " hungrily"])+choose([" drains the color out of the other girls face. "," taps into a juicy vein, feasting on the other girls warm blood. "," makes a bloody mess as she drinks her fill. "," sucks the life from the other girl. "," sucks down the other girls blood in time with her weakening heartbeat. "," drinks. "])+choose(["","CSUB simply closes her eyes and lets herself be taken.","CSUB passes out shortly after the feeding starts."]))
+					Entrys.push(choose(["CDOM apologizes before sinking her teeth into SUB's neck, she","CDOM says nothing before sinking her teeth into SUB's neck, she","CDOM hugs SUB before biting down on her neck, she","CDOM gives SUB a quick kiss before biting down on the surprised girl's neck, she"])+choose([""," quickly"," slowly"," greedily", " hungrily"])+choose([" drains the color out of the other girls face. "," taps into a juicy vein, feasting on the warm blood. "," makes a bloody mess as she drinks her fill. "," sucks the life from the other girl. "," sucks down the other girls blood in time with her weakening heartbeat. "," drinks. "])+choose(["","CSUBSHORT simply closes her eyes and lets herself be taken.","CSUBSHORT passes out shortly after the feeding starts."]))
 					Entrys.push("CDOM plants a large kiss right on SUB's lips! The SUBRACE seems surprised, but soon returns the affection. The makeout session seems normal at first, but soon DOM starts kissing the other girls cheek, then her jaw, then lower to the neck. The mood shifts when DOM bites down and starts feeding. CSUB winces at the pain and weakly struggles until passing out from bloodloss.")
 					if(unit(s[2]).Tags[0] == "Batgirl"){
 						Entrys = []
@@ -5217,10 +5220,10 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						}else{
 							Entrys[Entrys.length-1] += "."
 						}
-						Entrys.push("CDOM swoops down to SUB and tilts the girls head back to bite her throat. CSUBSHORT's eyes grow wide as her blood is sucked down by the hungry bat. She falls backwards when DOM finishes her meal."+choose(["The Batgirl uses her wings to quickly get airborne again.","The Batgirl licks her lips before using her wings to get airborne once more."]))	
+						Entrys.push("CDOM swoops down to SUB and tilts the girls head back to bite her throat. CSUBSHORT's eyes grow wide as her blood is sucked down by the hungry bat. She falls backwards when DOMSHORT finishes her meal."+choose([" She uses her wings to quickly get airborne again."," She licks her lips before flapping her wings to get airborne once more."]))	
 					}
 					
-						Entrys.push("CDOM leaps on SUB's back and bites down hard at the base of her neck to drink. CSUB falls to her knees as the color is drained from her face."+choose([""," CDOM wipes her bloody mouth and lets the depleted meal slump forward."]))
+						Entrys.push("CDOM leaps on SUB's back and bites down hard at the base of her neck to drink. CSUBSHORT falls to her knees as the color is drained from her face."+choose([""," CDOMSHORT wipes her bloody mouth and lets the depleted meal slump forward."]))
 					
 					if(unit(s[1]).Negative){
 						Entrys.push("CDOM "+choose(["","","nervously ","quietly "])+"apologizes before sinking her teeth into SUB's neck, she looks timid even as she sucks the life force from the struggling girl.")
@@ -5460,7 +5463,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 			}
 		}else if((s[1]==0 || s[2]==0) && Cocked != null && s[3] == 1){
 			if(s[1]==0){
-				Entrys = ["I grab SUB by the hips, and thrust until we both orgasm! With my balls swollen from the "+Cocked.Name+", I cum buckets into SUBSHORT and her belly bloats out!"]
+				Entrys = ["I grab SUB by the hips, and thrust until we both orgasm! With my balls swollen from the "+Cocked.Name+", I cum buckets into her and she bloats out!"]
 			}else{
 				Entrys = ["CDOM wraps her hand around my swollen member and starts to lick the tip. Soon shes bobbing on my shaft. With my balls swollen from the "+Cocked.Name+" my cum overwhelms DOMSHORT and it dribbles down her nose!"]
 			}
@@ -5604,7 +5607,8 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						Entry += choose([
 							"I approach SUB from behind",
 							"I walk up behind SUB",
-							"I step behind SUB"
+							"I step behind SUB",
+							""
 						])
 					}else{
 						Entry += choose([
@@ -5613,14 +5617,17 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 							" I step behind her"
 						])
 					}
+					if(Entry == ""){
+						Entry += 
+							"I rest my hands on SUB's "+choose(["","tense ","stiff "])+" shoulders"+choose([", and ",". When she asks, I ",". She sighs as I ",". She stands still while I "])+"give her a massage"+
+							choose([
+								".",
+								", digging my palms against her back with my fingers draped over her.",
+								" until I feel the "+choose(["stiffness","tension"])+" is worked away.",
+								". My fingers dig in deep to work out the knots in her muscles."
+							])
+					}else{ 
 						Entry += choose([
-							" and rest my hands on her "+choose(["","tense ","stiff "])+" shoulders"+choose([", and ",". When she asks, I ",". She sighs as I ",". She stands still while I "])+"give her a massage"+
-								choose([
-									", digging my palms against her back with my fingers draped over her.",
-									" until I feel the "+choose(["stiffness","tension"])+" is worked away.",
-									". My fingers dig in deep to work out the knots in her muscles."
-								])
-							,
 							" and wrap my arms around her.",
 							" and wrap my arms around her "+DescWord(unit(s[2]),"belly",100)+choose([" belly."," midriff."," stomach."," middle."]),
 							" to drape my arms "+choose(["over","around","across"])+" her shoulders.",
@@ -5639,6 +5646,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						
 						
 						])
+					}
 						if(s[14] == "normal" || s[14] == "start"){//Foreplay
 							Entry += choose([
 							" SheCONTINUE",
@@ -8296,7 +8304,7 @@ function SpawnMobs(i,o,land){
 		})
 	}else if(land == "FortWolf"){
 		map[i][o].hostile=true;
-		quantity = Number(choose([1,1,2,2,2,2,3,4]));
+		quantity = Number(choose([1,2,2,3,3,3,3,4]));
 		while(map[i][o].units.length < quantity){
 			map[i][o].units.push({
 				Name:randomEntry("WolfDesc"),
@@ -8315,7 +8323,7 @@ function SpawnMobs(i,o,land){
 			})
 		}
 	}else if(land == "ForestWolf"){
-		if(dice > 90){
+		if(dice > 80){
 			map[i][o] = {tag:"Forest",name:randomEntry("WolfForest"),units:[],hostile:true,clr:"#77cc55"};
 			quantity = Number(choose([1,1,2]));
 			while(map[i][o].units.length < quantity){
@@ -8335,9 +8343,9 @@ function SpawnMobs(i,o,land){
 					Cond:[]
 				})
 			 }
-		 }else if(dice > 88){
+		 }else if(dice > 78){
 			map[i][o] = {tag:"Indoors",name:"Spacious Lodge",units:[],hostile:true};
-			quantity = Number(choose([1,2,2,3,3,4]));
+			quantity = Number(choose([1,2,3,4,4,4]));
 			while(map[i][o].units.length < quantity){
 				map[i][o].units.push({
 					Name:randomEntry("WolfDesc"),
@@ -8355,7 +8363,7 @@ function SpawnMobs(i,o,land){
 					Cond:[]
 				})
 			 }
-		 }else if(dice > 85){
+		 }else if(dice > 68){
 			map[i][o].name=  randomEntry("DeerForest") 
 			map[i][o].units.push({
 				Name:randomEntry("DeerDesc"),
@@ -8733,6 +8741,7 @@ function StatGain(i,o){
 	}
 	if(unit(o).Name == "Wolf Queen"){
 		unit(i).MPle += 10;
+		unit(i).CPle += 10;
 		if(unit(i).appetite < 4){
 			unit(i).appetite = 4;
 		}

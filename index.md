@@ -13,6 +13,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>F6</title>
 <style>
+h1{
+display: none;
+}
 .bod {
 	background-color: #2e4052;
 	margin:0px;

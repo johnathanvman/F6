@@ -30,6 +30,7 @@ user-select: none;
 }
 .grid-container {
 	border-radius: 15px 15px 15px 15px;
+	background-color:#b5a886;
 	border-color:#b5a886;
 	border-style: solid;
 	border-width: 30px;
@@ -978,7 +979,14 @@ function Walk(i,o){
 			map[party.y][party.x].travel = travel
 		}
 		LogEntry(randomTravel(1));travel++
-		//unclickable buttons
+		//unclickable buttons     style="border-radius: 0px 0px 5px 0px;"
+		document.getElementById("map_top1").style.borderRadius  = "5px 0px 0px 0px";
+		document.getElementById("map_top5").style.borderRadius  = "0px 5px 0px 0px";
+		document.getElementById("map_bottom1").style.borderRadius  = "0px 0px 0px 5px";
+		document.getElementById("map_bottom5").style.borderRadius  = "0px 0px 5px 0px";
+		
+		
+		
 		document.getElementById("map_top1").style.backgroundColor  = GetMapTileColor(party.y-2,party.x-2);
 		document.getElementById("map_top2").style.backgroundColor  = GetMapTileColor(party.y-2,party.x-1);
 		document.getElementById("map_top3").style.backgroundColor  = GetMapTileColor(party.y-2,party.x);
@@ -1071,6 +1079,13 @@ function Walk(i,o){
 		}
 		
 		//clickable buttons
+		
+		document.getElementById("map_top1").style.borderRadius  = "5px 0px 0px 0px";
+		document.getElementById("map_top5").style.borderRadius  = "0px 5px 0px 0px";
+		document.getElementById("map_bottom1").style.borderRadius  = "0px 0px 0px 5px";
+		document.getElementById("map_bottom5").style.borderRadius  = "0px 0px 5px 0px";
+		
+		
 		document.getElementById("map_top1").style.backgroundColor  = GetMapTileColor(party.y-2,party.x-2);
 		document.getElementById("map_top2").style.backgroundColor  = GetMapTileColor(party.y-2,party.x-1);
 		document.getElementById("map_top3").style.backgroundColor  = GetMapTileColor(party.y-2,party.x);

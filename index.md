@@ -438,11 +438,11 @@ Put a status and menu bar here someday!
 <div id="map">
 	
 	<div class="grid-container">
-	  <div id="map_top1" class="grid-edge" style="border-radius: 5px 0px 0px 0px;"></div>
+	  <div id="map_top1" class="grid-edge"></div>
 	  <div id="map_top2" class="grid-edge"></div>
 	  <div id="map_top3" class="grid-edge"></div>  
 	  <div id="map_top4" class="grid-edge"></div>
-	  <div id="map_top5" class="grid-edge" style="border-radius: 0px 5px 0px 0px;"></div>
+	  <div id="map_top5" class="grid-edge"></div>
 	  <div id="map_left1" class="grid-edge"></div>  
 	  <div id="map_northwest" class="grid-item" onclick="Walk(-1,-1)"></div>
 	  <div id="map_north" class="grid-item" onclick="Walk(-1,0)"></div>
@@ -458,11 +458,11 @@ Put a status and menu bar here someday!
 	  <div id="map_south" class="grid-item" onclick="Walk(+1,0)"></div>  
 	  <div id="map_southeast" class="grid-item" onclick="Walk(+1,+1)"></div>  
 	  <div id="map_right3" class="grid-edge"></div>
-	  <div id="map_bottom1" class="grid-edge"style="border-radius: 0px 0px 0px 5px;"></div>
+	  <div id="map_bottom1" class="grid-edge" ></div>
 	  <div id="map_bottom2" class="grid-edge"></div>  
 	  <div id="map_bottom3" class="grid-edge"></div>
 	  <div id="map_bottom4" class="grid-edge"></div>
-	  <div id="map_bottom5" class="grid-edge"style="border-radius: 0px 0px 5px 0px;"></div>  
+	  <div id="map_bottom5" class="grid-edge"></div>  
 	</div>
 </div>
 <div id="main">
@@ -477,6 +477,7 @@ log
 </div>
 </body>
 <script>
+//style="border-radius: 0px 0px 5px 0px;"
 var tempInits = []
 var prevInit = 1
 var currInit = 1

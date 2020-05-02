@@ -1,31 +1,45 @@
-<!DOCTYPE html>
 <html lang="en-US">
 
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;800&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Londrina+Solid&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Londrina+Outline|Londrina+Solid&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Idea 001</title>
 <style>
 .bod {
-	background-color: #000000;
+	background-color: #2e4052;
+	margin:0px;
+	animation-name: animation_bod;
+	animation-duration: 1s;
+}
+@keyframes animation_bod{
+	  0%  {opacity: 0.0;background-color: #2e4052;}
+	 50%  {opacity: 0.0;background-color: #172028;}
+	100%  {opacity: 1.0;background-color: #2e4052;}
 }
 .main
 {
 user-select: none;
 }
 .grid-container {
-
-  display: inline-grid;
-  text-align: center;
-  grid-template-columns: 5px auto auto auto 5px;
-  grid-template-rows: 5px auto auto auto 5px;
-  padding: 10px;
-  margin: 10px;
+	border-radius: 15px 15px 15px 15px;
+	border-color:#b5a886;
+	border-style: solid;
+	border-width: 30px;
+	box-shadow: 2px 4px 8px #666;
+	display: inline-grid;
+	text-align: center;
+	grid-template-columns: 5px auto auto auto 5px;
+	grid-template-rows: 5px auto auto auto 5px;
+	padding: 0px;
+	margin: 10px 10px -15px 10px;
 }
 .grid-edge {
 }
@@ -34,28 +48,27 @@ user-select: none;
   padding: 10px;
   font-family: 'Love Ya Like A Sister', cursive;
   font-size: 18px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 1);
   text-align: center;
   user-select: none; 
 }
 .container {
-	font-family: "Consolas", "Lucida Console", Monaco, monospace;
+	box-shadow: 0px 0px 200px #172028;
+	font-family: 'PT Mono', monospace;
 	font-size: 12px;
-	background-color: grey;
+	background-color: #a69f98;
 	text-align: center;
-	margin: auto;
+	margin: auto
 
 }
 .mapspan {
 	font-family: 'Permanent Marker', cursive;
-	
 	display: inline-block;
 	user-select: none; 
 	
 }
 .land {
 	font-family: 'Permanent Marker', cursive;
-	
   padding: 10px;
   margin: 0px;
   border: none;
@@ -107,22 +120,33 @@ user-select: none;
   background-color:#88cccc;
   border-radius: 4px;
 }
+.landavl:hover {
+	animation-name: animation_landavl_hover;
+	animation-duration: .5s;
+}
+@keyframes animation_landavl_hover {
+	  0%  {transform: translate(0px,  0px) scale(.95, 1.105);}
+	 20%  {transform: translate(0px, 2px) scale(1.05, .95);}
+	100%  {transform: translate(0px,-4px) scale(1, 1);}
+}
 .btn {
+	box-shadow: 2px 4px 8px #000;
 	user-select: none;
-	font-family: 'Bangers', cursive;
+	font-family: 'Luckiest Guy', cursive;
 	font-size: 12px;
 	letter-spacing: .5px;
   padding: 10px;
-  margin: 5px;
+  margin: 15px 5px 5px 5px;
   border: none;
   border-radius: 4px;
 }
 .btndis {
+	box-shadow: 1px 2px 4px #000;
 	user-select: none;
-	font-family: 'Bangers', cursive;
+	font-family: 'Luckiest Guy', cursive;
 	font-size: 18px;
   padding: 10px;
-  margin: 5px;
+  margin: 15px 5px 5px 5px;
   border: none;
   pointer-events: none;
   user-select: none;
@@ -131,40 +155,78 @@ user-select: none;
   border-radius: 4px;
 }
 .btnact {
+	box-shadow: 1px 2px 2px #000;
 	user-select: none;
-	font-family: 'Bangers', cursive;
+	font-family: 'Luckiest Guy', cursive;
 	font-size: 18px;
 	letter-spacing: 2px;
-	padding: 10px;
-	margin: 5px;
+	margin: 15px 5px 5px 5px;
+	padding: 8px 12px 8px 12px;
 	border: none;
-	background-color:#000000;
-	color:#ffee88;
+	background-color:#ffee88;
 	font-weight: 800;
 	border-radius: 4px;
+	animation-name: animation_btnact;
+	animation-duration: .5s;
+	animation-fill-mode: forwards;
+	/*animation-delay: -1s;*/
+	/*animation-iteration-count: infinite;*/
+	/*animation-timing-function: linear;*/
+}
+
+@keyframes animation_btnact {
+	  0%  {transform: translate(0px,  0px) scale(.95, 1.105);}
+	 20%  {transform: translate(0px, 2px) scale(1.05, .95);}
+	100%  {transform: translate(0px,-4px) scale(1, 1);}
 }
 .btnavl {
+	box-shadow: 2px 4px 8px #000;
 	user-select: none;
 	cursor: pointer;
-	font-family: 'Bangers', cursive;
+	font-family: 'Luckiest Guy', cursive;
 	font-size: 18px;
 	letter-spacing: .5px;
   padding: 10px;
-  margin: 5px;
+  margin: 15px 5px 5px 5px;
   border: none;
   background-color:#88cccc;
   border-radius: 4px;
 }
+.btnext {
+	box-shadow: 2px 4px 8px #000;
+	user-select: none;
+	cursor: pointer;
+	font-family: 'Luckiest Guy', cursive;
+	font-size: 18px;
+	letter-spacing: .5px;
+  padding: 10px;
+  margin: 15px 5px 5px 5px;
+  border: none;
+  background-color:#88cccc;
+  border-radius: 4px;
+	animation-name: animation_btnext;
+	animation-duration: .5s;
+	animation-fill-mode: forwards;
+}
+@keyframes animation_btnext {
+	  0%  {background-color:#88cccc;transform: translate(0px,0px) scale(1.01, .96);}
+	 20%  {background-color:#91D8D8;transform: translate(0px,1px) scale(.98, 1.02);}
+	100%  {background-color:#88cccc;transform: translate(0px,0px) scale(1, 1);}
+}
 .nam {
+	margin-bottom:3px;
+	box-shadow: 0px 1px 2px #999;
 	user-select: none;
 	font-family: 'Londrina Solid', cursive;
 	letter-spacing: .5px;
 	font-size: 18px;
 	font-weight: 100;
 	border: none;
-	border-radius: 2px;
+	border-radius: 5px 5px 0px 0px;
 }
-.namdis {
+.namdis { 
+	margin-bottom:3px;
+	box-shadow: 0px 1px 2px #999;
 	user-select: none;
 	font-family: 'Londrina Solid', cursive;
 	letter-spacing: .5px;
@@ -175,9 +237,11 @@ user-select: none;
 	user-select: none;
 	background-color: #cccccc;
 	color:#333333;
-	border-radius: 2px;
+	border-radius: 10px 10px 0px 0px;
 }
-.namsleep {
+.namsleep { 
+	margin-bottom:3px;
+	box-shadow: 0px 1px 2px #999;
 	user-select: none;
 	font-family: 'Londrina Solid', cursive;
 	letter-spacing: .5px;
@@ -188,9 +252,10 @@ user-select: none;
 	user-select: none;
 	background-color: #cccccc;
 	color:#883399;
-	border-radius: 2px;
+	border-radius: 10px 10px 0px 0px;
 }
-.namout {
+.namout { 
+	margin-bottom:3px;
 	user-select: none;
 	font-family: 'Londrina Solid', cursive;
 	letter-spacing: .5px;
@@ -199,21 +264,46 @@ user-select: none;
 	border: none;
 	pointer-events: none;
 	user-select: none;
-	background-color: #ffffff;
+	background: none;
 	color:#bbbbbb;
-	border-radius: 2px;
+	border-radius: 10px 10px 0px 0px;
 }
 .namact {
+	margin-top:1px;
+	box-shadow: 0px 1px 2px #999;
 	user-select: none;
 	font-family: 'Londrina Solid', cursive;
 	font-size: 18px;
 	font-weight: 300;
 	border: none;
-	background-color:#000000;
-	color:#ffee88;
-	border-radius: 2px;
+	background-color:#ffee88;
+	border-radius: 10px 10px 0px 0px;
 }
-.namavl {
+.namact_animate {
+	margin-top:1px;
+	box-shadow: 0px 1px 2px #999;
+	user-select: none;
+	font-family: 'Londrina Solid', cursive;
+	font-size: 18px;
+	font-weight: 300;
+	border: none;
+	background-color:#ffee88;
+	border-radius: 10px 10px 0px 0px;
+	animation-name: animation_namact;
+	animation-duration: .5s;
+	animation-fill-mode: forwards;
+}
+@keyframes animation_namact {
+	  0%  {transform: rotate(0deg);}
+	 20%  {transform: rotate(-.5deg);} 
+	 50%  {transform: rotate(1deg);}
+	100%  {transform: rotate(0deg);}
+}
+
+
+.namavl { 
+	margin-bottom:3px;
+	box-shadow: 1px 2px 2px #999;
 	user-select: none;
 	cursor: pointer;
 	font-family: 'Londrina Solid', cursive;
@@ -222,47 +312,102 @@ user-select: none;
 	font-weight: 100;
 	border: none;
 	background-color:#88cccc;
-	border-radius: 2px;
+	border-radius: 10px 10px 0px 0px;
+}
+.namavl_animate { 
+	margin-bottom:3px;
+	box-shadow: 1px 2px 2px #999;
+	user-select: none;
+	cursor: pointer;
+	font-family: 'Londrina Solid', cursive;
+	letter-spacing: .5px;
+	font-size: 18px;
+	font-weight: 100;
+	border: none;
+	background-color:#88cccc;
+	border-radius: 10px 10px 0px 0px;
+	animation-name: animation_namavl;
+	animation-timing-function: linear;
+	animation-duration: .5s;
+	animation-fill-mode: forwards;
+}
+@keyframes animation_namavl {
+	  0%  {background-color:#88cccc;color:#000;}
+	 50%  {background-color:#8CD1D1;color:#333;}
+	100%  {background-color:#88cccc;color:#000;}
 }
 .mainspan1 {
+	box-shadow: 2px 1px 8px #333;
 	user-select: none;
 	vertical-align: top;
 	padding: 5px 5px 5px 5px;
+	margin-right:2.5%;
 	background-color: white;
 	display: inline-block;
 	width: 40%;
 	text-align: left;
+	border-radius: 15px 0px 0px 0px;
 }
 .mainspan2 {
+	box-shadow: 2px 1px 8px #333;
 	user-select: none;
 	vertical-align: top;
 	padding: 5px 5px 5px 5px;
+	margin-left:2.5%;
 	background-color: white;
 	display: inline-block;
 	width: 40%;
 	text-align: right;
+	border-radius: 0px 15px 0px 0px;
+}
+.mainspan2_animate {
+	box-shadow: 2px 1px 8px #333;
+	user-select: none;
+	vertical-align: top;
+	padding: 5px 5px 5px 5px;
+	margin-left:2.5%;
+	background-color: white;
+	display: inline-block;
+	width: 40%;
+	text-align: right;
+	border-radius: 0px 15px 0px 0px;
+	animation-name: animation_mainspan2;
+	animation-timing-function: ease;
+	animation-duration: .25s;
+	animation-fill-mode: forwards;
+}
+@keyframes animation_mainspan2{
+	  0%  {opacity: 0.0;transform: scale(.95, 1.05);}
+	100%  {opacity: 1.0;transform: scale(1, 1);}
 }
 .log {
-	color:#333;
-	letter-spacing: .5px;
-	font-family: san-serif;
-	font-size: 125%;
-	padding: 10px 90px 90px 90px;
-	background-color: LightGray;
+	min-height: 1080px;
+	box-shadow: inset 40px 20px 80px #282828;
+	margin-top:-18px; 
+	border-left: 30px solid #a69f98;
+	border-right: 30px solid #a69f98;
+	color:#b5a886;
+	font-family: 'EB Garamond', serif;
+	font-size: 150%;
+	padding: 20px 30px 30px 30px;
+	background-color: #363635;
 	text-align: left;
 }
 .logDeets {
-	letter-spacing: .0px;
-	font-family: san-serif;
-	font-size: 100%;
-	color: DarkGray;
+	text-align: right;
+	font-family: 'PT Mono', monospace;
+	font-weight: 800;
+	font-size: 60%;
+	color: #a69f98;
 	font-style: italic;
+	margin-top:-1px;
+	margin-bottom:1px;
 }
 .tags{
 	 line-height: 175%;
 }
 .text {
-   font-family:Courier New, sans-serif;
+   font-family: 'PT Mono', monospace;
    position:  absolute;
    top: 0;
    left: 0;
@@ -293,11 +438,11 @@ Put a status and menu bar here someday!
 <div id="map">
 	
 	<div class="grid-container">
-	  <div id="map_top1" class="grid-edge"></div>
+	  <div id="map_top1" class="grid-edge" style="border-radius: 5px 0px 0px 0px;"></div>
 	  <div id="map_top2" class="grid-edge"></div>
 	  <div id="map_top3" class="grid-edge"></div>  
 	  <div id="map_top4" class="grid-edge"></div>
-	  <div id="map_top5" class="grid-edge"></div>
+	  <div id="map_top5" class="grid-edge" style="border-radius: 0px 5px 0px 0px;"></div>
 	  <div id="map_left1" class="grid-edge"></div>  
 	  <div id="map_northwest" class="grid-item" onclick="Walk(-1,-1)"></div>
 	  <div id="map_north" class="grid-item" onclick="Walk(-1,0)"></div>
@@ -313,11 +458,11 @@ Put a status and menu bar here someday!
 	  <div id="map_south" class="grid-item" onclick="Walk(+1,0)"></div>  
 	  <div id="map_southeast" class="grid-item" onclick="Walk(+1,+1)"></div>  
 	  <div id="map_right3" class="grid-edge"></div>
-	  <div id="map_bottom1" class="grid-edge"></div>
+	  <div id="map_bottom1" class="grid-edge"style="border-radius: 0px 0px 0px 5px;"></div>
 	  <div id="map_bottom2" class="grid-edge"></div>  
 	  <div id="map_bottom3" class="grid-edge"></div>
 	  <div id="map_bottom4" class="grid-edge"></div>
-	  <div id="map_bottom5" class="grid-edge"></div>  
+	  <div id="map_bottom5" class="grid-edge"style="border-radius: 0px 0px 5px 0px;"></div>  
 	</div>
 </div>
 <div id="main">
@@ -510,7 +655,7 @@ function GetMapTileColor(i,o){
 	} 
 	if(map[party.y][party.x].tag == "Dungeon"){
 		if(Math.abs(party.y-i)==2 || Math.abs(party.x-o)==2 ){
-			return "#808080"
+			return "#b5a886"
 		}else if(map[i][o].tag == "Dungeon"){
 			return "#999999"
 		}else{
@@ -518,7 +663,7 @@ function GetMapTileColor(i,o){
 		}
 	}if(map[party.y][party.x].tag == "Entrance"){
 		if(Math.abs(party.y-i)==2 || Math.abs(party.x-o)==2 ){
-			return "#808080"
+			return "#b5a886"
 		}else if(map[i][o].tag == "Cave" || map[i][o].tag == "Entrance"){
 			return "#000000"
 		}else if(map[i][o].tag == "Cliff"){
@@ -1265,7 +1410,7 @@ function Main(){
 	
 	//LogEntry(hero)
 	Good = "";
-	Food = "";
+	Food = ""; 
 	//GOOD
 	var e = 0;
 	var a = 0;
@@ -1290,28 +1435,31 @@ function Main(){
 			}
 			if(currInit == party.units[e].Init && party.units[e].asleep){
 				//Init = " - Active - Asleep"
-					skiptaketurn= "<button id=\"CON\"class=\"btnavl\" onclick=\"SkipAction("+e+")\">"+party.units[e].Name+" is asleep, Skip Turn</button>"
+					skiptaketurn= "<button id=\"CON\"class=\"btnext\" onclick=\"SkipAction("+e+")\">"+party.units[e].Name+" is asleep, Skip Turn</button>"
 					showstats = true;
 			}
 			if(currInit == party.units[e].Init && party.units[e].fled){
 				//Init = " - Active - Fled"
 				if(map[party.y][party.x].name == "Boss"){
-					skiptaketurn= "<button id=\"CON\"class=\"btnavl\" onclick=\"SkipAction("+e+")\">"+party.units[e].Name+
+					skiptaketurn= "<button id=\"CON\"class=\"btnext\" onclick=\"SkipAction("+e+")\">"+party.units[e].Name+
 					choose([" spectates"])
 					", Skip Turn</button>"
 				}else{
-					skiptaketurn= "<button id=\"CON\"class=\"btnavl\" onclick=\"SkipAction("+e+")\">"+party.units[e].Name+" has fled, Skip Turn</button>"
+					skiptaketurn= "<button id=\"CON\"class=\"btnext\" onclick=\"SkipAction("+e+")\">"+party.units[e].Name+" has fled, Skip Turn</button>"
 				}
 				showstats = true;
 			}
 		}
 		if(pick1 == -1 && pick2 == -1 && (!map[party.y][party.x].hostile || party.units[e].Init==currInit) && !party.units[e].asleep && !party.units[e].fled){//(No picks. not hostile, or current initiative)or someone else was picked and an action is picked
 		Good += "<button class=\"namavl\" onclick=\"SelectDom("+e+")\">"+party.units[e].Name+Init+"</button>"
+		}else if(pick1 == e && !party.units[e].fled && !party.units[e].asleep && action == -1){//pick one chosen, is hero.
+		Good += "<button class=\"namact_animate\" onclick=\"SelectDom(-1)\">"+String(party.units[e].Name).toUpperCase()+Init+"</button>"
+		showstats = true;
 		}else if(pick1 == e && !party.units[e].fled && !party.units[e].asleep){//pick one chosen, is hero.
 		Good += "<button class=\"namact\" onclick=\"SelectDom(-1)\">"+String(party.units[e].Name).toUpperCase()+Init+"</button>"
 		showstats = true;
 		}else if(pick1 != e && action > -1 && action != 2 && !party.units[e].fled && (!party.units[e].asleep || (action == 3)) && (e > 0 || action != 3)){//pick one chosen. action chosen
-		Good += "<button class=\"namavl\" onclick=\"SelectSub("+e+")\">"+party.units[e].Name+Init+"</button>"
+		Good += "<button class=\"namavl_animate\" onclick=\"SelectSub("+e+")\">"+party.units[e].Name+Init+"</button>"
 		}else if (party.units[e].fled){
 		Good += "<button class=\"namout\">"+party.units[e].Name+Init+"</button>"
 		}else if (party.units[e].asleep){
@@ -1371,10 +1519,10 @@ function Main(){
 		}
 		if(map[party.y][party.x].hostile){
 			if(currInit == map[party.y][party.x].units[e].Init && !map[party.y][party.x].units[e].asleep){
-				foodtaketurn= "<button id=\"CON\"class=\"btnavl\" onclick=\"FoodAction("+e+")\">"+map[party.y][party.x].units[e].Name+"'s Turn</button>"
+				foodtaketurn= "<button id=\"CON\"class=\"btnext\" onclick=\"FoodAction("+e+")\">"+map[party.y][party.x].units[e].Name+"'s Turn</button>"
 				showstats = true;
 			}else if(currInit == map[party.y][party.x].units[e].Init && map[party.y][party.x].units[e].asleep){
-				foodtaketurn= "<button id=\"CON\"class=\"btnavl\" onclick=\"FoodAction("+e+")\">"+map[party.y][party.x].units[e].Name+" is asleep, Skip Turn</button>"
+				foodtaketurn= "<button id=\"CON\"class=\"btnext\" onclick=\"FoodAction("+e+")\">"+map[party.y][party.x].units[e].Name+" is asleep, Skip Turn</button>"
 				showstats = true;
 			}
 			if(currInit == unit(e+100).Init){
@@ -1397,9 +1545,9 @@ function Main(){
 		Food += "</span>&nbsp&nbsp"
 		
 		if(pick1 != (e+100) && action > -1 && ((action == 2 || action == 3) || !map[party.y][party.x].units[e].asleep)){//pick one chosen, isnt hero. action chosen
-			Food += "<button class=\"namavl\" onclick=\"SelectSub("+(e+100)+")\">"+map[party.y][party.x].units[e].Name+Init+"</button>"
+			Food += "<button class=\"namavl_animate\" onclick=\"SelectSub("+(e+100)+")\">"+map[party.y][party.x].units[e].Name+Init+"</button>"
 		}else if(currInit == map[party.y][party.x].units[e].Init && map[party.y][party.x].hostile){
-			Food += "<button class=\"namact\">"+String(map[party.y][party.x].units[e].Name).toUpperCase()+Init+"</button>"
+			Food += "<button class=\"namact_animate\">"+String(map[party.y][party.x].units[e].Name).toUpperCase()+Init+"</button>"
 			showstats = true;
 		}else if(map[party.y][party.x].units[e].asleep){
 			Food += "<button class=\"namsleep\">"+map[party.y][party.x].units[e].Name+Init+"</button>"
@@ -1429,17 +1577,29 @@ function Main(){
 	}
 	document.getElementById("Good").innerHTML = Good;
 	document.getElementById("Food").innerHTML = Food;
+	if(map[party.y][party.x].units.length == 0){
+		document.getElementById("Food").style.visibility = "hidden";
+		document.getElementById("Food").className = "mainspan2";
+	}else{
+		if(document.getElementById("Food").style.visibility == "visible"){
+			document.getElementById("Food").className = "mainspan2";
+		}else{
+			document.getElementById("Food").className = "mainspan2_animate";
+			document.getElementById("Food").style.visibility = "visible";
+		}
+	}//animation_mainspan2
 	if(skiptaketurn != ""){//use for sleeping/fled creatures
 		document.getElementById("actions").innerHTML = skiptaketurn
 	}else if(foodtaketurn != ""){
 		document.getElementById("actions").innerHTML = foodtaketurn
 	}else if((pick1 == -1 && action == -1) || (party.units.length == 1 && map[party.y][party.x].units.length == 0)){
 	document.getElementById("actions").innerHTML = 
-	"<button id=\"FIG\"class=\"btndis\" onclick=\"SelectAction(0)\">Fight "+fstats[0]+"</button><button id=\"FON\" class=\"btndis\" onclick=\"SelectAction(1)\">Flirt "+fstats[1]+"</button><button id=\"FLE\" class=\"btndis\" onclick=\"SelectAction(2)\">Flee "+fstats[2]+"</button><br>"+
+	"<button id=\"FIG\"class=\"btndis\" onclick=\"SelectAction(0)\">Fight "+fstats[0]+"</button><button id=\"FON\" class=\"btndis\" onclick=\"SelectAction(1)\">Flirt "+fstats[1]+"</button><button id=\"FLE\" class=\"btndis\" onclick=\"SelectAction(2)\">Flee "+fstats[2]+"</button>"+
 	"<button id=\"FEA\"class=\"btndis\" onclick=\"SelectAction(3)\">Feast "+fstats[3]+"</button><button id=\"FUC\" class=\"btndis\" onclick=\"SelectAction(4)\"  >Fuck "+fstats[4]+"</button><button id=\"FEE\" class=\"btndis\" onclick=\"SelectAction(5)\">Feed "+fstats[5]+"</button>"
 	}else{
+	/*
 	document.getElementById("actions").innerHTML = 
-	"<button id=\"FIG\"class=\"btnavl\" onclick=\"SelectAction(0)\">Fight "+fstats[0]+"</button><button id=\"FON\" class=\"btnavl\" onclick=\"SelectAction(1)\">Flirt "+fstats[1]+"</button><button id=\"FLE\" class=\"btnavl\" onclick=\"SelectAction(2)\">Flee "+fstats[2]+"</button><br>"+
+	"<button id=\"FIG\"class=\"btnavl\" onclick=\"SelectAction(0)\">Fight "+fstats[0]+"</button><button id=\"FON\" class=\"btnavl\" onclick=\"SelectAction(1)\">Flirt "+fstats[1]+"</button><button id=\"FLE\" class=\"btnavl\" onclick=\"SelectAction(2)\">Flee "+fstats[2]+"</button>"+
 	"<button id=\"FEA\"class=\"btnavl\" onclick=\"SelectAction(3)\">Feast "+fstats[3]+"</button><button id=\"FUC\" class=\"btnavl\" onclick=\"SelectAction(4)\"  >Fuck "+fstats[4]+"</button><button id=\"FEE\" class=\"btnavl\" onclick=\"SelectAction(5)\">Feed "+fstats[5]+"</button>"
 		if(action == 0){document.getElementById("FIG").style.color = "#ffee88";document.getElementById("FIG").style.backgroundColor = "#000000";document.getElementById("FIG").style.fontWeight = "100"}
 		if(action == 1){document.getElementById("FON").style.color = "#ffee88";document.getElementById("FON").style.backgroundColor = "#000000";document.getElementById("FON").style.fontWeight = "100"}
@@ -1447,6 +1607,39 @@ function Main(){
 		if(action == 3){document.getElementById("FEA").style.color = "#ffee88";document.getElementById("FEA").style.backgroundColor = "#000000";document.getElementById("FEA").style.fontWeight = "100"}
 		if(action == 4){document.getElementById("FUC").style.color = "#ffee88";document.getElementById("FUC").style.backgroundColor = "#000000";document.getElementById("FUC").style.fontWeight = "100"}
 		if(action == 5){document.getElementById("FEE").style.color = "#ffee88";document.getElementById("FEE").style.backgroundColor = "#000000";document.getElementById("FEE").style.fontWeight = "100"}	
+		//*/
+		Good = "";
+		if(action == 0){
+			Good+="<button id=\"FIG\"class=\"btnact\" onclick=\"SelectAction(0)\">Fight "+fstats[0]+"</button>"
+		}else{
+			Good+="<button id=\"FIG\"class=\"btnavl\" onclick=\"SelectAction(0)\">Fight "+fstats[0]+"</button>"
+		}
+		if(action == 1){
+			Good+="<button id=\"FON\"class=\"btnact\" onclick=\"SelectAction(1)\">Flirt "+fstats[1]+"</button>"
+		}else{
+			Good+="<button id=\"FON\"class=\"btnavl\" onclick=\"SelectAction(1)\">Flirt "+fstats[1]+"</button>"
+		}
+		if(action == 2){
+			Good+="<button id=\"FLE\"class=\"btnact\" onclick=\"SelectAction(2)\">Flee "+fstats[2]+"</button>"
+		}else{
+			Good+="<button id=\"FLE\"class=\"btnavl\" onclick=\"SelectAction(2)\">Flee "+fstats[2]+"</button>"
+		}
+		if(action == 3){
+			Good+="<button id=\"FEA\"class=\"btnact\" onclick=\"SelectAction(3)\">Feast "+fstats[3]+"</button>"
+		}else{
+			Good+="<button id=\"FEA\"class=\"btnavl\" onclick=\"SelectAction(3)\">Feast "+fstats[3]+"</button>"
+		}
+		if(action == 4){
+			Good+="<button id=\"FUC\"class=\"btnact\" onclick=\"SelectAction(4)\">Fuck "+fstats[4]+"</button>"
+		}else{
+			Good+="<button id=\"FUC\"class=\"btnavl\" onclick=\"SelectAction(4)\">Fuck "+fstats[4]+"</button>"
+		}
+		if(action == 5){
+			Good+="<button id=\"FEE\"class=\"btnact\" onclick=\"SelectAction(5)\">Feed "+fstats[5]+"</button>"
+		}else{
+			Good+="<button id=\"FEE\"class=\"btnavl\" onclick=\"SelectAction(5)\">Feed "+fstats[5]+"</button>"
+		}
+		document.getElementById("actions").innerHTML = Good
 	}
 
 
@@ -1489,9 +1682,11 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 			domval = AR(party.units[pick1].Figh)
 			if((map[party.y][party.x].units[pick2-100].flying) && Math.random()<.5 && !party.units[pick1].antiflying){//EVADE
 				domval = 0;
+				stats = "Evaded"
 			}
 			if((map[party.y][party.x].units[pick2-100].swimming) && Math.random()<.5 && !party.units[pick1].antiswimming){//EVADE
 				domval = 0;
+				stats = "Evaded"
 			}
 			map[party.y][party.x].units[pick2-100].CPle = 0;
 			
@@ -1506,7 +1701,11 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 			subval = map[party.y][party.x].units[pick2-100].CPun/map[party.y][party.x].units[pick2-100].MPun;
 		}
 		//LogEntry(randomAction([0,pick1,pick2,domval,subval,map[party.y][party.x].tag]))
-		DetailedEntry(randomAction([0,pick1,pick2,domval,subval,map[party.y][party.x].tag]),"Fight for "+domval)
+		if(stats == ""){
+			DetailedEntry(randomAction([0,pick1,pick2,domval,subval,map[party.y][party.x].tag]),"Fight for "+domval)
+		}else{
+			DetailedEntry(randomAction([0,pick1,pick2,domval,subval,map[party.y][party.x].tag]),Evaded)
+		}
 		if(subval >= 1){deadName=map[party.y][party.x].units[pick2-100].Name;Removal(pick2);fullPeace(deadName,-1,-1,pick1)}
 		if(pick2 >= 100 && !map[party.y][party.x].hostile && map[party.y][party.x].units.length > 0){map[party.y][party.x].hostile = true;currInit=0}//attacking starts combat. DOUBLE CHECK INT IS RIGHT
 	}
@@ -1565,13 +1764,16 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 					domval = AR(party.units[pick1].Feas)
 					if((map[party.y][party.x].units[pick2-100].flying) && !party.units[pick1].antiflying && Math.random()<.5){//EVADE
 						subval = 0;
+						stats = "Evaded"
 					}else if((map[party.y][party.x].units[pick2-100].swimming) && !party.units[pick1].antiswimming && Math.random()<.5){//EVADE
 						subval = 0;
+						stats = "Evaded"
 					}else if(domval >= map[party.y][party.x].units[pick2-100].MPun-map[party.y][party.x].units[pick2-100].CPun){
 						subval = 2;
 						stats = StatGain(pick1,pick2)
 
 					}else{
+						stats = "Resisted"
 						subval = 0;
 						if(!unit(pick2).willing){
 							unit(pick2).CPle = 0;
@@ -1587,6 +1789,7 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 					subval = 2;
 					stats = StatGain(pick1,pick2)
 				}else{
+					stats = "Resisted"
 					subval = 0;
 					if(!unit(pick2).willing){
 						unit(pick2).CPle = 0;
@@ -1613,30 +1816,40 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 		if(pick1 == 0){
 			if(party.units[0].CPle>=party.units[0].MPle){//not horny
 				domval = -1;
+				stats = "Too Hungry"
 			}else{
 				if(pick2<100){
 					domval = AR(party.units[0].Fuck)//HEAL BY BOTH FUCK VALUES
-					
-					party.units[0].CPun = 0
-					if(unit(pick2).MPun < defaultstat(unit(pick2).Tags[0],"MPun")+unit(0).Fuck){
-						unit(pick2).MPun = Math.min(unit(pick2).MPun+unit(pick2).Size,defaultstat(unit(pick2).Tags[0],"MPun")+unit(0).Fuck)
-					}
-					if(unit(pick1).MPun < defaultstat(unit(pick1).Tags[0],"MPun")+unit(pick2).Fuck){
-						unit(pick1).MPun = Math.min(unit(pick1).MPun+1,defaultstat(unit(pick1).Tags[0],"MPun")+unit(pick2).Fuck)
-					}
+					stats = "Got Some"
 					if(map[party.y][party.x].hostile){
 						unit(pick2).Cond[unit(pick2).Cond.length] = "Asleep"
 						unit(pick2).asleep = true;
+						stats = "She's asleep"
 					}
+					if(party.units[pick2].CPun+party.units[0].CPun > 0){
+						stats = "Fully Healed"
+					}
+					party.units[0].CPun = 0
+					if(unit(pick2).MPun < defaultstat(unit(pick2).Tags[0],"MPun")+unit(0).Fuck){
+						unit(pick2).MPun = Math.min(unit(pick2).MPun+unit(pick2).Size,defaultstat(unit(pick2).Tags[0],"MPun")+unit(0).Fuck)
+						stats = "More Resilient"
+					}
+					if(unit(pick1).MPun < defaultstat(unit(pick1).Tags[0],"MPun")+unit(pick2).Fuck){
+						unit(pick1).MPun = Math.min(unit(pick1).MPun+1,defaultstat(unit(pick1).Tags[0],"MPun")+unit(pick2).Fuck)
+						stats = "More Resilient"
+					}
+					
+					
 					party.units[pick2].CPle = unit(pick2).MPle
 					party.units[pick2].CPun = 0
 					party.units[0].CPle = Math.min(party.units[0].CPle+AR(party.units[pick2].Size),party.units[0].MPle)
 
 					domval = 1
 				}else{//FOOD
-					if(AR(party.units[0].Fuck) >= map[party.y][party.x].units[pick2-100].MPle-map[party.y][party.x].units[pick2-100].CPle){
-						domval = AR(party.units[0].Fuck)//HEAL BY BOTH FUCK VALUES
+					domval = AR(party.units[0].Fuck)//HEAL BY BOTH FUCK VALUES
+					if(domval >= map[party.y][party.x].units[pick2-100].MPle-map[party.y][party.x].units[pick2-100].CPle){
 						
+						stats = "New Companion"
 						
 						party.units[0].CPun = 0
 						
@@ -1656,12 +1869,18 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 						
 						domval = 1
 					}else if(!map[party.y][party.x].hostile && map[party.y][party.x].units[pick2-100].CPle == 0){//Secretly require flirting for nonhostile creatures with zero CPLE
+						stats = "Rejected"
+						domval = 0
 						map[party.y][party.x].units[pick2-100].CPle = -5;
+					}else{
+						stats = "Rejected"
+						domval = 0
 					}
 				}
 			}
 		}else{
 			if(pick2 == 0){
+				stats = "Got Some"
 				if(unit(pick2).MPun < defaultstat(unit(pick2).Tags[0],"MPun")+unit(0).Fuck){
 					unit(pick2).MPun = Math.min(unit(pick2).MPun+1,defaultstat(unit(pick2).Tags[0],"MPun")+unit(0).Fuck)
 				}
@@ -1674,6 +1893,7 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 					if(map[party.y][party.x].hostile){
 						unit(pick1).Cond.push("Asleep")
 						unit(pick1).asleep=true;
+						stats = "Asleep"
 					}
 					party.units[0].CPun = 0
 					party.units[pick1].CPle = party.units[pick1].MPle
@@ -1682,11 +1902,19 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 					domval = 1
 				}
 			}else if(pick2<100){
+				stats = "They Got Some"
 				unit(pick2).CPle = unit(pick2).MPle
 				unit(pick1).CPle = unit(pick1).MPle
 				domval = 1
+				if(map[party.y][party.x].hostile){
+					unit(pick2).Cond.push("Asleep")
+					unit(pick2).asleep = true;
+					unit(pick1).Cond.push("Asleep")
+					unit(pick1).asleep=true;
+				}
 			}else{//GOOD FUCKING FOOD
-				if(AR(party.units[pick1].Fuck) >= map[party.y][party.x].units[pick2-100].MPle-map[party.y][party.x].units[pick2-100].CPle){
+				domval = AR(party.units[pick1].Fuck)
+				if(domval >= map[party.y][party.x].units[pick2-100].MPle-map[party.y][party.x].units[pick2-100].CPle){
 					unit(pick2).CPle = unit(pick2).MPle
 					unit(pick1).CPle = unit(pick1).MPle
 					if(map[party.y][party.x].hostile){
@@ -1694,9 +1922,13 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 						unit(pick2).asleep = true;
 						unit(pick1).Cond.push("Asleep")
 						unit(pick1).asleep=true;
+						stats = "Asleep"
 					}
 					domval = 1
 					//move sides
+				}else{
+					stats = "Rejected"
+					domval = 0;
 				}
 			}
 		}
@@ -1715,7 +1947,7 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 			Cocked = null;
 			
 		}else{
-		LogEntry(randomAction([4,pick1,pick2,domval,subval,map[party.y][party.x].tag]))
+			DetailedEntry(randomAction([4,pick1,pick2,domval,subval,map[party.y][party.x].tag]),stats)
 		}
 		if(pick2 >= 100 && domval == 1){
 			if(pick1 == 0){
@@ -2228,7 +2460,8 @@ function LogEntry(Entry){
 	document.getElementById("log").innerHTML = Logbook
 }
 function DetailedEntry(Entry,Deets){
-	Logbook = Entry +"&nbsp<span class=\"logDeets\">"+Deets+" </span><br><br>" +Logbook;
+	Deets = String(Deets).toUpperCase()
+	Logbook = Entry +"&nbsp<div class=\"logDeets\">"+Deets+" </div>" +Logbook;
 	//Logbook = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+Entry +"&nbsp<span class=\"logDeets\">"+Deets+" </span><br><br>" +Logbook;
 	document.getElementById("log").innerHTML = Logbook
 }
@@ -2643,19 +2876,22 @@ function StartTheGame(){
 	
 	Logbook = ""//remove to debug map!
 	Walk(0,0);
-	LogEntry("<b><u><BR>INTRODUCTION:</u></b><br><br>I woke up in a strange land full of monstergirls. I must start anew in this dangerous world and try to survive. Maybe I should find a way to make companions, and later get something to eat. Or, maybe, <i>someone</i> to eat! As I look through a window at the trees outside I decide that my new quest in this world will be to gobble down the Demon Queen, the tastiest monstergirl of them all!"
-	+"<br><br><br><b><u>QUICK GUIDE:</u></b>"
-	+"<br><br>Select a charactor you control, select an action, select a target. During combat charactors go in an initiative order."
-	+"<br><br>Fight: Hurts the target."
-	+"<br>Flirt: Makes the target horny."
-	+"<br>Flee: Attempt to escape the fight through a target hostile character. Stat is also used for combat initiative."
-	+"<br>Feast: Attempt to feast on the target. Feasting improves stats based on preys Feed stat."
-	+"<br>Fuck: Attempt to fuck the target. Girls fucked by the protagonist become loyal. Sex with protagonist heals both."
-	+"<br>Feed: Willing character will feed another. Stats increases based on Feed stat of consumed creature."
-	+"<br><br>Hurt: How close the charactor is to dying, and also how easy they are to eat."
-	+"<br>Horny: How interested the charactor is in sex, even while hostile."
+	LogEntry("<b><u><div style='font-size:150%;'>INTRODUCTION</div></u></b>I woke up in a strange land full of monstergirls. I must start anew in this dangerous world and try to survive. Maybe I should find a way to make companions, and later get something to eat. Or, maybe, <i>someone</i> to eat!"
+	// As I look through a window at the trees outside I decide that my new quest in this world will be to gobble down the Demon Queen, the tastiest monstergirl of them all!
+	+"<br><br><div style='font-size:150%;'><b><u>QUICK GUIDE</u></b></div>"
+	+"Select a character you control, select an action, select a target. During combat characters go in an initiative order."
+	+"<br><br>Fight: Hurt a character."
+	+"<br>Flirt: Make a character horny."
+	+"<br>Flee: Attempt to escape the fight through a hostile character. Stat is also used for combat initiative."
+	+"<br>Feast: Attempt to feast on a character. Stats increase based on preys Feed stat."
+	+"<br>Fuck: Attempt to fuck a character. Girls fucked by the protagonist become loyal. Sex with protagonist heals both."
+	+"<br>Feed: Willing character will feed another. Stat increases are based on Feed stat of consumed character."
+	+"<br><br>Hurt: How easy the character is to eat/kill."
+	+"<br>Horny: How interested the character is in sex, even while hostile."
 	+"<br>Hungry: Protagonist only. Can't Fuck when its full, can't Feast when its empty."
-	+"<br><br>Navigation: click on any of the Eight surrounding locations on the top map."
+	+"<br><br>Navigation: click on any of the <i>eight</i> surrounding locations on the top map."
+	+"<br><br><b><u>VERSION .2</u></b>"
+	+"<br>Two of sixteen zones currently available.<br>Latest addition: Deergirls."
 	)	
 }
 function TileRotate(tile_temp,Direction){
@@ -2785,7 +3021,7 @@ function randomEntry(Entry){
 	else if(Entry == "FunnyBunnygirl"){Entrys = ["Fat-Bottomed Bunnygirl","Flat-Chested Bunnygirl","Notch-Eared Bunnygirl","Droopy-Eared Bunnygirl","Buck-toothed Bunnygirl"]} 
 	else if(Entry == "HungryBunnygirl"){Entrys = ["Pudgy Bunnygirl","Chubby Bunnygirl","Fat-Bottomed Bunnygirl","Curvy Bunnygirl","Thick Bunnygirl","Stacked Bunnygirl"]}
 	
-	else if(Entry == "DeerForest"){Entrys = ["Sunny Forest","Sunny Forest","Sunny Forest","Sunny Forest","Sunny Forest","Sunny Forest","Bubbling Spring", "Shady Clearing", "Sunny Clearing","Flowery Clearing",(choose(["Giant ","Towering ","Massive ","Colossal ","Great "])+choose(["Oak","Pine","Maple","Cedar","Birch","Redwood","Apple-Tree"])),(choose(["Rundown ","Shabby ","Tidy ","Sturdy ","Log ","Brick ","Stone ","Old "])+choose(["Cottage","Cabin","Hut","House"]))]}
+	else if(Entry == "DeerForest"){Entrys = ["Sunny Forest","Sunny Forest","Sunny Forest","Sunny Forest","Sunny Forest","Sunny Forest","Bubbling Spring", "Shady Clearing", "Sunny Clearing","Flowery Clearing",(choose(["Giant ","Towering ","Massive ","Colossal ","Great "])+choose(["Oak","Pine","Maple","Cedar","Birch","Redwood","Apple-Tree"]))]}
 	else if(Entry == "DeerDesc"){Entrys = ["Perky Deergirl","Green-Eyed Deergirl","Blue-Eyed Deergirl","Flat-Chested Deergirl","Stacked Deergirl","Busty Deergirl","Petite Deergirl","Long-Eared Deergirl","Short-Eared Deergirl","Tall Deergirl","Speckled Deergirl","Black-Pawed Deergirl"]}
 	else if(Entry == "NegativeDeergirl"){Entrys = ["Pudgy Deergirl","Chubby Deergirl","Fat-Bottomed Deergirl","Thick Deergirl"]}
 	else if(Entry == "FunnyDeergirl"){Entrys = ["Fat-Bottomed Deergirl","Flat-Chested Deergirl"]} 
@@ -5935,12 +6171,12 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				if(unit([s[2]]).arms && unit([s[2]]).legs && unit([s[2]]).Tags[0] != "Froggirl"){
 					Entrys.push(
 						choose(["While SUB rests on the GROUND, I join her. She smiles as I","I pull SUB to the ground, and","I join SUB on the GROUND, and","I pull SUB down to the GROUND with me. Her breathing quickens as I","I join SUB while she's lying on the GROUND. Her breathing quickens as I"])+
-						choose([" start running my hand through her hair. I scratch her ears"," start nibbling on her neck. When she moans, I look at her"," rest my hand on her thigh. I give it a squeeze"," caress her cheek. I wrap an arm around her"," wrap an arm around her. I kiss her cheek"])+
+						choose([" start running my hand through her hair. I scratch behind her ears"," start nibbling on her neck. Once she's covered in goosebumps I pull away"," rest my hand on her thigh. I give it a squeeze"," caress her cheek. I wrap an arm around her"," wrap an arm around her. I kiss her cheek"])+
 						choose([
 							choose([" and ask if I should stop."," and ask if she wants me to stop."," and tell her we can stop if she wants."])+
 							choose([" She tells me to shush and stick it in already."," She blushes, and shakes her head."," She eagerly shakes her head."," She shakes her head before giving me a kiss."," She responds with a kiss."," She thinks for a moment before slowly shaking her head."," She blushes and pulls me into a kiss."])
 						,
-							choose([" and ask if we can have some fun."," and ask if she's ready for some fun."," and ask if we can have some fun."])+
+							choose([" and ask if we can have some fun."," and ask if she wants to continue."," and ask if she wants to keep going."," and ask if she's ready for some fun."," and ask if she wants to go further."])+
 							choose([" She tells me to shush and stick it in already."," She blushes, and pulls me into a kiss."," She eagerly nods."," She nods before giving me a kiss."," She responds with a kiss."," She pauses for a moment before pulling me into a kiss."," She blushes as she asks what I want to do."," She blushes and pulls me into a kiss."," She blushes and asks what I have in mind."])
 						,
 						choose([" and brush my lips against hers. Her hand slips down between my legs to grope my length. ",", and she pulls me closer. She whispers into my ear that she wants me.",", and she roughly grabs my hair to pull me into a kiss.",", and she gives me a kiss."," and try to talk. She shushes me, and starts stroking my length. She blushes, but doesn't stop until its fully erect."])
@@ -5948,7 +6184,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						choose([
 							choose([" I frot against her until she's wet,"])+
 							choose([" then plunge inside.",
-								choose([" but she winces when I thrust into her."," but she grimaces when I push into her."])+
+								choose([" but she winces when I thrust into her."," but she grimaces when I push deeper."])+
 								choose([""," I pull back and see blood along my shaft."," I look between us and see smears of blood."])+
 								choose([" When I start to rise, she grabs my hips. She pleads for me not to stop yet."," She grabs my hips when I start to rise, and asks me for another go."])+
 								choose([" I move slower this time as she grips my shoulders."," I try moving slower the second time, but she roughly pulls my hips to hers."])+
@@ -5965,7 +6201,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 								". Her legs wrap around me as we finish together. She whispers into my ear that she'd be fine as either my mate or my meal.",
 								", and soon we both cum. She pulls my head down to her chest until my lips reach her nipple. As I gently suck on it, she tells me I can taste her whenever I want.",
 								", and soon she's a quivering mess. As she cums, she blurts out that she wants me to eat her.",
-								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," While I keep thrusting into her, my stomach growls. The sound somehow sends her over the edge!"," A moment later, her eyes roll back as she reaches her zenith. Her leg starts to quiver as she finishes."," A moment later, she stops pumping her hips and braces against me. Her leg starts to quiver as she finishes."]),
+								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," While I keep thrusting into her, my stomach growls. The sound somehow sends her over the edge!"," A moment later, her eyes roll back as she finishes."," A moment later she braces against me with her quivering legs."]),
 								choose([". While holding her close, I whisper into her ear that I love her. She moans as my words send her over the edge! ",". While she humps her hips, my stomach growls. The sound somehow sends her over the edge!",". Her eyes suddenly roll back as I feel her gush against me. ",". She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away to wrap her lips around me. I caress her cheek as she starts sucking."+choose([" Her tongue is too much to handle, and she shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])+" As she pulls me out of her mouth, she tells me I should taste her next time."])
 							])
 						}else{
@@ -5973,8 +6209,8 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 								". Her legs wrap around me as we finish together.",
 								", and soon we both cum.",
 								", and soon she's a quivering mess. I feel her tighten around me as I cum!",
-								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," A moment later, her eyes roll back as she reaches her zenith. Her leg starts to quiver as she finishes."," A moment later, she stops pumping her hips and braces against me. Her leg starts to quiver as she finishes."]),
-								choose([". While holding her close, I whisper into her ear that I love her. She moans as my words send her over the edge! "," Her eyes suddenly roll back as I feel her gush against me. ",". She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away to wrap her lips around me. I caress her cheek as she starts sucking."+choose([" Her tongue is too much to handle, and she shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])])
+								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," A moment later, her eyes roll back as she finishes."," A moment later she braces against me with her quivering legs."]),
+								choose([". While holding her close, I whisper into her ear that I love her. She moans as my words send her over the edge! ",". Her eyes suddenly roll back as I feel her gush against me. ",". She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away to wrap her lips around me. I caress her cheek as she starts sucking."+choose([" Her tongue is too much to handle, and she shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])])
 							])
 						}
 				}
@@ -5999,7 +6235,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					}else{
 						if(unit(s[2]).willing){
 							if(Math.random()<.90){
-								Entrys.push("I watch SUB hop onto the table and shake her cute tail at me. I approach and ask what she has in mind. Seductively, she asks if I'd rather fuck her or eat her. I kneel down and start licking her muff until she's soaked in drool and juices. She's too sexy not to fuck! I plunge myself inside her, and she arches her back. I continue to thrust until we both cum!")
+								Entrys.push("I watch SUB hop onto the table and shake her cute tail at me. I approach and ask what she has in mind. Seductively, she asks if I'd rather fuck her or eat her. I kneel down and start licking her muff until she's soaked in drool and juices. She's too sexy not to fuck! I thrust myself inside and pound her until we both cum!")
 							}else{
 								Entrys.push("I watch SUB hop onto the table and shake her cute tail at me. I approach and ask what she has in mind. Seductively, she asks if I'd rather fuck her or eat her. I kneel down and start licking her muff until she's soaked in drool and juices. She's too sexy not to fuck! I get a different idea however, and ram myself into her other hole! She yelps at the intrusion and looks back in shock. I continue to pump her asshole as she wiggles and writhes under me. she starts to scream out, first in pain, but then in pleasure. CSUBs soon crying for me to fuck her harder, and a few deep thrusts later she's cumming as I fill her behind!")
 							}
@@ -6152,7 +6388,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						choose([
 							choose([" I frot against her until she's wet,"])+
 							choose([" then plunge inside.",
-								choose([" but she winces when I thrust into her."," but she grimaces when I push into her."])+
+								choose([" but she winces when I thrust into her."," but she grimaces when I push deeper."])+
 								choose([""," I pull back and see blood along my shaft."," I look between us and see smears of blood."])+
 								choose([" When I start to rise, she grabs my hips. She pleads for me not to stop yet."," She grabs my hips when I start to rise, and asks me for another go."])+
 								choose([" I move slower this time as she grips my shoulders."," I try moving slower the second time, but she roughly pulls my hips to hers."])+
@@ -6169,7 +6405,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 								". Her legs wrap around me as we finish together. She whispers into my ear that she'd be fine as either my mate or my meal.",
 								", and soon we both cum. She pulls my head down to her chest until my lips reach her nipple. As I gently suck on it, she tells me I can taste her whenever I want.",
 								", and soon she's a quivering mess. As she cums, she blurts out that she wants me to eat her.",
-								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," While I keep thrusting into her, my stomach growls. The sound somehow sends her over the edge!"," A moment later, her eyes roll back as she reaches her zenith. Her leg starts to quiver as she finishes."," A moment later, she stops pumping her hips and braces against me. Her leg starts to quiver as she finishes."]),
+								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," While I keep thrusting into her, my stomach growls. The sound somehow sends her over the edge!"," A moment later, her eyes roll back as she finishes."," A moment later she braces against me with her quivering legs."]),
 								choose([". While holding her close, I whisper into her ear that I love her. She moans as my words send her over the edge! ",". While she humps her hips, my stomach growls. The sound somehow sends her over the edge!",". Her eyes suddenly roll back as I feel her gush against me. ",". She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away to wrap her lips around me. I caress her cheek as she starts sucking."+choose([" Her tongue is too much to handle, and she shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])+" As she pulls me out of her mouth, she tells me I should taste her next time."])
 							])
 						}else{
@@ -6177,7 +6413,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 								". Her legs wrap around me as we finish together.",
 								", and soon we both cum.",
 								", and soon she's a quivering mess. I feel her tighten around me as I cum!",
-								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," A moment later, her eyes roll back as she reaches her zenith. Her leg starts to quiver as she finishes."," A moment later, she stops pumping her hips and braces against me. Her leg starts to quiver as she finishes."]),
+								choose([". We keep humping until I lose control and cum first. ",". With her lips to my ear, she whispers me she loves me. Her words send me over the edge. "])+choose(["I slip a hand between us, and rub her clit until she arches her back in pleasure.","My thrusting doesn't stop until she finishes as well.","Soon she gasps and"+choose([" tightens like a vice "," tightens "," squeezes me "])+"as she finally finishes."," A moment later, her eyes roll back as she finishes."," A moment later she braces against me with her quivering legs."]),
 								choose([". While holding her close, I whisper into her ear that I love her. She moans as my words send her over the edge! "," Her eyes suddenly roll back as I feel her gush against me. ",". She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away to wrap her lips around me. I caress her cheek as she starts sucking."+choose([" Her tongue is too much to handle, and she shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])])
 							])
 						}
@@ -6984,12 +7220,12 @@ function randomTravel(Basic){
 						Entrys.push("My grand journey begins as I walk out of my hut towards AMAP. A strong wind sends a shiver up my spine, reminding me that I'm completely nude.")
 						Entrys.push("My grand journey begins as I walk out of my hut. The grass brushes against my bare feet as I walk towards AMAP.")
 						Entrys.push("I peak out of the doorway before stepping outside. I feel exposed being outdoors completely naked, but there weren't any clothes in the hut. I make my way towards AMAP.")
-						Entrys.push("I peak out of the doorway before stepping outside. There weren't any clothes in the hut, so I'm forced to leave completely nude. I make my way towards AMAP, wondering if I'll be safer by avoiding the trail.")
+						Entrys.push("I peak out of the doorway before stepping outside. There weren't any clothes in the hut, so I'm forced to leave completely nude. I make my way towards AMAP wondering if I'll be safer by avoiding the trail.")
 					}else{
 						Entrys.push("My grand journey begins as I leave my hut and walk along AMAP. A strong wind sends a shiver up my spine, reminding me that I'm completely nude.")
 						Entrys.push("My grand journey begins as I walk out of my hut. I start walking along AMAP.")
 						Entrys.push("I peak out of the doorway before stepping outside. I feel exposed being outdoors completely naked, but there weren't any clothes in the hut. I make my way along AMAP.")
-						Entrys.push("I peak out of the doorway before stepping outside. There weren't any clothes in the hut, so I'm forced to leave completely nude. I make my way along AMAP, wondering if I'll be safer by sticking to the path.")
+						Entrys.push("I peak out of the doorway before stepping outside. There weren't any clothes in the hut, so I'm forced to leave completely nude. I make my way along AMAP wondering if I'll be safer by sticking to the path.")
 					}
 					//Entrys.push("I step out of the hut with my chest puffed out, eager to greet this strange world! I head towards AMAP.")
 				}
@@ -7010,7 +7246,7 @@ function randomTravel(Basic){
 					Entrys.push("I return to the hut I woke up in, I can see an outline of myself burnt into the floorboards...")
 				}
 			}else if(party.units.length == 2){
-				Entrys.push("We return to my hut, I point at the spot where I was brought into this world from my own, but my "+unit(1).Name+" don't seem very interested...")
+				Entrys.push("We return to my hut, I point at the spot where I was brought into this world from my own, but my ANY don't seem very interested...")
 			}else{
 				Entrys.push("We return to my hut, I point at the spot where I was brought into this world from my own, but the others don't seem very interested...")
 			}
@@ -8744,9 +8980,10 @@ function StatGain(i,o){
 		unit(i).CPle += 10;
 		if(unit(i).appetite < 4){
 			unit(i).appetite = 4;
+			return ("Appetite Enhanced! Increases(Figh:"+Figh+" Flirt:"+Flir+" Flee:"+Flee+" Feast:"+Feas+" Fuck:"+Fuck+" Feed:"+Feed+")")
 		}
 	}
-	return ("<br>Increases(Figh:"+Figh+" Flir:"+Flir+" Flee:"+Flee+" Feas:"+Feas+" Fuck:"+Fuck+" Feed:"+Feed+")")
+	return ("Increases(Figh:"+Figh+" Flirt:"+Flir+" Flee:"+Flee+" Feast:"+Feas+" Fuck:"+Fuck+" Feed:"+Feed+")")
 	//LogEntry("Stats increased by:"+increases)
 }
 function unit (Entry){

@@ -13,6 +13,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>F6</title>
 <style>
+body{
+margin:0px;
+}
 h1{
 display: none;
 }
@@ -33,7 +36,7 @@ user-select: none;
 }
 .grid-container {
 	border-radius: 15px 15px 15px 15px;
-	background-color:#b5a886;
+	background-color:#363635;
 	border-color:#b5a886;
 	border-style: solid;
 	border-width: 30px;
@@ -44,6 +47,7 @@ user-select: none;
 	grid-template-rows: 5px auto auto auto 5px;
 	padding: 0px;
 	margin: 10px 10px -15px 10px;
+	padding:1px;
 }
 .grid-edge {
 }
@@ -336,8 +340,8 @@ user-select: none;
 	animation-fill-mode: forwards;
 }
 @keyframes animation_namavl {
-	  0%  {background-color:#88cccc;color:#000;}
-	 50%  {background-color:#8CD1D1;color:#333;}
+	  0%  {background-color:#91D8D8;color:#666;} 
+	  0%  {;color:#000;} 
 	100%  {background-color:#88cccc;color:#000;}
 }
 .mainspan1 {
@@ -381,7 +385,8 @@ user-select: none;
 	animation-fill-mode: forwards;
 }
 @keyframes animation_mainspan2{
-	  0%  {opacity: 0.0;transform: scale(.95, 1.05);}
+	  0%  {opacity: 0.0;transform: scale(.98, 1.02);}
+	  50%  {opacity: 1.0;transform: scale(1.02, .98);}
 	100%  {opacity: 1.0;transform: scale(1, 1);}
 }
 .log {
@@ -606,7 +611,7 @@ function GetMapTile(i,o){//NEW TILES TO MAKE 5,16,19
 			}else if(map[i][o].tag == "Dungeon"){
 				return "Room"
 			}else{
-				return "Exit"
+				return "=<span class=\"caveText\">Exit</span>"
 			}
 		}else if(i-party.y == 0 && o-party.x == 0){
 			if(map[i][o].name == "Boss" ){
@@ -660,11 +665,11 @@ function GetMapTileColor(i,o){
 	} 
 	if(map[party.y][party.x].tag == "Dungeon"){
 		if(Math.abs(party.y-i)==2 || Math.abs(party.x-o)==2 ){
-			return "#b5a886"
+			return "#000"
 		}else if(map[i][o].tag == "Dungeon"){
 			return "#999999"
 		}else{
-			return "#808080"
+			return "#000"
 		}
 	}if(map[party.y][party.x].tag == "Entrance"){
 		if(Math.abs(party.y-i)==2 || Math.abs(party.x-o)==2 ){
@@ -983,10 +988,10 @@ function Walk(i,o){
 		}
 		LogEntry(randomTravel(1));travel++
 		//unclickable buttons     style="border-radius: 0px 0px 5px 0px;"
-		document.getElementById("map_top1").style.borderRadius  = "5px 0px 0px 0px";
-		document.getElementById("map_top5").style.borderRadius  = "0px 5px 0px 0px";
-		document.getElementById("map_bottom1").style.borderRadius  = "0px 0px 0px 5px";
-		document.getElementById("map_bottom5").style.borderRadius  = "0px 0px 5px 0px";
+		//document.getElementById("map_top1").style.borderRadius  = "5px 0px 0px 0px";
+		//document.getElementById("map_top5").style.borderRadius  = "0px 5px 0px 0px";
+		//document.getElementById("map_bottom1").style.borderRadius  = "0px 0px 0px 5px";
+		//document.getElementById("map_bottom5").style.borderRadius  = "0px 0px 5px 0px";
 		
 		
 		
@@ -1083,10 +1088,10 @@ function Walk(i,o){
 		
 		//clickable buttons
 		
-		document.getElementById("map_top1").style.borderRadius  = "5px 0px 0px 0px";
-		document.getElementById("map_top5").style.borderRadius  = "0px 5px 0px 0px";
-		document.getElementById("map_bottom1").style.borderRadius  = "0px 0px 0px 5px";
-		document.getElementById("map_bottom5").style.borderRadius  = "0px 0px 5px 0px";
+		//document.getElementById("map_top1").style.borderRadius  = "5px 0px 0px 0px";
+		//document.getElementById("map_top5").style.borderRadius  = "0px 5px 0px 0px";
+		//document.getElementById("map_bottom1").style.borderRadius  = "0px 0px 0px 5px";
+		//document.getElementById("map_bottom5").style.borderRadius  = "0px 0px 5px 0px";
 		
 		
 		document.getElementById("map_top1").style.backgroundColor  = GetMapTileColor(party.y-2,party.x-2);
@@ -1752,7 +1757,7 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 		domval = AR(party.units[pick1].Flee)
 		if(!map[party.y][party.x].hostile || map[party.y][party.x].tag == "Dungeon"){
 			domval = 0
-		}else if(domval >= map[party.y][party.x].units[pick2-100].Flee){
+		}else if(domval >= AR(map[party.y][party.x].units[pick2-100].Flee)){
 			domval = 1
 			party.units[pick1].fled = true;
 			party.units[pick1].Cond[party.units[pick1].Cond.length] = "Fled";
@@ -4968,7 +4973,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					Entrys.push("I slurp down SUB, she has a great "+DescWord(unit(s[2]),"slime",100)+" flavor.")
 				}
 				if(unit(s[2]).Name == "Wolf Queen"){
-					Entrys = [" I kick the queen in the stomach, and she stumbles back before falling to a knee. She looks up and admits she's been bested. I give her a kiss before swallowing her down. She doesn't struggle as she slides into my belly. I try on her crown while she digests, but it doesn't quite fit right. I leave it on the throne and turn to leave. I feel like my appetite has increased after eating her!"]
+					Entrys = [" I kick the queen in the stomach, and she stumbles back before falling to a knee. Her crown flings onto the throne behind her. She looks up and admits she's been bested. I give her a kiss before swallowing her down. She doesn't struggle as she slides into my belly. I try on her crown while she digests, but it doesn't quite fit right. I leave it on the throne and turn to leave. I feel like my appetite has increased after eating her!"]
 				}
 			}else if(s[4] == 3){//WILLING
 			
@@ -5993,7 +5998,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 								choose([" guides my tip"," guides my length"," lines up my length"])+choose([" to her lips."," against her entrance."," to her folds."])+choose([" She pushes back and completely engulfs me."," I pull her hips to me, and she takes every inch."," I pull her hips to me, and she yelps when its completely inside."," We move our hips at the same time, and they clap together as she takes my length."])											
 							])
 						}else if(s[14] == "normal" || s[14] == "end"){
-							Entry += choose([" Once I have her warmed up,"," Once she's ready,"])+choose([" I prod her lips. She spreads them, and tells me to stop teasing her. She gasps when I stick it in."," I drive my length inside her."," I push myself inside."," I spread her lips, and plunge inside"," I stick it inside her."])
+							Entry += choose([" Once I have her warmed up,"," Once she's ready,"])+choose([" I prod her lips. She spreads them, and tells me to stop teasing her. She gasps when I stick it in."," I drive my length inside her."," I push myself inside."," I spread her lips, and plunge inside."," I stick it inside her."])
 						}else{
 							Entry += 
 							choose([" Before I can go further, she"," Before I can make a move, she"," She nimbly"," She giggles as she"])+
@@ -6021,7 +6026,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						" Soon her breath is ragged.",
 						" Soon my legs are on fire as I keep making long strokes into her.",
 						" Soon I'm ready to burst as I keep making long strokes into her.",
-						" I rub my thumb against the rim of her anus, and feel her tighten around me.",
+						" I rub my thumb against her rim, and she tightens around me.",
 						" We make love, losing ourselves to the pleasure.",
 						])
 					])
@@ -6030,7 +6035,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						choose([" We keep going at it until I lose control and start filling her. "," She tells me she loves me, and her words send me over the edge. "])+choose(["I slip a hand around towards her clit and rub until she cums!","My thrusting doesn't stop until she climaxes as well.","Soon she gasps "+choose(["","and tightens like a vice ","and tightens","and squeezes me "])+"as she finally finishes."," She stops pumping her hips and braces against me. Her leg starts to quiver as she finishes."]),
 						choose([" I whisper into her ear that I love her, and my words send her over the edge! "," She suddenly gasps and "+choose([" tightens like a vice "," tightens "," squeezes me "])+" as she climaxes. "])+choose(["I keep thrusting until I cum inside.","She keeps moving her hips until I start filling her.","She pulls away and kneels to start sucking me, determined to finish the job."+choose([" Her tongue is too much to handle, and she shoves me down her throat as I start cumming."," When I finish, she swallows every drop."])]),
 						choose([" I follow her when she falls to her hands and knees, and again thrust"," When her legs give out, we both fall to the GROUND, and again thrust"])+choose([" "," myself "])+choose(["","repeatedly "])+choose(["into her","into her until she's helplessly quivering"])+choose(["",". As an orgasm wracks her body, I push myself in deep to cum inside."]),
-						choose([" I grab the back of her legs, and lift them above our heads"," I tightly grip the back of her legs. I lift them above our heads, folding her in half"])+choose([" as I thrust",". She squirms in my grip as I thrust"])+choose([" "," myself "])+choose(["","repeatedly ","deeper ","even deeper"])+choose(["into her folded form.","into her depths.","into her.","into her until the GROUND is soaked below us.","into her until she's helplessly quivering."])+choose([" As an orgasm wracks her body, I bite down on the nape of her neck. She cries out as I cum.",". I press her tightly agaisnt me before blowing my load, and soon her legs quiver in the air as her juices and my cum pool below us.",". I lock my arms together before blowing my load, and she clenches tight when she reaches her limit."])
+						choose([" I grab the back of her legs, and lift them above our heads"," I tightly grip the back of her legs. I lift them above our heads, folding her in half"])+choose([" as I thrust",". She squirms in my grip as I thrust"])+choose([" "," myself "])+choose(["","repeatedly ","deeper ","even deeper "])+choose([".","into her folded form.","into her depths.","into her.","until the GROUND is soaked below us.","until she's helplessly quivering."])+choose([" As an orgasm wracks her body, I bite down on the nape of her neck. She cries out as I cum.",". I press her tightly agaisnt me before blowing my load, and soon her legs quiver in the air as her juices and my cum pool below us.",". I lock my arms together before blowing my load. Her body convulses when she reaches her limit."])
 						//make a scene where he grabs both of her arms.
 					])
 				}//*/
@@ -6463,6 +6468,9 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						" I lean in for a kiss, but her head melts away. I watch as her body reverses itself, and she starts to blow me. I dive between her spread legs, and lap up her "+DescWord(unit(s[2]),"slime",100)+" flavored juices until we both cum."
 						]))
 				}	
+				if(unit(s[2]).Name == "Wolf Queen"){
+					Entrys = [" I shove the queen onto the throne and kneel before her. Her earlier attitude is replaced by embarrassment when I spread her legs. I lick her nub until it hardens, then start exploring deeper. She arches her back, and writhes as I pleasure her. She wraps her legs around me when she cums, and I'm coated in her juices. Her legs unwrap, and she kicks me prone onto the fancy rug before the throne. She straddles me, and strokes my length until its firm. She slides herself down until reaching the base. Her tail wags against my legs as she rides me. I grab her hips and start thrusting into her. She starts bucking, and her crown tumbles off. I pull her down into a kiss as we cum."]
+				}
 			}else{//FAIL
 				Entrys.push("I try to make a move on SUB, but she's not in the mood.")
 				if(map[party.y][party.x].units[s[2]-100].flying){
@@ -6740,7 +6748,7 @@ function randomTravel(Basic){
 					if(map[party.y][party.x].name == "Boss"){
 						Entrys.push("I walk into the Throneroom alone, ready for the final fight.")
 						if(unit(100).Name == "Wolf Queen"){
-							Entrys[Entrys.length-1] += "The Queen sits on her throne as I approach. She asks how such a meek creature like me is expecting to beat her. Words fail me as I nervously stand before her. The beautiful wolf stands and sets her crown on the throne before getting ready for our fight."
+							Entrys[Entrys.length-1] += "The Queen sits on her throne as I approach. She asks how such a meek creature like me is expecting to beat her. Words fail me as I nervously stand before her. The beautiful wolf stands and adjusts her crown before getting ready for our fight."
 						}
 						
 					}else if(map[party.y-lastMove[0]][party.x-lastMove[1]].name == "Door"){

@@ -11,7 +11,7 @@
 	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Idea 001</title>
+	<title>F6</title>
 <style>
 .bod {
 	background-color: #2e4052;

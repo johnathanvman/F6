@@ -2913,7 +2913,7 @@ function StartTheGame(){
 	LogEntry("<b><u><div style='font-size:150%;'>INTRODUCTION</div></u></b>I woke up in a strange land full of monstergirls. I must start anew in this dangerous world and try to survive. Maybe I should find a way to make companions, and later get something to eat. Or, maybe, <i>someone</i> to eat!"
 	// As I look through a window at the trees outside I decide that my new quest in this world will be to gobble down the Demon Queen, the tastiest monstergirl of them all!
 	+"<br><br><div style='font-size:150%;'><b><u>QUICK GUIDE</u></b></div>"
-	+"Select a character you control, select an action, select a target. During combat characters go in an initiative order."
+	+"Select a character you control, select an action, select a target. During combat, characters go in an initiative order."
 	+"<br><br>Fight: Hurt a character."
 	+"<br>Flirt: Make a character horny."
 	+"<br>Flee: Attempt to escape the fight through a hostile character. Stat is also used for combat initiative."
@@ -4629,7 +4629,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					//choose([" She"])+
 					choose([""," swiftly"," easily"," deftly"])+
 					choose([" pulls away, and starts running."," shoves me down, and vaults over me. She runs away quickly."," shoves me away and turns to run."," twists out of my grip, and dashes away."," slips out of my grip with a flourish. I try grabbing her again, but she somersaults between my legs and starts to run!"])
-					if(unit(s[2]).willing){
+					if(unit(s[2]).willing && Math.random() < .5){
 						Entrys[0] += choose([" I chase after her desperately", " I scramble to chase after her"])+
 						choose([", but she easily outmaneuvers me whenever I get close. I eventually fall to my knees panting.",", but she's too fast to catch. As my stamina gives out, I drop to my knees.",", but eventually stumble to my knees.",", but my feet slip against the GROUND. Any chance of catching her fades as I fall onto my knees."])+
 						choose([" She looks back and bites her lip. Getting closer, she"," She stops to watch. When I don't resume chasing her, she starts inching closer and"," She looks back, and frowns when she sees me give up. She gets closer and"])
@@ -4680,7 +4680,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 								choose([" I hold her legs, and start exploring with my tongue. She yelps when I get between her thighs."," She spread her legs to halt any progress, and my tongue naturally explores between them."," As her fluffy tail brushes against my nose, my tongue, brushes against her slit."])+
 								choose([" Her breathing quickens"," She moans"," Her hips buck"])+
 								choose([" as I plunge it inside her."," as I tease her little nub until its firm."," as I lick along her folds."])+
-								choose([" She whimpers as I start licking up her juices."," She tries telling me to stop, but that only drives me to pleasure her more."," She flails her legs above me as I lap up her juices."," She begs me to get deeper, and I thrust my tongue as far as it can reach."," She cries out in bliss as I start pumping my tongue into her."])+
+								choose([" She whimpers as I start stirring her up."," She tries telling me to stop, but that only drives me to pleasure her more."," She flails her legs above me as I lap up her juices."," She begs me to get deeper, and I thrust my tongue as far as it can reach."," She cries out in bliss as I start pumping my tongue into her."])+
 								choose([" Her body quivers"," Her body shudders"," Her voice stifles"," Her toes curl"])+
 								choose([" when she cums"," when she gushes into my mouth"," when she reaches her limit"])+
 								choose([", and I lean back to swallow her down.",", and her juices slicken my throat. She yelps as she suddenly plummets the rest of the way.",", and warm juices flood my mouth. I reflexively swallow, and we're both surprised when she splashes into my belly."])+

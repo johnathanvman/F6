@@ -23,7 +23,7 @@ display: none;
 	background-color: #2e4052;
 	margin:0px;
 	animation-name: animation_bod;
-	animation-duration: 1s;
+	animation-duration: 2s;
 }
 @keyframes animation_bod{
 	  0%  {opacity: 0.0;background-color: #2e4052;}

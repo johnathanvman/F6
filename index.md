@@ -1729,7 +1729,7 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 		if(stats == ""){
 			DetailedEntry(randomAction([0,pick1,pick2,domval,subval,map[party.y][party.x].tag]),"Fight for "+domval)
 		}else{
-			DetailedEntry(randomAction([0,pick1,pick2,domval,subval,map[party.y][party.x].tag]),Evaded)
+			DetailedEntry(randomAction([0,pick1,pick2,domval,subval,map[party.y][party.x].tag]),"Evaded")
 		}
 		if(subval >= 1){deadName=map[party.y][party.x].units[pick2-100].Name;Removal(pick2);fullPeace(deadName,-1,-1,pick1)}
 		if(pick2 >= 100 && !map[party.y][party.x].hostile && map[party.y][party.x].units.length > 0){map[party.y][party.x].hostile = true;currInit=0}//attacking starts combat. DOUBLE CHECK INT IS RIGHT
@@ -1780,11 +1780,13 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 			if(pick2 < 100){
 				subval = 3
 				domval = unit(pick2).MPle
+						if(pick1 == 0 && Cocked == null && subval >= 1 && unit(pick2).Size==1){Cocked = unit(pick2)}
 				story=randomAction([3,pick1,pick2,domval,subval,map[party.y][party.x].tag])
 				stats = StatGain(pick1,pick2)
 			}else if(map[party.y][party.x].hostile){
 				if(unit(pick2).asleep){
 					subval = 1;
+							if(pick1 == 0 && Cocked == null && subval >= 1 && unit(pick2).Size==1){Cocked = unit(pick2)}
 					story=randomAction([3,pick1,pick2,domval,subval,map[party.y][party.x].tag])
 					stats = StatGain(pick1,pick2)
 				}else{
@@ -1799,6 +1801,7 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 						randomAction([3,pick1,pick2,domval,subval,map[party.y][party.x].tag])
 					}else if(domval >= map[party.y][party.x].units[pick2-100].MPun-map[party.y][party.x].units[pick2-100].CPun){
 						subval = 2;
+								if(pick1 == 0 && Cocked == null && subval >= 1 && unit(pick2).Size==1){Cocked = unit(pick2)}
 						story=randomAction([3,pick1,pick2,domval,subval,map[party.y][party.x].tag])
 						stats = StatGain(pick1,pick2)
 
@@ -1815,10 +1818,12 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 				domval = AR(party.units[pick1].Feas)
 				if(domval >= map[party.y][party.x].units[pick2-100].MPle-map[party.y][party.x].units[pick2-100].CPle && map[party.y][party.x].units[pick2-100].willing){
 					subval = 3;
+							if(pick1 == 0 && Cocked == null && subval >= 1 && unit(pick2).Size==1){Cocked = unit(pick2)}
 					story=randomAction([3,pick1,pick2,domval,subval,map[party.y][party.x].tag])
 					stats = StatGain(pick1,pick2)
 				}else if(domval >= map[party.y][party.x].units[pick2-100].MPun-map[party.y][party.x].units[pick2-100].CPun && (!map[party.y][party.x].units[pick2-100].flying ||  party.units[pick1].antiflying || Math.random()<.5) && (!map[party.y][party.x].units[pick2-100].swimming ||  party.units[pick1].swimming || Math.random()<.5)){
 					subval = 2;
+							if(pick1 == 0 && Cocked == null && subval >= 1 && unit(pick2).Size==1){Cocked = unit(pick2)}
 					story=randomAction([3,pick1,pick2,domval,subval,map[party.y][party.x].tag])
 					stats = StatGain(pick1,pick2)
 				}else{
@@ -1831,7 +1836,7 @@ function PerformAction(){//randomAction:[action,dom,sub,offence,defence,terrain]
 				}
 					//
 			}// domval >= unit(pick2).MPle-unit(pick2).CPle
-			if(pick1 == 0 && Cocked == null && subval >= 1 && unit(pick2).Size==1){Cocked = unit(pick2)}
+			
 			//LogEntry(randomAction([3,pick1,pick2,domval,subval,map[party.y][party.x].tag]))
 			DetailedEntry(story,stats)
 			if(!map[party.y][party.x].hostile && map[party.y][party.x].units.length > 0 && (subval == 0 || subval == 2) ){map[party.y][party.x].hostile = true;currInit=0}//attacking starts combat
@@ -4390,8 +4395,8 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					Entrys.push(Entry) 
 					//---
 				} 
-				if(Entrys.length == 0 && unit(s[2]).legs){
-					if(WillingUnit != null){
+				if(Entrys.length == 0){
+					if(WillingUnit != null && unit(s[2]).legs){
 						Entrys.push("I grab SUB by the waist and swallow her down. My WIL blushes when I notice her staring at me.")
 						Entrys.push("I grab SUB by the waist and swallow her down. My WIL watches the whole time while biting her lip.")
 						Entrys.push("I grab SUB by the waist and swallow her down. My WIL runs up and starts rubbing my belly as it wiggles under her touch.")

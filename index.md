@@ -4267,7 +4267,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 							choose([" while she squirms."," as she pets my head.",". She rubs her face in my hair and breaths me in."])+
 							choose([" Her breathing quickens when I start to finger her."," I find the nub between her legs and rub small circles around it. She leans against me as I gently stroke her hood."," Her thighs squeeze tightly together when I slip my hand between them."," Her legs snap shut when my hand brushes against her slit, and after a little rubbing, she's a wet mess. Her hips start to sway when my fingers slip inside her."])+
 							choose([" Goosebumps cover her body before she"," Her breasts taste amazing, and I can't get enough of them. She eventually"," Her bosom is covered in hickeys when she"," I look up at her as she"," I gently bite her nipple as she"," I softly bite down, and she"])+
-							choose([" gushes down her thighs."," cums from my touch.","starts moaning. She holds me close when she cums."," starts to hump my hand. Its soon drenched in her juices as she cums."])
+							choose([" gushes down her thighs."," cums from my touch."," starts moaning. She holds me close when she cums."," starts to hump my hand. Its soon drenched in her juices as she cums."])
 						}else{
 							Entry += choose([" I kneel and press my ear to her chest. She doesn't move while I listen to her heart beating."+choose([" It starts beating faster when my lip brushes against her nipple."," When I ask if she's ready to be eaten, it starts to thump harder. My lip brushes against her breast, and her nipple hardens to a point."])+"  I start sucking it"," I kneel down and kiss her "+DescWord(unit(s[2]),"breasts",80)+"chest"," I kneel down and lick her "+DescWord(unit(s[2]),"breasts",80)+"chest"," I kneel down and make a trail of kisses from her "+DescWord(unit(s[2]),"belly_noun",100)+" up to her chest."," I kneel down and she guides me to her "+DescWord(unit(s[2]),"breasts",80)+"chest. I start covering her in hickeys"])+
 							choose(["."," while she squirms."," as she pets my head.",". She rubs her face in my hair and breaths me in."])+
@@ -6509,6 +6509,9 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 						" When we finish, she melts into a quivering puddle. Thats not a metaphor, she's <i>literally</i> just a puddle!",
 						" I lean in for a kiss, but her head melts away. I watch as her body reverses itself, and she starts to blow me. I dive between her spread legs, and lap up her "+DescWord(unit(s[2]),"slime",100)+" flavored juices until we both cum."
 						]))
+				}
+				if(Entrys.length == 0){
+					Entrys.push("CSUB and I lay on the GROUND and make love.")
 				}
 			}else{//FAIL
 				if(map[party.y][party.x].units[s[2]-100].Tags[0] == "Catgirl" && Math.random()<.5){

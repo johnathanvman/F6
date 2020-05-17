@@ -3233,8 +3233,8 @@ function StartTheGame(){
 	+"<br>Horny: How interested the character is in sex, even while hostile."
 	+"<br>Hungry: Protagonist only. Can't Fuck when its full, can't Feast when its empty."
 	+"<br><br>Navigation: click on any of the <i>eight</i> surrounding locations on the top map."
-	+"<br><br><b><u>VERSION .2</u></b>"
-	+"<br>Two of sixteen zones currently available.<br>Latest addition: Deergirls."
+	+"<br><br><b><u>VERSION .3</u></b>"
+	+"<br>Three of sixteen zones currently available.<br>Latest addition: Harpygirls."
 	)	
 }
 function TileRotate(tile_temp,Direction){

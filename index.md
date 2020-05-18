@@ -6001,7 +6001,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					Entrys.push("CDOM wags her tail while swallowing SUB.")
 					Entrys.push("CDOM howls loudly before she swallows SUB.")
 					Entrys.push("CDOM swallows SUB then lets out a howl!")
-					Entrys.push("With her hackles risen, she leaps at SUB! Her mouth wraps around SUBSHORT's ahoulders, and she doesn't stop until she's completely finished swallowing.")
+					Entrys.push("With her hackles risen, DOM leaps at SUB! Her mouth wraps around SUBSHORT's ahoulders, and she doesn't stop until she's completely finished swallowing.")
 				}
 				if(unit(s[1]).Tags[0] == "Froggirl"){
 					Entrys.push("CDOM swallows SUB. She ribbits loudly as she digests SUBSHORT.")
@@ -6929,7 +6929,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 							choose([" She guides my hand to her "+DescWord(unit(s[2]),"breasts",90)+"breast, and "," She caresses my face, and "," She gives me a grin, and "," She grins as she "," She stifles a giggle, and "])+
 							choose(["tells me to fuck her properly.","tells me to give it to her.","tells me she's ready.","whispers that I just took her first time.","admits its her first time."])
 							,
-						" Our tongues meet as she guides my member into her. "," She arches her back as I slowly slide into her. "," She spreads her legs and I gently slide into her. "," She spreads herself with both hands and I slide inside her. "," I caress one of her "+DescWord(unit(s[2]),"breasts",90)+"breasts as she guides me into her."])+
+						" When she straddles me, my length starts to throb under her. Our tongues meet as she guides my member into her. "," I pull her onto me, and she starts grinding against my length until its throbbing. She arches her back as I slowly slide into her. "," She rolls onto me, and spreads her legs. I gently slide into her and she pauses to feel herself with me inside. She gives me a naughty look and tells me she's ready."," She spreads herself with both hands, and I start frotting against her. Once she's ready, she guides me into her. "," When she straddles me, my length starts to throb against her. I caress one of her "+DescWord(unit(s[2]),"breasts",90)+"breasts as she guides me into her."])+
 						choose([" She moans as I start thrusting"," She hugs me close when I start thrusting"," She gasps as I start thrusting"," She starts to move her hips, taking my full length each time"])
 					)//CONTINUES BELOW 
 						if(unit(s[2]).willing && Math.random()<.2){

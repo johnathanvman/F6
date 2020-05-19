@@ -5800,7 +5800,7 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 					Entrys.push("CDOM swallows SUB. Before digesting, she shouts that SUBRACEs shouldn't eat other SUBRACEs.") 
 				}
 				if(unit(s[1]).arms && unit(s[2]).legs && unit(s[2]).MPle-unit(s[2]).CPle <= unit(0).Fuck && unit(s[1]).Tags[0] != unit(s[2]).Tags[0]){ 
-					Entrys = []//REMOVE AND MOVE BACK TO TOP AFTER TESTING
+					
 					Entrys.push(
 						choose(["CDOM whispers into my ear about wanting to eat SUB. She smiles when I agree to help, then starts casually walking to get behind her.","CDOM points to SUB while rubbing her belly. We both grin before splitting up.","CDOM's belly growls hungrily while she stares at SUB. She nods when I tell her to wait, then slinks off to hide.","CDOM nudges my ribs while looking at SUB. We both nod, and I get ready to be a distraction."])+
 						choose([" I <i>accidentally</i> stumble into SUBSHORT and knock us both over. We laugh for awhile as I lay on top of her. Eventually she tries scooching out from under me, but pauses at my touch."," While SUBSHORT lies on the ground, I approach on all fours."," I crawl towards SUBSHORT as she lays on the ground."," I guide SUBSHORT to the GROUND, and get on top of her."])+
@@ -5892,7 +5892,6 @@ function randomAction(s){//randomAction:[action,dom,sub,offence,defence,terrain]
 				
 			}else if(s[4] == 3){//WILLING
 				if(unit(s[1]).arms && unit(s[2]).legs && unit(s[2]).MPle-unit(s[2]).CPle <= unit(0).Fuck && unit(s[1]).Tags[0] != unit(s[2]).Tags[0]){ 
-					Entrys = []//REMOVE AND MOVE BACK TO TOP AFTER TESTING
 					Entrys.push(
 						choose(["CDOM whispers into my ear about wanting to eat SUB. She smiles when I agree to help, then starts casually walking to get behind her.","CDOM points to SUB while rubbing her belly. We both grin before splitting up.","CDOM's belly growls hungrily while she stares at SUB. She nods when I tell her to wait, then slinks off to hide.","CDOM nudges my ribs while looking at SUB. We both nod, and I get ready to be a distraction."])+
 						choose([" I <i>accidentally</i> stumble into SUBSHORT and knock us both over. We laugh for awhile as I lay on top of her. Eventually she tries scooching out from under me, but pauses at my touch."," While SUBSHORT lies on the ground, I approach on all fours."," I crawl towards SUBSHORT as she lays on the ground."," I guide SUBSHORT to the GROUND, and get on top of her."])+

@@ -49,6 +49,9 @@ user-select: none;
 	padding: 0px;
 	margin: 10px 10px -15px 10px;
 	padding:1px;
+	
+	position: relative;
+	z-index: 0;
 }
 .grid-edge {
 }
@@ -67,8 +70,9 @@ user-select: none;
 	font-size: 12px;
 	background-color: #a69f98;
 	text-align: center;
-	margin: auto
-
+	margin: auto;
+	position: relative;
+	z-index: 0;
 }
 .mapspan {
 	font-family: 'Permanent Marker', cursive;
@@ -102,7 +106,7 @@ user-select: none;
 	padding: 10px;
 	margin: 0px;
 	border: none;
-	background-color:#ffee88;
+	background-color:#FCEB88;
 	
 	font-weight: bold;
 	border-radius: 4px;
@@ -138,6 +142,7 @@ user-select: none;
 	 20%  {transform: translate(0px, 2px) scale(1.05, .95);}
 	100%  {transform: translate(0px,-4px) scale(1, 1);}
 }
+
 .btn {
 	box-shadow: 2px 4px 8px #000;
 	user-select: none;
@@ -172,7 +177,7 @@ user-select: none;
 	margin: 15px 5px 5px 5px;
 	padding: 8px 12px 8px 12px;
 	border: none;
-	background-color:#ffee88;
+	background-color:#FCEB88;
 	font-weight: 800;
 	border-radius: 4px;
 	animation-name: animation_btnact;
@@ -222,9 +227,89 @@ user-select: none;
 	 20%  {background-color:#91D8D8;transform: translate(0px,1px) scale(.98, 1.02);}
 	100%  {background-color:#88cccc;transform: translate(0px,0px) scale(1, 1);}
 }
+/*
+TODO:CSS - units
+*/
+
+
+.sizedis, .sizeact, .sizeavl  { 
+	margin:10px;  
+	border: none;   
+	font-family: 'Londrina Solid', cursive;
+	letter-spacing: .5px;
+	font-size: 16px;
+	font-weight: 100; 
+	color:#00000;
+} 
+
+.outerUnit {  
+	margin-bottom: 20px;
+	margin-right: 1px;
+	border: none; 
+}
+.unitdis, .unitact, .unitavl  { 
+	padding-top:3px;
+	margin-top:-1px; 
+	margin-bottom:3px;
+	border: none;
+	background-color:#88cccc;
+	border-radius: 0px 10px 0px 0px; 
+	position: relative;
+	z-index: 1;
+}
+.unitdis{background-color:#cccccc;}
+.unitact{background-color:#FCEB88;cursor: pointer;}
+.unitavl{background-color:#88cccc;cursor: pointer;}
+
+.unit2dis, .unit2act, .unit2avl  { 
+	padding-top:3px;
+	margin-top:-1px; 
+	margin-bottom:3px;
+	border: none;
+	background-color:#88cccc;
+	border-radius: 10px 0px 0px 0px; 
+	position: relative;
+	z-index: 1;
+}
+.unit2dis{background-color:#cccccc;}
+.unit2act{background-color:#FCEB88;cursor: pointer;}
+.unit2avl{background-color:#88cccc;cursor: pointer;}
+.avl_animate { 
+	animation-name: animation_namavl;
+	animation-timing-function: linear;
+	animation-duration: .5s;
+	animation-fill-mode: forwards;
+}
+.nam, .namdis, .namsleep, .namout, .namact, .namact_animate, .namavl, .namavl_animate {
+	margin-bottom:-1px;
+	position: relative;
+	z-index: 1;
+	
+}
+ .unitdis:before, .unitact:before, .unitavl:before,.unit2dis:before, .unit2act:before, .unit2avl:before, .nam:before, .namdis:before, .namsleep:before, .namout:before, .namact:before, .namact_animate:before, .namavl:before, .namavl_animate:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  border-radius: 0px 10px 0px 0px;
+  box-shadow: 1px 2px 2px #999;
+}
+ .unit2dis:before, .unit2act:before, .unit2avl:before{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  border-radius: 10px 0px 0px 0px;
+  box-shadow: 1px 2px 2px #999;
+}
 .nam {
 	margin-bottom:3px;
-	box-shadow: 0px 1px 2px #999;
 	user-select: none;
 	font-family: 'Londrina Solid', cursive;
 	letter-spacing: .5px;
@@ -234,8 +319,6 @@ user-select: none;
 	border-radius: 5px 5px 0px 0px;
 }
 .namdis { 
-	margin-bottom:3px;
-	box-shadow: 0px 1px 2px #999;
 	user-select: none;
 	font-family: 'Londrina Solid', cursive;
 	letter-spacing: .5px;
@@ -249,8 +332,6 @@ user-select: none;
 	border-radius: 10px 10px 0px 0px;
 }
 .namsleep { 
-	margin-bottom:3px;
-	box-shadow: 0px 1px 2px #999;
 	user-select: none;
 	font-family: 'Londrina Solid', cursive;
 	letter-spacing: .5px;
@@ -264,7 +345,6 @@ user-select: none;
 	border-radius: 10px 10px 0px 0px;
 }
 .namout { 
-	margin-bottom:3px;
 	user-select: none;
 	font-family: 'Londrina Solid', cursive;
 	letter-spacing: .5px;
@@ -277,26 +357,22 @@ user-select: none;
 	color:#bbbbbb;
 	border-radius: 10px 10px 0px 0px;
 }
-.namact {
-	margin-top:1px;
-	box-shadow: 0px 1px 2px #999;
+.namact { /*ffee88*/
 	user-select: none;
 	font-family: 'Londrina Solid', cursive;
 	font-size: 18px;
 	font-weight: 300;
 	border: none;
-	background-color:#ffee88;
+	background-color:#FCEB88;
 	border-radius: 10px 10px 0px 0px;
 }
-.namact_animate {
-	margin-top:1px;
-	box-shadow: 0px 1px 2px #999;
+.namact_animate { 
 	user-select: none;
 	font-family: 'Londrina Solid', cursive;
 	font-size: 18px;
 	font-weight: 300;
 	border: none;
-	background-color:#ffee88;
+	background-color:#FCEB88;/*FCEB88*/
 	border-radius: 10px 10px 0px 0px;
 	animation-name: animation_namact;
 	animation-duration: .5s;
@@ -311,8 +387,6 @@ user-select: none;
 
 
 .namavl { 
-	margin-bottom:3px;
-	box-shadow: 1px 2px 2px #999;
 	user-select: none;
 	cursor: pointer;
 	font-family: 'Londrina Solid', cursive;
@@ -324,8 +398,6 @@ user-select: none;
 	border-radius: 10px 10px 0px 0px;
 }
 .namavl_animate { 
-	margin-bottom:3px;
-	box-shadow: 1px 2px 2px #999;
 	user-select: none;
 	cursor: pointer;
 	font-family: 'Londrina Solid', cursive;
@@ -344,7 +416,60 @@ user-select: none;
 	  0%  {background-color:#cccccc;color:#333333;} 
 	 50%  {color:#333333;} 
 	100%  {background-color:#88cccc;color:#000000;}
+} 
+.jankBar{
+	position: relative;
+	z-index: 1;
+	text-align: center;
+	margin-top:3px;
+	margin-bottom:-20px;
 }
+.textBar{    
+	margin-top:-5px;
+	font-family: 'Love Ya Like A Sister', cursive;
+	letter-spacing: 4px;
+	font-size: 16px;
+	font-weight: 300; 
+	color:rgba(255, 255, 255, 0.8);
+	/*-webkit-text-stroke: .5px #000000;*/
+}
+.hurtBar {/*red*/
+	display: inline-block;
+	width: 30%;
+	border: 3px solid #CC2828;
+	/*border: 3px solid #993D3D;*/  
+	margin-left:12px;
+	margin-right:12px;
+	padding: 2px;
+	border-radius: 10px; 
+	height:10px;
+	box-shadow: 1px 2px 2px #999;
+}
+.hornyBar {/*pink*/
+	display: inline-block;
+	width: 30%;
+	border: 3px solid #CC287A;
+	/*border: 3px solid #993D6B;*/ 
+	margin-left:12px;
+	margin-right:12px;
+	padding: 2px;
+	border-radius: 10px; 
+	height:10px;
+	box-shadow: 1px 2px 2px #999;
+}
+.hungryBar {/*orange*/
+	display: inline-block;
+	width: 30%;
+	border: 3px solid #CC7A28;
+	/*border: 3px solid #996B3D;*/  
+	margin-left:12px;
+	margin-right:12px;
+	padding: 2px;
+	border-radius: 10px; 
+	height:10px;
+	box-shadow: 1px 2px 2px #999;
+}
+
 .mainspan1 {
 	box-shadow: 2px 1px 8px #333;
 	user-select: none;
@@ -356,6 +481,9 @@ user-select: none;
 	width: 40%;
 	text-align: left;
 	border-radius: 15px 0px 0px 0px;
+	
+	position: relative;
+	z-index: 0;
 }
 .mainspan2 {
 	box-shadow: 2px 1px 8px #333;
@@ -368,6 +496,9 @@ user-select: none;
 	width: 40%;
 	text-align: right;
 	border-radius: 0px 15px 0px 0px;
+	
+	position: relative;
+	z-index: 0;
 }
 .mainspan2_animate {
 	box-shadow: 2px 1px 8px #333;
@@ -384,6 +515,9 @@ user-select: none;
 	animation-timing-function: ease;
 	animation-duration: .25s;
 	animation-fill-mode: forwards;
+	
+	position: relative;
+	z-index: 0;
 }
 @keyframes animation_mainspan2{
 	  0%  {opacity: 0.0;transform: scale(.98, 1.02);}
@@ -414,9 +548,7 @@ user-select: none;
 	margin-bottom:1.25px;
 }
 .tags{
-	 line-height: 175%;
-	 margin:-2px;
-	 
+	 line-height: 150%; 
 }
 .text {
    font-family: 'PT Mono', monospace;
@@ -1419,8 +1551,20 @@ function Status(){
 			if( party.units[e].Tags[a] == "Antiswimming"){party.units[e].antiswimming = true;}
 			a++
 		}
+		
 		if(party.units[e].appetite == undefined){
 			party.units[e].appetite = 0;
+		}
+		if(party.units[e].appetite == 0){
+			party.units[e].SizeLabel = party.units[e].Tags[1]
+		}else if(party.units[e].Size + party.units[e].appetite >= 16){
+			party.units[e].SizeLabel = "Devourer "
+		}	else if(party.units[e].Size + party.units[e].appetite >= 8){
+			party.units[e].SizeLabel = "Ravenous"
+		}	else if(party.units[e].Size + party.units[e].appetite >= 4){
+			party.units[e].SizeLabel = "Glutton"
+		}	else if(party.units[e].Size + party.units[e].appetite >= 2){
+			party.units[e].SizeLabel = "Munchy"
 		}		
 		a = 0;
 		while(a < party.units[e].Cond.length){
@@ -1517,6 +1661,7 @@ function Status(){
 		}
 		if(map[party.y][party.x].units[e].appetite == undefined){
 			if(map[party.y][party.x].units[e].Tags[0] == "Harpygirl"){
+				map[party.y][party.x].units[e].appetite = 0;
 				map[party.y][party.x].units[e].arms = false;
 				map[party.y][party.x].units[e].legs = true;
 			}
@@ -1609,6 +1754,7 @@ function Status(){
 				map[party.y][party.x].units[e].Vanilla = false//?
 			}
 		}
+		map[party.y][party.x].units[e].SizeLabel = map[party.y][party.x].units[e].Tags[1]	
 		
 		if(map[party.y][party.x].units[e].travel == undefined){
 			map[party.y][party.x].units[e].travel = travel
@@ -1725,6 +1871,12 @@ function Main(){
 	var goodbrbr = true;
 	var foodbrbr = true;
 	var fstats = ["","","","","",""]
+	if(map[party.y][party.x].hostile){
+		//document.body.style.backgroundColor = "#522e2e"
+		document.body.style.backgroundColor = "#4F3E2D"
+	}else{
+		document.body.style.backgroundColor = "#2e4052"
+	}
 	while(e < party.units.length){
 		showstats = false;
 		if(party.units.length < 5){
@@ -1756,61 +1908,66 @@ function Main(){
 				showstats = true;
 			}
 		}
+		Good += "<div class=\"outerUnit\">"
 		if(pick1 == -1 && pick2 == -1 && (!map[party.y][party.x].hostile || party.units[e].Init==currInit) && !party.units[e].asleep && !party.units[e].fled){//(No picks. not hostile, or current initiative)or someone else was picked and an action is picked
-		Good += "<button class=\"namavl\" onclick=\"SelectDom("+e+")\">"+party.units[e].Name.replace("girl", "")+Init+"</button>"
+		Good += "<button class=\"namavl\" onclick=\"SelectDom("+e+")\">"+party.units[e].Name.replace("girl", "")+Init+"</button><span class=\"sizeavl\">"+party.units[e].SizeLabel+"</span><div class=\"unitavl\" onclick=\"SelectDom("+e+")\">"
 		}else if(pick1 == e && !party.units[e].fled && !party.units[e].asleep && action == -1){//pick one chosen, is hero.
-		Good += "<button class=\"namact_animate\" onclick=\"SelectDom(-1)\">"+String(party.units[e].Name.replace("girl", "")).toUpperCase()+Init+"</button>"
+		Good += "<button class=\"namact_animate\" onclick=\"SelectDom(-1)\">"+String(party.units[e].Name.replace("girl", "")).toUpperCase()+Init+"</button><span class=\"sizeact\">"+party.units[e].SizeLabel+"</span><div class=\"unitact\" onclick=\"SelectDom(-1)\">"
 		showstats = true;
 		}else if(pick1 == e && !party.units[e].fled && !party.units[e].asleep){//pick one chosen, is hero.
-		Good += "<button class=\"namact\" onclick=\"SelectDom(-1)\">"+String(party.units[e].Name.replace("girl", "")).toUpperCase()+Init+"</button>"
+		Good += "<button class=\"namact\" onclick=\"SelectDom(-1)\">"+String(party.units[e].Name.replace("girl", "")).toUpperCase()+Init+"</button><span class=\"sizeact\">"+party.units[e].SizeLabel+"</span><div class=\"unitact\" onclick=\"SelectDom(-1)\">"
 		showstats = true;
 		}else if(pick1 != e && action > -1 && action != 2 && !party.units[e].fled && (!party.units[e].asleep || (action == 3)) && (e > 0 || action != 3)){//pick one chosen. action chosen
-		Good += "<button class=\"namavl_animate\" onclick=\"SelectSub("+e+")\">"+party.units[e].Name.replace("girl", "")+Init+"</button>"
+		Good += "<button class=\"namavl_animate\" onclick=\"SelectSub("+e+")\">"+party.units[e].Name.replace("girl", "")+Init+"</button><span class=\"sizeavl\">"+party.units[e].SizeLabel+"</span><div class=\"avl_animate unitavl\" onclick=\"SelectSub("+e+")\">"
 		}else if (party.units[e].fled){
-		Good += "<button class=\"namout\">"+party.units[e].Name.replace("girl", "")+Init+"</button>"
+		Good += "<button class=\"namout\">"+party.units[e].Name.replace("girl", "")+Init+"</button><span class=\"sizedis\">"+party.units[e].SizeLabel+"</span><div class=\"unitdis\">"
 		}else if (party.units[e].asleep){
-		Good += "<button class=\"namsleep\">"+party.units[e].Name.replace("girl", "")+Init+"</button>"
+		Good += "<button class=\"namsleep\">"+party.units[e].Name.replace("girl", "")+Init+"</button><span class=\"sizedis\">"+party.units[e].SizeLabel+"</span><div class=\"unitdis\">"
 		}else{
-		Good += "<button class=\"namdis\">"+party.units[e].Name.replace("girl", "")+Init+"</button>"
+		Good += "<button class=\"namdis\">"+party.units[e].Name.replace("girl", "")+Init+"</button><span class=\"sizedis\">"+party.units[e].SizeLabel+"</span><div class=\"unitdis\">"
 		}
 		
-		Good += "&nbsp<span class=\"tags\">"
-		a = 0
-		//while(a < party.units[e].Cond.length){
-		while(a < 2 && a < party.units[e].Cond.length){
-			Good += "<i> "+party.units[e].Cond[a] + "</i>";
-			if(a == 3 || a == 7 || a == 11){Good += "<br>"}else if(a < party.units[e].Cond.length-1){Good+=","}
-			a++;
-		}
-		Good += "</span><BR>"
+		
 		Good += "<b>"
 		
-		if(e == 0){
-			if(true || unit(e).CPun > 0){Good += "&nbsp&nbspHurt:"+party.units[e].CPun+"/"+party.units[e].MPun+""}//showstats
-			if(true || unit(e).CPle > 0){Good += "&nbsp&nbspHungry:"+party.units[e].CPle+"/"+(party.units[e].MPle)+"&nbsp&nbsp"}
-		}else{
-			if(true || unit(e).CPun > 0){Good += "&nbsp&nbspHurt:"+(party.units[e].CPun)+"/"+(party.units[e].MPun)+"&nbsp"}
-			if(true || unit(e).CPle > 0){Good += "&nbsp&nbspHorny:"+(party.units[e].CPle)+"/"+(party.units[e].MPle)+"&nbsp&nbsp"}
-		}
-		Good += "<BR>"
+		
 		//Good += "<center>"
 
 		//Good += "</center><br>"
 		
 		if(showstats){
 			Good += "&nbsp&nbspFight:"+stat(party.units[e].Figh)+"&nbsp Flirt:"+stat(party.units[e].Flir)+"&nbsp Flee:"+stat(party.units[e].Flee)+"<BR>"
-			Good += "&nbsp&nbspFeast:"+stat(party.units[e].Feas)+"&nbsp Fuck:"+stat(party.units[e].Fuck)+"&nbsp&nbsp Feed:"+stat(party.units[e].Feed)+"<br>"
+			Good += "&nbsp&nbspFeast:"+stat(party.units[e].Feas)+"&nbsp Fuck:"+stat(party.units[e].Fuck)+"&nbsp&nbsp Feed:"+stat(party.units[e].Feed)
 			Good += "</b>"
 			goodbrbr = false
 			if(pick1 == e){
 				fstats = [party.units[e].Figh,party.units[e].Flir,party.units[e].Flee,party.units[e].Feas,party.units[e].Fuck,party.units[e].Feed]
 			}
-			
+			Good += "<span class=\"tags\">"
+			Good += keywordDesc(party.units[e]);
+			Good += "</span>"
 		}
-
+		//*/
+		if(e == 0){
+			Good += "<div class=\"jankBar\">"
+			Good += "<div class=\"hurtBar\" "+barPercent("hurt",unit(e+0).CPun,unit(e+0).MPun)+"><div class=\"textBar\">Hurt</div></div>"//textBar
+			Good += "<div class=\"hungryBar\" "+barPercent("hungry",unit(e+0).CPle,unit(e+0).MPle)+"><div class=\"textBar\">Hungry</div></div>"//textBar 
+			Good += "</div>"
+			//if(true || unit(e).CPun > 0){Good += "&nbsp&nbspHurt:"+party.units[e].CPun+"/"+party.units[e].MPun+""}//showstats
+			//if(true || unit(e).CPle > 0){Good += "&nbsp&nbspHungry:"+party.units[e].CPle+"/"+(party.units[e].MPle)+"&nbsp&nbsp"}
+		}else{
+			Good += "<div class=\"jankBar\">"
+			Good += "<div class=\"hurtBar\" "+barPercent("hurt",unit(e+0).CPun,unit(e+0).MPun)+"><div class=\"textBar\">Hurt</div></div>"//textBar
+			Good += "<div class=\"hornyBar\" "+barPercent("horny",unit(e+0).CPle,unit(e+0).MPle)+"><div class=\"textBar\">Horny</div></div>"//textBar 
+			Good += "</div>"
+			//if(true || unit(e).CPun > 0){Good += "&nbsp&nbspHurt:"+(party.units[e].CPun)+"/"+(party.units[e].MPun)+"&nbsp"}
+			//if(true || unit(e).CPle > 0){Good += "&nbsp&nbspHorny:"+(party.units[e].CPle)+"/"+(party.units[e].MPle)+"&nbsp&nbsp"}
+		}
+		Good += "<BR>"
+		//*/
 		//if(a > 0){Food += "<br>"}
 		//Food += "<br><br>"
-
+		Good += "</div></div>"
 		e++;
 	}
 	if(goodbrbr){
@@ -1840,44 +1997,35 @@ function Main(){
 			}
 			
 		}
-		
-		Food += "&nbsp<span class=\"tags\">"
-		a = 0
-		//while(a < map[party.y][party.x].units[e].Cond.length){
-		while(a < 2 && a < map[party.y][party.x].units[e].Cond.length){
-			Food += "<i> "+map[party.y][party.x].units[e].Cond[a] + "</i>";
-			if(a == 3 || a == 7 || a == 11){Food += "<br>"}else if(a < map[party.y][party.x].units[e].Cond.length-1){Food+=","}
-			a++;
-		}
-		if(!map[party.y][party.x].hostile){Food+=", Passive"}
-		Food += "</span>&nbsp&nbsp"
-		
+		Food += "<div class=\"outerUnit\">"
 		if(pick1 != (e+100) && action > -1 && ((action == 2 || action == 3) || !map[party.y][party.x].units[e].asleep)){//pick one chosen, isnt hero. action chosen
-			Food += "<button class=\"namavl_animate\" onclick=\"SelectSub("+(e+100)+")\">"+map[party.y][party.x].units[e].Name.replace("girl", "")+Init+"</button>"
+			Food += "<span class=\"sizeavl\">"+unit(e+100).SizeLabel+"</span><button class=\"namavl_animate\" onclick=\"SelectSub("+(e+100)+")\">"+map[party.y][party.x].units[e].Name.replace("girl", "")+Init+"</button><div class=\"unit2avl avl_animate\" onclick=\"SelectSub("+(e+100)+")\">"
 		}else if(currInit == map[party.y][party.x].units[e].Init && map[party.y][party.x].hostile){
-			Food += "<button class=\"namact_animate\">"+String(map[party.y][party.x].units[e].Name.replace("girl", "")).toUpperCase()+Init+"</button>"
+			Food += "<span class=\"sizeact\">"+unit(e+100).SizeLabel+"</span><button class=\"namact_animate\">"+String(map[party.y][party.x].units[e].Name.replace("girl", "")).toUpperCase()+Init+"</button><div class=\"unit2act\">"
 			showstats = true;
 		}else if(map[party.y][party.x].units[e].asleep){
-			Food += "<button class=\"namsleep\">"+map[party.y][party.x].units[e].Name.replace("girl", "")+Init+"</button>"
+			Food += "<span class=\"sizedis\">"+unit(e+100).SizeLabel+"</span><button class=\"namsleep\">"+map[party.y][party.x].units[e].Name.replace("girl", "")+Init+"</button><div class=\"unit2dis\">"
 		}else{
-			Food += "<button class=\"namdis\">"+map[party.y][party.x].units[e].Name.replace("girl", "")+Init+"</button>"
-		}
-		Food += "<br>"
-		Food += "<b>"
-		if(true || unit(e+100).CPun > 0){Food += "&nbspHurt: "+(map[party.y][party.x].units[e].CPun)+"/"+(map[party.y][party.x].units[e].MPun)+"&nbsp&nbsp"}
-		if(true || unit(e+100).CPle > 0){Food += "&nbspHorny: "+stat2(map[party.y][party.x].units[e].CPle)+"/"+(map[party.y][party.x].units[e].MPle)+"&nbsp&nbsp"}
-		
-		Food += "<br>"
+			Food += "<span class=\"sizedis\">"+unit(e+100).SizeLabel+"</span><button class=\"namdis\">"+map[party.y][party.x].units[e].Name.replace("girl", "")+Init+"</button><div class=\"unit2dis\">"
+		} 
+		Food += "<b>"   
 		if(showstats){
 			foodbrbr = false
 			Food += "&nbsp&nbspFight:"+stat(map[party.y][party.x].units[e].Figh)+"  Flirt:"+stat(map[party.y][party.x].units[e].Flir)+"  Flee:"+stat(map[party.y][party.x].units[e].Flee)+"<BR>"
-			Food += "&nbsp&nbspFeast:"+stat(map[party.y][party.x].units[e].Feas)+"&nbsp; Fuck:"+stat(map[party.y][party.x].units[e].Fuck)+"  Feed:"+stat(map[party.y][party.x].units[e].Feed)+"<br>"
+			Food += "&nbsp&nbspFeast:"+stat(map[party.y][party.x].units[e].Feas)+"&nbsp; Fuck:"+stat(map[party.y][party.x].units[e].Fuck)+"  Feed:"+stat(map[party.y][party.x].units[e].Feed)
 			//fstats = [map[party.y][party.x].units[e].Figh,map[party.y][party.x].units[e].Flir,map[party.y][party.x].units[e].Flee,map[party.y][party.x].units[e].Feas,map[party.y][party.x].units[e].Fuck,map[party.y][party.x].units[e].Feed]
-		}
+			Food += "<span class=\"tags\">"
+			Food += keywordDesc(map[party.y][party.x].units[e]);
+			Food += "</span>"
+			}
 		Food += "</b>"
+		Food += "<div class=\"jankBar\">"
+		Food += "<div class=\"hurtBar\" "+barPercent("hurt",unit(e+100).CPun,unit(e+100).MPun)+"><div class=\"textBar\">Hurt</div></div>"//textBar
+		Food += "<div class=\"hornyBar\" "+barPercent("horny",unit(e+100).CPle,unit(e+100).MPle)+"><div class=\"textBar\">Horny</div></div>"//textBar 
+		Food += "</div>"
 		//if(a > 0){Food += "<br>"}
-		//Food += "<br><br>"
-
+		Food += "<br>"
+		Food += "</div></div>"
 		e++;
 	}
 	if(foodbrbr){
@@ -1909,12 +2057,12 @@ function Main(){
 	document.getElementById("actions").innerHTML = 
 	"<button id=\"FIG\"class=\"btnavl\" onclick=\"SelectAction(0)\">Fight "+fstats[0]+"</button><button id=\"FON\" class=\"btnavl\" onclick=\"SelectAction(1)\">Flirt "+fstats[1]+"</button><button id=\"FLE\" class=\"btnavl\" onclick=\"SelectAction(2)\">Flee "+fstats[2]+"</button>"+
 	"<button id=\"FEA\"class=\"btnavl\" onclick=\"SelectAction(3)\">Feast "+fstats[3]+"</button><button id=\"FUC\" class=\"btnavl\" onclick=\"SelectAction(4)\"  >Fuck "+fstats[4]+"</button><button id=\"FEE\" class=\"btnavl\" onclick=\"SelectAction(5)\">Feed "+fstats[5]+"</button>"
-		if(action == 0){document.getElementById("FIG").style.color = "#ffee88";document.getElementById("FIG").style.backgroundColor = "#000000";document.getElementById("FIG").style.fontWeight = "100"}
-		if(action == 1){document.getElementById("FON").style.color = "#ffee88";document.getElementById("FON").style.backgroundColor = "#000000";document.getElementById("FON").style.fontWeight = "100"}
-		if(action == 2){document.getElementById("FLE").style.color = "#ffee88";document.getElementById("FLE").style.backgroundColor = "#000000";document.getElementById("FLE").style.fontWeight = "100"}
-		if(action == 3){document.getElementById("FEA").style.color = "#ffee88";document.getElementById("FEA").style.backgroundColor = "#000000";document.getElementById("FEA").style.fontWeight = "100"}
-		if(action == 4){document.getElementById("FUC").style.color = "#ffee88";document.getElementById("FUC").style.backgroundColor = "#000000";document.getElementById("FUC").style.fontWeight = "100"}
-		if(action == 5){document.getElementById("FEE").style.color = "#ffee88";document.getElementById("FEE").style.backgroundColor = "#000000";document.getElementById("FEE").style.fontWeight = "100"}	
+		if(action == 0){document.getElementById("FIG").style.color = "#FCEB88";document.getElementById("FIG").style.backgroundColor = "#000000";document.getElementById("FIG").style.fontWeight = "100"}
+		if(action == 1){document.getElementById("FON").style.color = "#FCEB88";document.getElementById("FON").style.backgroundColor = "#000000";document.getElementById("FON").style.fontWeight = "100"}
+		if(action == 2){document.getElementById("FLE").style.color = "#FCEB88";document.getElementById("FLE").style.backgroundColor = "#000000";document.getElementById("FLE").style.fontWeight = "100"}
+		if(action == 3){document.getElementById("FEA").style.color = "#FCEB88";document.getElementById("FEA").style.backgroundColor = "#000000";document.getElementById("FEA").style.fontWeight = "100"}
+		if(action == 4){document.getElementById("FUC").style.color = "#FCEB88";document.getElementById("FUC").style.backgroundColor = "#000000";document.getElementById("FUC").style.fontWeight = "100"}
+		if(action == 5){document.getElementById("FEE").style.color = "#FCEB88";document.getElementById("FEE").style.backgroundColor = "#000000";document.getElementById("FEE").style.fontWeight = "100"}	
 		//*/
 		Good = "";
 		if(action == 0){
@@ -2388,8 +2536,10 @@ function FoodAction(Entry){
 					LogEntry("The "+map[party.y][party.x].units[Entry].Name + " hops over my "+party.units[u].Name.toLowerCase() +"'s head, and skips away laughing!")
 				}
 				Removal(Entry+100)
-				map[party.y][party.x].hostile = false;
-				Walk(0,0);
+				if(map[party.y][party.x].units.length == 0){
+					map[party.y][party.x].hostile = false;
+					Walk(0,0);
+				}
 		}else if(unit(100).Tags[0] == "Deergirl" && Math.random() < .8 && party.units[u].Flee <= map[party.y][party.x].units[Entry].Flee+1){
 				if(u == 0){
 					LogEntry("The "+map[party.y][party.x].units[Entry].Name + choose([" leaps over my head, and quickly dashes away!"," leaps over my head, shakes her cute tail, and quickly dashes away!"]))
@@ -2397,8 +2547,10 @@ function FoodAction(Entry){
 					LogEntry("The "+map[party.y][party.x].units[Entry].Name + " leaps over my "+party.units[u].Name.toLowerCase() +"'s head, and dashes away!")
 				}
 				Removal(Entry+100)
-				map[party.y][party.x].hostile = false;
-				Walk(0,0);
+				if(map[party.y][party.x].units.length == 0){
+					map[party.y][party.x].hostile = false;
+					Walk(0,0);
+				}
 		}else{
 			var domval = 0;
 			var subval = 0
@@ -3463,7 +3615,7 @@ function StartTheGame(){
 	+"<br>Horny: How interested the character is in sex, even while hostile."
 	+"<br>Hungry: Protagonist only. Can't Fuck when its full, can't Feast when its empty."
 	+"<br><br>Navigation: click on any of the <i>eight</i> surrounding locations on the top map."
-	+"<br><br><b><u>VERSION .4</u></b>"
+	+"<br><br><b><u>VERSION .4.5</u></b>"
 	+"<br>Four of sixteen zones currently available.<br>Latest addition: Drow Caves."
 	)	
 }
@@ -12587,6 +12739,39 @@ function DescWord(Entry,Bod, Chance=50,defaultword=""){//BOOKMARK
 		return "feet";
 	}
 }
+function barPercent(barType="hurt",numberA,numberB) {
+	var Percent = Math.round(numberA/numberB*100)//664444/993434
+	if(barType == "hurt"){
+		if(numberA == numberB){
+			return 'style="background: rgba(204, 40, 40, 1);"'
+		}else if(numberA == 0){ 
+			return 'style="background: rgba(102, 61, 61, 1);"'
+		}else{
+			//return 'style="background: linear-gradient(90deg, rgba(204,40,40,1) '+(Percent-1)+'%, rgba(153,61,61,1) '+(Percent+1)+'%);"'
+			return 'style="background: linear-gradient(90deg, rgba(204,40,40,1) '+(Percent-1)+'%, rgba(102,61,61,1) '+(Percent+1)+'%);"'
+		}
+	}
+	if(barType == "horny"){
+		if(numberA == numberB){
+			return 'style="background: rgba(204, 40, 122, 1);"'
+		}else if(numberA == 0){ 
+			return 'style="background: rgba(102, 61, 81, 1);"'
+		}else{
+			//return 'style="background: linear-gradient(90deg, rgba(204,40,122,1) '+(Percent-1)+'%, rgba(153,61,107,1) '+(Percent+1)+'%);"'
+			return 'style="background: linear-gradient(90deg, rgba(204,40,122,1) '+(Percent-1)+'%, rgba(102,61,81,1) '+(Percent+1)+'%);"'
+		}
+	}
+	if(barType == "hungry"){
+		if(numberA == numberB){
+			return 'style="background: rgba(204, 122, 40, 1);"'
+		}else if(numberA == 0){ 
+			return 'style="background: rgba(102, 81, 61, 1);"'
+		}else{
+			//return 'style="background: linear-gradient(90deg, rgba(204,122,40,1) '+(Percent-1)+'%, rgba(153,107,61,1) '+(Percent+1)+'%);"'
+			return 'style="background: linear-gradient(90deg, rgba(204,122,40,1) '+(Percent-1)+'%, rgba(102,81,61,1) '+(Percent+1)+'%);"'
+		}
+	}
+}
 function AR(Entry){// ACTION RANDOMIZER
 	//return Math.round((Entry*.75)+(Math.random()*Entry)*.50)
 	return Math.max(Math.round(Entry + (Math.random()*3) - (Math.random()*3)),1)
@@ -12832,7 +13017,7 @@ function SpawnMobs(i,o,land){
 				Tags:["Catgirl","Small"],
 				Cond:[]
 			})
-		}else if(dice > 84.9){
+		}else if(dice > 84.95){
 			map[i][o].name="Strange Shrine" 
 			map[i][o].clr="#eeeeee" 
 			map[i][o].hostile=true;  
@@ -12888,7 +13073,7 @@ function SpawnMobs(i,o,land){
 					Cond:[]
 				})
 			}
-		}else if(dice > 70){//2.5 chance 
+		}else if(dice > 70){//5 chance 
 			map[i][o].name=randomEntry("FrogForest") 
 			map[i][o].hostile=true;
 			map[i][o].units.push({
@@ -12906,7 +13091,7 @@ function SpawnMobs(i,o,land){
 				Tags:["Froggirl","Small","AntiFlying","Swimming"],
 				Cond:[]
 			})
-		}else if(dice > 65){//2.5 chance 
+		}else if(dice > 65){//5 chance 
 			map[i][o].name=randomEntry("BatForest") 
 			map[i][o].hostile=true;
 			map[i][o].units.push({
@@ -12924,7 +13109,7 @@ function SpawnMobs(i,o,land){
 				Tags:["Batgirl","Small","Flying"],
 				Cond:[]
 			})
-		}else if(dice > 64.9){//.001 chance
+		}else if(dice > 64.9){//%01 chance
 			map[i][o].hostile=true;
 			map[i][o].units.push({
 				//Name:randomEntry("WolfDesc"),
@@ -12942,7 +13127,7 @@ function SpawnMobs(i,o,land){
 				Tags:["Wolfgirl","Medium"],
 				Cond:[]
 			})
-		 }else if(dice > 64.4){//.005 chance
+		 }else if(dice > 64.7){//%02 chance
 			map[i][o].name=  randomEntry("DeerForest") 
 			map[i][o].units.push({
 				Name:randomEntry("DeerDesc"),
@@ -13901,6 +14086,33 @@ function unit (Entry){
 	}else{
 		return map[party.y][party.x].units[Entry-100];
 	}
+}
+//TODO:keywordDesc
+function keywordDesc(Entry){
+	var keywords = "<i>";
+	if(Entry.flying){
+		keywords += "<br>&nbsp&nbspFlying to evade (50%)&nbsp&nbsp"
+	}
+	if(Entry.swimming){
+		keywords += "<br>&nbsp&nbspSwimming to evade (50%)&nbsp&nbsp"
+	}
+	if(Entry.Clothing != null && Entry.Clothing != "None"){
+		keywords += "<br>&nbsp&nbspLethal weapon attacks&nbsp&nbsp"
+	}
+	if(Entry.Tags[0] == "Froggirl"){
+		keywords += "<br>&nbsp&nbspAlways hits fliers&nbsp&nbsp"
+	}
+	if(Entry.Tags[0] == "Batgirl" || Entry.Tags[0] == "Drowgirl" || Entry.Tags[0] == "Mousegirl" || Entry.Tags[0] == "Spidergirl"){
+		keywords += "<br>&nbsp&nbspCan see in the dark&nbsp&nbsp"
+	}
+	if(Entry.Tags[0] == "Batgirl" || Entry.Tags[0] == "Spidergirl"){
+		keywords += "<br>&nbsp&nbspFeasts on any sized creature with blood&nbsp&nbsp"
+	}
+	if(Entry.asleep){
+		keywords += "<br>&nbsp&nbspSleeping after some fun&nbsp&nbsp"
+	}
+	keywords += "</i>"
+	return keywords;
 }
 //TODO:defaultstat
 function defaultstat(R,F){

@@ -274,7 +274,7 @@ TODO:CSS - units
 .unit2dis{background-color:#cccccc;}
 .unit2act{background-color:#FCEB88;cursor: pointer;}
 .unit2avl{background-color:#88cccc;cursor: pointer;}
-.avl_animate { 
+.avl_animate {
 	animation-name: animation_namavl;
 	animation-timing-function: linear;
 	animation-duration: .5s;
@@ -442,7 +442,7 @@ TODO:CSS - units
 	margin-right:12px;
 	padding: 2px;
 	border-radius: 10px; 
-	height:10px;
+	height:25px;
 	box-shadow: 1px 2px 2px #999;
 }
 .hornyBar {/*pink*/
@@ -454,7 +454,7 @@ TODO:CSS - units
 	margin-right:12px;
 	padding: 2px;
 	border-radius: 10px; 
-	height:10px;
+	height:25px;
 	box-shadow: 1px 2px 2px #999;
 }
 .hungryBar {/*orange*/
@@ -466,7 +466,7 @@ TODO:CSS - units
 	margin-right:12px;
 	padding: 2px;
 	border-radius: 10px; 
-	height:10px;
+	height:25px;
 	box-shadow: 1px 2px 2px #999;
 }
 
